@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <middle></middle>
     <router-view/>
     <foot></foot>
   </div>
 </template>
 
 <script>
-  import foot from './components/foot'
+  import Foot from './components/foot'
+  import Middle from './components/middle'
 export default {
   name: 'App',
-  components: {Foot}
+  components: {Foot,Middle}
 }
 </script>
 
