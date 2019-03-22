@@ -1,13 +1,16 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <middle></middle>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Middle from "./components/middle";
 export default {
-  name: 'App'
+  name: 'App',
+  components: {Middle}
 }
 </script>
 
