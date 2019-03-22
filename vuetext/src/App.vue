@@ -2,12 +2,15 @@
   <div id="app">
     <img src="./assets/logo.png">
     <router-view/>
+    <foot></foot>
   </div>
 </template>
 
 <script>
+  import foot from './components/foot'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {Foot}
 }
 </script>
 
