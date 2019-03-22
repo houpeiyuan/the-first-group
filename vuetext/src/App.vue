@@ -4,15 +4,17 @@
     <middle></middle>
     <router-view/>
     <foot></foot>
+    <mine></mine>
   </div>
 </template>
 
 <script>
   import Foot from './components/foot'
   import Middle from './components/middle'
+  import Mine from "./components/mine";
 export default {
   name: 'App',
-  components: {Foot,Middle}
+  components: {Mine, Foot,Middle}
 }
 </script>
 
