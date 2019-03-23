@@ -1,5 +1,5 @@
 <template>
-<!--推荐有奖-->
+
 </template>
 
 <script>

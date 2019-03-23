@@ -1,5 +1,5 @@
 <template>
-<!--倒计时组件-->
+
 </template>
 
 <script>

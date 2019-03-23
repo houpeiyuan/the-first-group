@@ -1,5 +1,5 @@
 <template>
-<!--历史红包-->
+
 </template>
 
 <script>

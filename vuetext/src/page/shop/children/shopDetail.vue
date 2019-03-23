@@ -1,5 +1,5 @@
 <template>
-<!--单个商铺信息页-->
+
 </template>
 
 <script>

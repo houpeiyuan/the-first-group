@@ -1,5 +1,5 @@
 <template>
-<!--会员说明-->
+
 </template>
 
 <script>

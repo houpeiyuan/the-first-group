@@ -1,6 +1,6 @@
 'use strict'
 require('./check-versions')()
-
+//你好
 process.env.NODE_ENV = 'production'
 
 const ora = require('ora')

@@ -1,5 +1,4 @@
 <template>
-  <!--头部公共组件-->
   <nav class="nav navbar navbar-fixed-top">
     <a href="###" class="pull-left">ele.me</a>
     <div class="pull-right">
@@ -11,13 +10,20 @@
 
 <script>
     export default {
-        name: "head"
+        name: "head1"
     }
 </script>
 
 <style scoped>
   .nav{
-    background-color: blue;
-    width: 100%;
+     background-color: blue;
+     width: 100%;
+   }
+  .nav>a,div{
+    color: white;
+    padding: 0.1rem;
+  }
+  .pull-right>a{
+    color: white;
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-<!--购买记录-->
+
 </template>
 
 <script>

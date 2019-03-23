@@ -1,12 +1,5 @@
 <template>
   <div class="box">
-    <nav class="nav navbar navbar-fixed-top">
-      <a href="###" class="pull-left">ele.me</a>
-      <div class="pull-right">
-        <router-link :to="{}">登录 |</router-link>
-        <router-link :to="{}">注册</router-link>
-      </div>
-    </nav>
     <!--显示定位城市-->
     <table class="table city">
       <thead>
@@ -111,21 +104,9 @@
     border-bottom:0.02rem solid #e4e4e4;
     color: black;
   }
-
-  .nav{
-    background-color: blue;
-    width: 100%;
-  }
   .container{
     padding: 0;
     background-color: white;
-  }
-  .nav>a,div{
-    color: white;
-    padding: 0.1rem;
-  }
-  .pull-right>a{
-    color: white;
   }
   .two_td{
     color: #e4e4e4;

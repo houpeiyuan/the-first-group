@@ -1,5 +1,5 @@
 <template>
-<!--红包页-->
+
 </template>
 
 <script>

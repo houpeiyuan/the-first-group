@@ -1,5 +1,5 @@
 <template>
-<!--底部公共组件-->
+
 </template>
 
 <script>
