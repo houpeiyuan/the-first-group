@@ -1,4 +1,5 @@
 <template>
+  <!--头部公共组件-->
   <nav class="nav navbar navbar-fixed-top">
     <a href="###" class="pull-left">ele.me</a>
     <div class="pull-right">
