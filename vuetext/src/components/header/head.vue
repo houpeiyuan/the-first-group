@@ -2,6 +2,7 @@
   <nav class="nav navbar navbar-fixed-top">
     <a href="###" class="pull-left">ele.me</a>
     <div class="pull-right">
+      <p>{{geta}}</p>
       <router-link :to="{}">登录 |</router-link>
       <router-link :to="{}">注册</router-link>
     </div>
@@ -10,7 +11,12 @@
 
 <script>
     export default {
-        name: "head1"
+        name: "head1",
+        computed:{
+        geta(){
+          return this.$store.state.a
+        }
+      }
     }
 </script>
 
