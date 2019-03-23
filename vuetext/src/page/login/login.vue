@@ -1,5 +1,5 @@
 <template>
-
+<!--登录注册页-->
 </template>
 
 <script>

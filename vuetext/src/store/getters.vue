@@ -1,5 +1,5 @@
 <template>
-
+<!--配置getters-->
 </template>
 
 <script>

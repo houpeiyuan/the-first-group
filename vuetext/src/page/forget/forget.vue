@@ -1,10 +1,10 @@
 <template>
-<!--msite和shop页面的餐馆列表公共组件-->
+    <!--忘记密码，修改密码页-->
 </template>
 
 <script>
     export default {
-        name: "shoplist"
+        name: "forget"
     }
 </script>
 

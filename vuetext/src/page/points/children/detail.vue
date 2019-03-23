@@ -1,10 +1,10 @@
 <template>
-<!--msite和shop页面的餐馆列表公共组件-->
+    <!--积分说明-->
 </template>
 
 <script>
     export default {
-        name: "shoplist"
+        name: "detail"
     }
 </script>
 
