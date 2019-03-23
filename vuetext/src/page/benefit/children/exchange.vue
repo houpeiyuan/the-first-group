@@ -1,5 +1,5 @@
 <template>
-
+<!--兑换红包-->
 </template>
 
 <script>

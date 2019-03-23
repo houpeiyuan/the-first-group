@@ -1,5 +1,5 @@
 <template>
-
+<!--购物车组件-->
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-
+<!--代金券说明-->
 </template>
 
 <script>
