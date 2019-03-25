@@ -13,7 +13,6 @@
       </div>
     </swiper-slide>
   </swiper>
-
 </template>
 
 <script>
