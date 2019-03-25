@@ -4,7 +4,7 @@
     <a href="###" class="pull-left" v-if="isShow">{{getLeaftNav}}</a>
     <span v-else="isShow1" class="selectedLocation">郑州(实验参数)</span>
     <div class="pull-right">
-      <router-link :to="{}">登录 |</router-link>
+      <router-link :to="{path: '/login'}">登录 |</router-link>
       <router-link :to="{}">注册</router-link>
     </div>
   </nav>
