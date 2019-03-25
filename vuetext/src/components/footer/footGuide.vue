@@ -1,18 +1,58 @@
 <template>
   <!--底部公共组件-->
-<<<<<<< HEAD
-=======
-  <div>
-    
+  <section>
+  <div class="foot navbar-fixed-bottom">
+    <router-link :to="{name:'msite'}"  :style='{color:index?"red":"blue"}'><i class="iconfont">&#xe61b;</i><div>外卖</div></router-link>
+    <router-link :to="{name:'search'}"  :style='{color:index?"red":"blue"}'><i class="iconfont">&#xe683;</i><div>搜索</div></router-link>
+    <router-link :to="{name:'order'}"  :style='{color:index?"red":"blue"}'><i class="iconfont ">&#xe601;</i><div>订单</div></router-link>
+    <router-link :to="{name:'profile'}" :style='{color:index?"red":"blue"}'><i class="iconfont">&#xe600;</i><div>我的</div></router-link>
   </div>
->>>>>>> dc32439b531fdc31bb0ca02184bdfa8f604475e1
+  </section>
 </template>
 <script>
+    import index from "../../router";
     export default {
-        name: "footGuide"
+        name: "footGuide",
+      data(){
+          return{
+            index:true
+          }
+
+      },
+      beforeRouteLeave(to,from,next){
+       this.index=false;
+        next(alert('111'))
+        console.log(1111)
+      },
+      methods:{
+      },
+
+
     }
 </script>
 
 <style scoped>
-
+  @font-face {
+    font-family: 'iconfont';  /* project id 1107252 */
+    src: url('//at.alicdn.com/t/font_1107252_9vzkd2u4fr6.eot');
+    src: url('//at.alicdn.com/t/font_1107252_9vzkd2u4fr6.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1107252_9vzkd2u4fr6.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1107252_9vzkd2u4fr6.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1107252_9vzkd2u4fr6.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1107252_9vzkd2u4fr6.svg#iconfont') format('svg');
+  }
+  .iconfont{
+    font-family:"iconfont" !important;
+    font-size:0.25rem;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.002rem;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .foot{
+    display: flex;
+    justify-content: space-around;
+  }
+  div{
+    font-size: 0.12rem;
+  }
 </style>

@@ -31,8 +31,8 @@ export default new Router({
       component:city
     },
     {
-     // 登录页
-     path:'login',
+      // 登录页
+      path:'/login',
       name:'login',
       component:login
     },
@@ -49,13 +49,13 @@ export default new Router({
       component:search
     },
     {
-    //订单列表页
+      //订单列表页
       path:'/order',
       name:'order',
       component:order,
       children:[
         {
-        //  订单详情页
+          //  订单详情页
           path:'children/orderDetail',
           name:'orderDetail',
           component:orderDetail
