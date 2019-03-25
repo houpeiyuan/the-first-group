@@ -1,5 +1,5 @@
 <template>
-
+<!--个人中心-->
 </template>
 
 <script>
@@ -7,7 +7,6 @@
         name: "profile"
     }
 </script>
-
 <style scoped>
 
 </style>
