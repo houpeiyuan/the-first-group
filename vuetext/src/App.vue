@@ -17,10 +17,8 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
+
   .totalBox{
     margin-top: 0.5rem;
   }
-=======
->>>>>>> f24262b4549dec2c601d13f3c5b760032099c35b
 </style>
