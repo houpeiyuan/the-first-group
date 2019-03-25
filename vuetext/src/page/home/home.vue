@@ -10,8 +10,8 @@
       </thead>
       <tbody class="table">
       <tr>
-        <td><router-link :to="{name: 'citydetail'}">{{local_city}}</router-link></td>
-        <td class="two_td"><router-link :to="{path: '/msite'}">> </router-link></td>
+        <td><router-link :to="{name: 'city'}">{{local_city}}</router-link></td>
+        <td class="two_td"><router-link :to="{}">> </router-link></td>
       </tr>
       </tbody>
     </table>
@@ -23,7 +23,7 @@
       <p>热门城市</p>
       <div class="container">
         <ul class="row cityTotal">
-          <li class="col-xs-3 col-sm-3" v-for="item in cityHotArr"><router-link :to="{}" id="a1">{{item.name}}</router-link></li>
+          <li class="col-xs-3 col-sm-3" v-for="item in cityHotArr"><router-link :to="{name:'city'}" id="a1">{{item.name}}</router-link></li>
         </ul>
 
       </div>
@@ -32,7 +32,7 @@
     <div class="city_list border_top container" v-for="(value, key, index) in cityObj">
       <p><span>{{keyArr[index]}} </span><span class="font1">{{index===0?'(按字母排序)':''}}</span></p>
       <ul class="row cityTotal">
-        <li v-for="item in cityObj[keyArr[index]]" class="col-xs-3 col-sm-3"><router-link :to="{}">{{item.name}}</router-link></li>
+        <li v-for="item in cityObj[keyArr[index]]" class="col-xs-3 col-sm-3"><router-link :to="{name:'city'}">{{item.name}}</router-link></li>
       </ul>
     </div>
   </div>

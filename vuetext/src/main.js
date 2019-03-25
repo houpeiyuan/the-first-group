@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/index'
+
+import 'swiper/dist/css/swiper.css'
+
 import './assets/reset.css'
 Vue.config.productionTip = false
 new Vue({

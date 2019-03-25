@@ -6,6 +6,10 @@
     <router-link :to="{name:'search'}" @click=""><i class="iconfont">&#xe683;</i><div>搜索</div></router-link>
     <router-link :to="{name:'order'}" @click=""><i class="iconfont ">&#xe601;</i><div>订单</div></router-link>
     <router-link :to="{name:'profile'}" @click=""><i class="iconfont">&#xe600;</i><div>我的</div></router-link>
+    <router-link :to="{name:'msite'}"><i class="iconfont">&#xe61b;</i><div>外卖</div></router-link>
+    <router-link :to="{name:'search'}"><i class="iconfont">&#xe683;</i><div>搜索</div></router-link>
+    <router-link :to="{name:'order'}"><i class="iconfont ">&#xe601;</i><div>订单</div></router-link>
+    <router-link :to="{name:'profile'}"><i class="iconfont">&#xe600;</i><div>我的</div></router-link>
   </div>
   </section>
 </template>
@@ -18,7 +22,13 @@
        }
       },
       methods:{
-      }
+
+      },
+      beforeRouteLeave(to,from,next){
+       this.index=false;
+        next(alert('111'))
+        console.log(1111)
+      },
     }
 </script>
 
