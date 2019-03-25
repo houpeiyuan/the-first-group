@@ -16,7 +16,6 @@
     <button class="login">确认修改</button>
   </div>
 </template>
-
 <script>
     export default {
         name: "forget",
