@@ -1,5 +1,6 @@
 <template>
   <!--底部公共组件-->
+<<<<<<< HEAD
   <section>
   <div class="foot">
     <router-link :to="{name:'msite'}"><i class="iconfont">&#xe61b;</i><div>外卖</div></router-link>
@@ -8,6 +9,14 @@
     <router-link :to="{name:'profile'}"><i class="iconfont">&#xe600;</i><div>我的</div></router-link>
   </div>
   </section>
+=======
+<<<<<<< HEAD
+=======
+  <div>
+    
+  </div>
+>>>>>>> dc32439b531fdc31bb0ca02184bdfa8f604475e1
+>>>>>>> e12080d3c03a3ec48420037b667c498e6e5d2517
 </template>
 <script>
     export default {

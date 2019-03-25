@@ -1,5 +1,5 @@
 <template>
-
+<!-- 商铺认证信息页-->
 </template>
 
 <script>
