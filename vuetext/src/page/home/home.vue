@@ -92,7 +92,6 @@
     background-color: #f5f5f5;
   }
   .city{
-    margin-top: 0.5rem;
     background-color: white;
   }
   .two_td>a{

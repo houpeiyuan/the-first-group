@@ -1,10 +1,11 @@
 <template>
   <div id="app">
     <head1></head1>
-    <router-view></router-view>
+    <div class="totalBox">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
-
 <script>
 import {} from './config/rem'
 import Head1 from "./components/header/head";
@@ -15,4 +16,7 @@ export default {
 </script>
 
 <style>
+  .totalBox{
+    margin-top: 0.5rem;
+  }
 </style>
