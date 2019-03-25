@@ -1,26 +1,22 @@
 <template>
   <!--底部公共组件-->
-<<<<<<< HEAD
   <section>
-  <div class="foot">
-    <router-link :to="{name:'msite'}"><i class="iconfont">&#xe61b;</i><div>外卖</div></router-link>
-    <router-link :to="{name:'search'}"><i class="iconfont">&#xe683;</i><div>搜索</div></router-link>
-    <router-link :to="{name:'order'}"><i class="iconfont">&#xe601;</i><div>订单</div></router-link>
-    <router-link :to="{name:'profile'}"><i class="iconfont">&#xe600;</i><div>我的</div></router-link>
+  <div class="foot navbar-fixed-bottom">
+    <router-link :to="{name:'msite'}" @click="indx=1"><i class="iconfont">&#xe61b;</i><div>外卖</div></router-link>
+    <router-link :to="{name:'search'}" @click="indx=2"><i class="iconfont">&#xe683;</i><div>搜索</div></router-link>
+    <router-link :to="{name:'order'}" @click="indx=3"><i class="iconfont ">&#xe601;</i><div>订单</div></router-link>
+    <router-link :to="{name:'profile'}" @click="indx=4"><i class="iconfont">&#xe600;</i><div>我的</div></router-link>
   </div>
   </section>
-=======
-<<<<<<< HEAD
-=======
-  <div>
-    
-  </div>
->>>>>>> dc32439b531fdc31bb0ca02184bdfa8f604475e1
->>>>>>> e12080d3c03a3ec48420037b667c498e6e5d2517
 </template>
 <script>
     export default {
-        name: "footGuide"
+        name: "footGuide",
+      data:{
+       add:'',
+        index:''
+      },
+
     }
 </script>
 
@@ -36,9 +32,9 @@
   }
   .iconfont{
     font-family:"iconfont" !important;
-    font-size:25px;font-style:normal;
+    font-size:0.25rem;font-style:normal;
     -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-width: 0.002rem;
     -moz-osx-font-smoothing: grayscale;
   }
   .foot{
@@ -46,6 +42,6 @@
     justify-content: space-around;
   }
   div{
-    font-size: 12px;
+    font-size: 0.12rem;
   }
 </style>
