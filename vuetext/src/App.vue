@@ -4,7 +4,6 @@
     <router-view></router-view>
   </div>
 </template>
-
 <script>
 import {} from './config/rem'
 import Head1 from "./components/header/head";
@@ -15,4 +14,5 @@ export default {
 </script>
 
 <style>
+
 </style>
