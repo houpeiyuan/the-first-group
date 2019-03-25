@@ -11,7 +11,7 @@
       <tbody class="table">
       <tr>
         <td><router-link :to="{name: 'citydetail'}">{{local_city}}</router-link></td>
-        <td class="two_td"><router-link :to="{}">> </router-link></td>
+        <td class="two_td"><router-link :to="{path: '/msite'}">> </router-link></td>
       </tr>
       </tbody>
     </table>
