@@ -1,5 +1,5 @@
 <template>
-    <!--积分页-->
+
 </template>
 
 <script>

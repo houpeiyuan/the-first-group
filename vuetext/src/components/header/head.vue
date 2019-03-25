@@ -1,6 +1,6 @@
 <template>
   <!--头部公共组件-->
-  <nav class="nav navbar navbar-fixed-top">
+  <nav class="nav navbar navbar-fixed-top" v-if="isShow2">
     <a href="###" class="pull-left" v-if="isShow">{{getLeaftNav}}</a>
     <span v-else="isShow1" class="selectedLocation">郑州(实验参数)</span>
     <div class="pull-right">
@@ -16,7 +16,8 @@
         data() {
           return{
             isShow: true,
-            isShow1: false
+            isShow1: false,
+            isShow2: true
           }
         },
         computed:{

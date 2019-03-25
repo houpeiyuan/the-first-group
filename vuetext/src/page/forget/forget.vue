@@ -17,9 +17,17 @@
   </div>
 </template>
 <script>
+  import Vue from 'vue'
     export default {
         name: "forget",
-        data() {},
+        data(){
+          return {
+            code: ''
+          }
+      },
+        created() {
+        this.changeCode();
+      },
         methods: {
           changeCode() {
             Vue.axios.post('https://elm.cangdu.org/v1/captchas',null).then(res=> {
@@ -59,5 +67,13 @@
     margin: 1% 1%;
     border: none;
     color: white;
+  }
+  .loginCode{
+    width: 50%;
+    height: 0.8rem;
+    border: none;
+    padding: 2% 0 0 2%;
+    border-bottom: 0.01rem solid #e4e4e4;
+    outline: medium
   }
 </style>

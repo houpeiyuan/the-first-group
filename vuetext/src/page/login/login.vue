@@ -96,8 +96,8 @@
   }
   .circle{
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 0.2rem;
+    height: 0.2rem;
     border-radius: 50%;
     background-color: white;
     margin: 3px;
@@ -108,7 +108,7 @@
   }
   .p1{
     display: inline-block;
-    padding-left: 0.5rem;
+    padding-left: 0.2rem;
   }
   .span1{
     color: blue;

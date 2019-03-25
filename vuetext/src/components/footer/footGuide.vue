@@ -2,21 +2,23 @@
   <!--底部公共组件-->
   <section>
   <div class="foot navbar-fixed-bottom">
-    <router-link :to="{name:'msite'}" @click="indx=1"><i class="iconfont">&#xe61b;</i><div>外卖</div></router-link>
-    <router-link :to="{name:'search'}" @click="indx=2"><i class="iconfont">&#xe683;</i><div>搜索</div></router-link>
-    <router-link :to="{name:'order'}" @click="indx=3"><i class="iconfont ">&#xe601;</i><div>订单</div></router-link>
-    <router-link :to="{name:'profile'}" @click="indx=4"><i class="iconfont">&#xe600;</i><div>我的</div></router-link>
+    <router-link :to="{name:'msite'}"><i class="iconfont">&#xe61b;</i><div>外卖</div></router-link>
+    <router-link :to="{name:'search'}" @click=""><i class="iconfont">&#xe683;</i><div>搜索</div></router-link>
+    <router-link :to="{name:'order'}" @click=""><i class="iconfont ">&#xe601;</i><div>订单</div></router-link>
+    <router-link :to="{name:'profile'}" @click=""><i class="iconfont">&#xe600;</i><div>我的</div></router-link>
   </div>
   </section>
 </template>
 <script>
     export default {
         name: "footGuide",
-      data:{
-       add:'',
-        index:''
+      data(){
+       return {
+         isTrue: true
+       }
       },
-
+      methods:{
+      }
     }
 </script>
 
@@ -36,7 +38,8 @@
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.002rem;
     -moz-osx-font-smoothing: grayscale;
-  }
+    color: #595757;
+      }
   .foot{
     display: flex;
     justify-content: space-around;
