@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <head1></head1>
-    <router-view></router-view>
+    <div class="totalBox">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script>
@@ -15,4 +17,8 @@ export default {
 
 <style>
 
+
+  .totalBox{
+    margin-top: 0.5rem;
+  }
 </style>

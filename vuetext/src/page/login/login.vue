@@ -1,5 +1,9 @@
 <template>
-<!-- 登录注册页-->
+<div class="loginBox">
+  <input type="text">
+  <br>
+  <input :type="password">
+</div>
 </template>
 
 <script>

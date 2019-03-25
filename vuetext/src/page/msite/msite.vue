@@ -28,7 +28,6 @@
       },
       data() {
         return {
-          arr: [],
           arr1: [],
           arr2: [],
           http: 'https://fuss10.elemecdn.com',
@@ -44,19 +43,13 @@
       created () {
         var that=this
       Vue.axios.get('https://elm.cangdu.org/v2/index_entry',null).then((response) => {
-        that.arr=response.data
-        that.loop()
-      })
-      },
-      computed:{
-        loop() {
-          for (let i=0;i<this.arr.length/2;i++) {
-            this.arr1.push(this.arr[i])
-          }
-          for (let i=0;i<this.arr.length/2;i++) {
-            this.arr2.push(this.arr[i])
-          }
+        for (let i=0;i<response.data.length/2;i++) {
+          that.arr1.push(response.data[i])
         }
+        for (let i=0;i<response.data.length/2;i++) {
+          that.arr2.push(response.data[i])
+        }
+      })
       }
     }
 </script>
