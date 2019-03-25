@@ -2,20 +2,31 @@
   <!--底部公共组件-->
   <section>
   <div class="foot navbar-fixed-bottom">
-    <router-link :to="{name:'msite'}" @click="indx=1"><i class="iconfont">&#xe61b;</i><div>外卖</div></router-link>
-    <router-link :to="{name:'search'}" @click="indx=2"><i class="iconfont">&#xe683;</i><div>搜索</div></router-link>
-    <router-link :to="{name:'order'}" @click="indx=3"><i class="iconfont ">&#xe601;</i><div>订单</div></router-link>
-    <router-link :to="{name:'profile'}" @click="indx=4"><i class="iconfont">&#xe600;</i><div>我的</div></router-link>
+    <router-link :to="{name:'msite'}"  :style='{color:index?"red":"blue"}'><i class="iconfont">&#xe61b;</i><div>外卖</div></router-link>
+    <router-link :to="{name:'search'}"  :style='{color:index?"red":"blue"}'><i class="iconfont">&#xe683;</i><div>搜索</div></router-link>
+    <router-link :to="{name:'order'}"  :style='{color:index?"red":"blue"}'><i class="iconfont ">&#xe601;</i><div>订单</div></router-link>
+    <router-link :to="{name:'profile'}" :style='{color:index?"red":"blue"}'><i class="iconfont">&#xe600;</i><div>我的</div></router-link>
   </div>
   </section>
 </template>
 <script>
+    import index from "../../router";
     export default {
         name: "footGuide",
-      data:{
-       add:'',
-        index:''
+      data(){
+          return{
+            index:true
+          }
+
       },
+      beforeRouteLeave(to,from,next){
+       this.index=false;
+        next(alert('111'))
+        console.log(1111)
+      },
+      methods:{
+      },
+
 
     }
 </script>
