@@ -10,7 +10,7 @@
       if(!clientW) {
         return;
       }
-      //f/320=80/375
+      //f/320=100/375
       html.style.fontSize = 100 * (clientW / 375) + "px";
     }
   win.addEventListener(reEvt, reFontSize);
