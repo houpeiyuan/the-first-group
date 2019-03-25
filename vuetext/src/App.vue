@@ -16,8 +16,6 @@ export default {
 </script>
 
 <style>
-
-
   .totalBox{
     margin-top: 0.5rem;
   }
