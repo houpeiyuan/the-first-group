@@ -1,19 +1,27 @@
 <template>
-<div class="loginBox">
-  <input type="text" class="user" placeholder="账号">
-  <br>
-  <input :type="isEncryption" class="password" placeholder="密码">
-  <div class="but" @click="but" :style="{backgroundColor:ischangeColor?'red':'green'}" >
-    <span class="circle" :style="{left:ischangeColor?'2px':'24px'}"></span>
-  </div>
-  <input type="text" class="loginCode" placeholder="验证码">
-  <img :src="code" alt="" @click="changeCode">
-  <p class="p1" @click="changeCode">
-    <span>看不清</span>
-    <br>
-    <span class="span1">换一张</span>
-  </p>
-</div>
+  <div>
+    <div class="loginBox">
+      <input type="text" class="user" placeholder="账号">
+      <br>
+      <input :type="isEncryption" class="password" placeholder="密码">
+      <div class="but" @click="but" :style="{backgroundColor:ischangeColor?'red':'green'}" >
+        <span class="circle" :style="{left:ischangeColor?'2px':'24px'}"></span>
+      </div>
+      <input type="text" class="loginCode" placeholder="验证码">
+      <img :src="code" alt="" @click="changeCode">
+      <p class="p1" @click="changeCode">
+        <span>看不清</span>
+        <br>
+        <br>
+        <span class="span1">换一张</span>
+      </p>
+      <p>温馨提示 : 未注册过的账号 , 登录时将自动注册</p>
+      <p>注册过的用户可凭账号密码登录</p>
+      <button class="login">登录</button>
+      <p class="resetPassword" @click="jumpPassword">重置密码?</p>
+    </div>
+      </div>
+
 </template>
 <script>
   import Vue from 'vue'
@@ -23,7 +31,8 @@
          return {
            isEncryption: 'password',
            ischangeColor: false,
-           code: ''
+           code: '',
+           isupdata: true
          }
         },
         created() {
@@ -44,6 +53,9 @@
             Vue.axios.post('https://elm.cangdu.org/v1/captchas',null).then(res=> {
               this.code = res.data.code
             })
+          },
+          jumpPassword() {
+            this.$router.push({path:'/forget'})
           }
         }
     }
@@ -96,8 +108,30 @@
   }
   .p1{
     display: inline-block;
+    padding-left: 0.5rem;
   }
   .span1{
     color: blue;
+    margin-top: 0.3rem;
+  }
+  p{
+    color: red;
+    padding: 2% 0 0 2%;
+  }
+ .login{
+   width: 96%;
+   height: 0.5rem;
+   background-color: green;
+   border-radius: 0.1rem;
+   margin: 1% 1%;
+   border: none;
+   color: white;
+ }
+  .resetPassword{
+   color: blue;
+   float: right;
+  }
+  span{
+    color: black;
   }
 </style>
