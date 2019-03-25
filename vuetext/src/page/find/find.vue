@@ -1,5 +1,5 @@
 <template>
-<!--发现页-->
+
 </template>
 
 <script>
