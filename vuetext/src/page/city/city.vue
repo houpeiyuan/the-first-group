@@ -19,7 +19,7 @@
       <div class='maintop fs0-8 padlr10'>搜索历史</div>
       <div v-if="his!=''" class="mainbody bgfff ">
         <div v-for="item in his" class="pad10 after"@click="skip">
-          <div class="nowarp ">{{item.name}}</div>
+          <div class="nowarp " @click="$store.commit('changeCity',{name:item.name,bul:true})">{{item.name}}</div>
           <div class="nowarp ">{{item.address}}</div>
         </div>
         <div @click='removeall' class="clearall ih30 pad10 col9f">
@@ -29,7 +29,7 @@
     </div>
     <div v-if="list!=''" class='search bgfff'>
       <div v-for="item in list" @click="goaddress(item)" class="pad10 after">
-        <div class="nowarp">{{item.name}}</div>
+        <div class="nowarp" @click="$store.commit('changeCity',{name:item.name,bul:true})">{{item.name}}</div>
         <div class="nowarp">{{item.address}}</div>
       </div>
     </div>

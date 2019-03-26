@@ -1,5 +1,7 @@
 <template>
-<!--红包页-->
+  <router-link to=""></router-link>
+  <router-link to=""></router-link>
+  <router-view></router-view>
 </template>
 
 <script>
