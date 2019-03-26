@@ -3,10 +3,10 @@
 
     <swiper  v-if="swiperSlides" :options="swiperOption">
       <swiper-slide v-for="swiper in swiperSlides":key="swiper[0].id">
-          <div v-for="item in swiper">
+          <router-link v-for="(item,index) in swiper" :to="{name:'food'}" :key="index">
             <img :src=" http+item.image_url" alt="">
             <p>{{item.title}}</p>
-          </div>
+          </router-link>
       </swiper-slide>
     </swiper>
     <div>
@@ -86,7 +86,7 @@ section{
   display: flex;
   flex-wrap: wrap;
 }
-.swiper-slide div{
+.swiper-slide a{
   width: 25%;
   height: 1rem;
 }

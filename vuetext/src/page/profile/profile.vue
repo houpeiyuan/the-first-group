@@ -16,7 +16,7 @@
       <br>
       <span>我的余额</span>
     </router-link>
-    <router-link :to="{}" class="pull-left">
+    <router-link :to="{name:'benefit'}" class="pull-left">
       <span class="content">1</span><span class="a">个</span>
       <br>
       <span>优惠券</span>
