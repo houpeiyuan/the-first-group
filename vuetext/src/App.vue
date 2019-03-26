@@ -18,6 +18,9 @@ export default {
 </script>
 
 <style>
+  a{
+    text-decoration: none !important;
+  }
   .totalBox{
     margin-top: 0.5rem;
   }

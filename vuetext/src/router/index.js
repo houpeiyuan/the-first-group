@@ -12,6 +12,13 @@ import order from '../page/order/order'
 import orderDetail from '../page/order/children/orderDetail'
 import profile from '../page/profile/profile'
 import forget from '../page/forget/forget'
+import food from '../page/food/food'
+import benefit from '../page/benefit/benefit'
+import commend from '../page/benefit/children/commend'
+import coupon from '../page/benefit/children/coupon'
+import exchange from '../page/benefit/children/exchange'
+import hbDseription from '../page/benefit/children/hbDsecription'
+import hbHistory from '../page/benefit/children/hbHistory'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -73,6 +80,44 @@ export default new Router({
       path:'/forget',
       name:'forget',
       component: forget
+    },
+    {
+      path: '/food',
+      name: 'food',
+      component: food
+    },
+    {
+      path:'/benefit',
+      name: 'benefit',
+      component: benefit,
+      children: [
+        {
+          path:'commend',
+          name:'commend',
+          component: commend
+        },
+        {
+          path:'coupon',
+          name:'coupon',
+          component: coupon
+        },
+        {
+          path:'exchange',
+          name:'exchange',
+          component: exchange
+        },
+        {
+          path:'hbDseription',
+          name:'hbDseription',
+          component: hbDseription
+        },
+        {
+          path:'hbHistory',
+          name:'hbHistory',
+          component: hbHistory
+        }
+      ]
     }
-  ]
+  ],
+
 })
