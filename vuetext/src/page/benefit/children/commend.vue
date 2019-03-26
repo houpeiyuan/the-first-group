@@ -1,10 +1,13 @@
 <template>
-<!--推荐有奖-->
+<div>
+
+</div>
 </template>
 
 <script>
     export default {
-        name: "commend"
+        name: "commend",
+
     }
 </script>
 
