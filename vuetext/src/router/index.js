@@ -12,6 +12,7 @@ import order from '../page/order/order'
 import orderDetail from '../page/order/children/orderDetail'
 import profile from '../page/profile/profile'
 import forget from '../page/forget/forget'
+
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
