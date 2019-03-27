@@ -1,5 +1,5 @@
 <template>
-    $END$
+    <!--单个商品信息页-->
 </template>
 
 <script>
