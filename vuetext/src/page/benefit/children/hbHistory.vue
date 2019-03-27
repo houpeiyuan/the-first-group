@@ -35,7 +35,7 @@
 
 <style scoped>
 .box{
-  width: 200% !important;
+  width: 100%;
 }
 .center{
   width: 100%;
