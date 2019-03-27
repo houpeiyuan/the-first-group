@@ -19,6 +19,11 @@ import coupon from '../page/benefit/children/coupon'
 import exchange from '../page/benefit/children/exchange'
 import hbDseription from '../page/benefit/children/hbDsecription'
 import hbHistory from '../page/benefit/children/hbHistory'
+import shop from '../page/shop/shop'
+import shopDetail from  '../page/shop/children/shopDetail'
+import foodDetail from '../page/shop/children/foodDetail'
+import shopSafe from '../page/shop/children/children/shopSafe'
+import good from '../page/shop/good'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -117,6 +122,33 @@ export default new Router({
           component: hbHistory
         }
       ]
+    },
+    {
+      path: 'shop',
+      name: 'shop',
+      component: shop,
+      children: [
+        {
+          path:'foodDetail',
+          name:'foodDetail',
+          component: foodDetail
+        },
+        {
+          path:'shopDetail',
+          name:'shopDetail',
+          component: shopDetail
+        }
+      ]
+    },
+    {
+      path:'shopSafe',
+      name:'shopSafe',
+      component: shopSafe
+    },
+    {
+      path: 'good',
+      name: 'good',
+      component: good
     }
   ],
 
