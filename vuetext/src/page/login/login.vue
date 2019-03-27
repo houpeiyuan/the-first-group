@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="wrap">
     <div class="loginBox">
-      <input type="text" class="user" placeholder="账号">
+      <input type="text" class="user" placeholder="账号" v-model="username">
       <br>
-      <input :type="isEncryption" class="password" placeholder="密码">
+      <input :type="isEncryption" class="password" placeholder="密码" v-model="password">
       <div class="but" @click="but" :style="{backgroundColor:ischangeColor?'red':'green'}" >
         <span class="circle" :style="{left:ischangeColor?'2px':'24px'}"></span>
       </div>
-      <input type="text" class="loginCode" placeholder="验证码">
+      <input v-model="msg" type="text" class="loginCode" placeholder="验证码">
       <img :src="code" alt="" @click="changeCode">
       <p class="p1" @click="changeCode">
         <span>看不清</span>
@@ -17,8 +17,13 @@
       </p>
       <p>温馨提示 : 未注册过的账号 , 登录时将自动注册</p>
       <p>注册过的用户可凭账号密码登录</p>
-      <button class="login">登录</button>
+      <button class="login" @click="log">登录</button>
       <p class="resetPassword" @click="jumpPassword">重置密码?</p>
+    </div>
+    <div class="box" v-if="bul">
+      <p>警告</p>
+      <p>{{message}}</p>
+      <button v-if="bul2" @click="sure">确认</button>
     </div>
       </div>
 
@@ -32,11 +37,17 @@
            isEncryption: 'password',
            ischangeColor: false,
            code: '',
-           isupdata: true
+           isupdata: true,
+           username:'',
+           password:'',
+           msg:'',
+           bul:'',
+           bul2:"",
+           message:""
          }
         },
         created() {
-         this.changeCode();
+         this.changeCode()
         },
         methods: {
           but() {
@@ -56,12 +67,31 @@
           },
           jumpPassword() {
             this.$router.push({path:'/forget'})
+          },
+          log (){
+            Vue.axios.post("https://elm.cangdu.org/v2/login",{username:this.username,password:this.password,captcha_code:this.msg}).then((response)=>{
+              this.message=response.data.message
+              if (response.data.message=='验证码失效') {
+                this.bul=true
+                this.bul2=true
+              }
+            })
+          },
+          sure(){
+            this.bul2=false
+            this.bul=false
+            this.username=""
+            this.password=""
+            this.msg=""
           }
         }
     }
 </script>
 
 <style scoped>
+  .wrap{
+    position: relative;
+  }
   .loginBox{
     position: relative;
   }
@@ -133,5 +163,33 @@
   }
   span{
     color: black;
+  }
+  .box{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2rem;
+    margin: 0 auto;
+    width: 3rem;
+    height: 2rem;
+    border: 0.01rem solid darkgreen;
+    text-align: center;
+  }
+  .box p:nth-child(1){
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.3rem;
+  }
+  .box p:nth-child(2){
+    width: 100%;
+    height: 30%;
+    text-align: center!important;
+    line-height: 0.6rem;
+    font-size: 0.2rem;
+  }
+  .box>button{
+    width: 50%;
   }
 </style>
