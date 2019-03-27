@@ -4,10 +4,10 @@
     <div class="header">
       <router-link :to="{name:'login'}">
         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553596796415&di=7918ff2398947d38ae63ce05feacd827&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D662f3ce0c295d143da76e42b43f18296%2Fd96f0823dd54564eb6d034dab9de9c82d0584f53.jpg" alt="">
-        <div class="pull-right">></div>
+        <div class="pull-right frist">></div>
           <div class="log">
          <p>登陆|注册</p>
-          <span><i class="iconfont">&#xe607;</i>暂无绑定手机</span>
+          <span><i class="iconfont1">&#xe607;</i>暂无绑定手机</span>
         </div>
       </router-link>
       </div>
@@ -26,20 +26,16 @@
       <br>
       <span>我的积分</span>
     </router-link>
-    <div class="last">
     <div>
-    <router-link :to="{}">我的订单</router-link></div><p class="pull-right b">></p>
+    <router-link :to="{name:'order'}"><i class="iconfont2">&#xe628;</i>我的订单<span class="pull-right">></span></router-link></div>
       <hr>
-    <div><router-link :to="{}">积分商城</router-link></div><p class="pull-right b">></p>
+    <div><router-link :to="{}"><i class="iconfont3">&#xe62b;</i>积分商城<span class="pull-right">></span></router-link></div>
       <hr>
-    <div><router-link :to="{}">饿了么会员</router-link></div><p class="pull-right b">></p>
-    </div>
-
-    <div class="below">
-    <div><router-link :to="{}">服务中心</router-link></div><p class="pull-right b">></p>
+    <div><router-link :to="{}"><i class="iconfont4">&#xe601;</i>饿了么会员<span class="pull-right">></span></router-link></div>
+    <hr>
+    <div><router-link :to="{}"><i class="iconfont5">&#xe634;</i>服务中心<span class="pull-right">></span></router-link></div>
       <hr>
-    <div><router-link :to="{}">下载饿了么APP</router-link></div><p class="pull-right b">></p>
-    </div>
+    <div><router-link :to="{}"><i class="iconfont6">&#xe600;</i>下载饿了么APP<span class="pull-right">></span></router-link></div>
   </section>
 </template>
 <script>
@@ -50,14 +46,45 @@
 <style scoped>
   @font-face {
     font-family: 'iconfont';  /* project id 1109204 */
-    src: url('//at.alicdn.com/t/font_1109204_jthwyvl6na.eot');
-    src: url('//at.alicdn.com/t/font_1109204_jthwyvl6na.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1109204_jthwyvl6na.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1109204_jthwyvl6na.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1109204_jthwyvl6na.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1109204_jthwyvl6na.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_1109204_6bre5cfbyfk.eot');
+    src: url('//at.alicdn.com/t/font_1109204_6bre5cfbyfk.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1109204_6bre5cfbyfk.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1109204_6bre5cfbyfk.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1109204_6bre5cfbyfk.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1109204_6bre5cfbyfk.svg#iconfont') format('svg');
   }
-  .iconfont{
+  .iconfont1{
+    font-family:"iconfont" !important;
+    font-size:0.25rem;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+  .iconfont2{
+    font-family:"iconfont" !important;
+    font-size:0.25rem;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+  .iconfont3{
+    font-family:"iconfont" !important;
+    font-size:0.25rem;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+  .iconfont4{
+    font-family:"iconfont" !important;
+    font-size:0.25rem;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+  .iconfont5{
+    font-family:"iconfont" !important;
+    font-size:0.25rem;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .iconfont6{
     font-family:"iconfont" !important;
     font-size:0.25rem;font-style:normal;
     -webkit-font-smoothing: antialiased;
@@ -82,7 +109,7 @@
   p{
     font-size: 0.2rem;
   }
-  .pull-right{
+ .frist{
     color: white;
     font-size: 0.3rem;
     position: relative;
@@ -111,35 +138,16 @@
    margin-top: -13px;
  }
   .right{
-    font-size: 30px;
+    font-size: 25px;
     color: darkorange;
     position: absolute;
     margin-left: -17px;
     margin-top: -13px;
   }
-  .last{
-    width: 100%;
-    font-size:20px;
-    margin-top: 1rem;
-    background-color: whitesmoke;
-  }
-  .last>div{
+
+  div{
     padding-top: 0.1rem;
     padding-left: .2rem;
-  }
-.below{
-  width: 100%;
-  font-size: 20px;
-  margin-top: 0.2rem;
-  background-color: whitesmoke;
-}
-  .below>div{
-    width: 95%;
-    padding-top: 0.1rem;
-    padding-left: .2rem;
-  }
-  .b{
-    position: absolute;
-    top: 300px;
+    color:white;
   }
 </style>
