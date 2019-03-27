@@ -109,32 +109,32 @@
               </div>
               <p>商家属性 (可以多选)</p>
                 <ul>
-                  <li class="bird" @click="sign1=!sign1">
+                  <li class="bird" @click="sign1=!sign1;sign1?count++:count--">
                     <span v-if="sign1" class="duihao">✔</span>
                     <span v-if="!sign1" class="sign">品</span>
                     <span>品牌商家</span>
                   </li>
-                  <li class="bird" @click="sign2=!sign2">
+                  <li class="bird" @click="sign2=!sign2;sign2?count++:count--">
                     <span v-if="sign2" class="duihao">✔</span>
                     <span v-if="!sign2" class="sign">保</span>
                     <span>外卖保</span>
                   </li>
-                  <li class="bird" @click="sign3=!sign3">
+                  <li class="bird" @click="sign3=!sign3;sign3?count++:count--">
                     <span v-if="sign3" class="duihao">✔</span>
                     <span class="sign" v-if="!sign3" @click="sign3">准</span>
                     <span>准时达</span>
                   </li>
-                  <li class="bird" @click="sign4=!sign4">
+                  <li class="bird" @click="sign4=!sign4;sign4?count++:count--">
                     <span v-if="sign4" class="duihao">✔</span>
                     <span v-if="!sign4" class="sign">新</span>
                     <span>新店</span>
                   </li>
-                  <li class="bird" @click="sign5=!sign5">
+                  <li class="bird" @click="sign5=!sign5;sign5?count++:count--">
                     <span v-if="sign5" class="duihao">✔</span>
                     <span v-if="!sign5" class="sign">付</span>
                     <span>在线支付</span>
                   </li>
-                  <li class="bird" @click="sign6=!sign6">
+                  <li class="bird" @click="sign6=!sign6;sign6?count++:count--">
                     <span v-if="sign6" class="duihao">✔</span>
                     <span v-if="!sign6" class="sign">开</span>
                     <span>开发票</span>
