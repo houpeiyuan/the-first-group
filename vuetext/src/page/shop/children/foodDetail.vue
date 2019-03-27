@@ -41,7 +41,7 @@
       },
        created(){
           var that=this
-          Vue.axios.get('https://elm.cangdu.org/shopping/v2/menu?restaurant_id='+that.$store.state.zhang.id,null).then((response)=>{console.log(response.data);that.arr=response.data; that.list(response.data[0].id,0);console.log(response.data[0].foods[0].name)})
+          Vue.axios.get('https://elm.cangdu.org/shopping/v2/menu?restaurant_id='+that.$store.state.zhang.id,null).then((response)=>{console.log(response.data);that.arr=response.data; that.list(response.data[0].id,0)})
        },
       methods:{
         list(id,index){

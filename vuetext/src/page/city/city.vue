@@ -13,7 +13,6 @@
       </form>
     </div>
   </div>
-
   <div class="main">
     <div v-if="list==''" class="his after">
       <div class='maintop fs0-8 padlr10'>搜索历史</div>
@@ -66,11 +65,10 @@ import { Toast } from 'mint-ui';
       //函数
       searchcity(){
         if (this.inputval == '') {
-          Toast;
+          Toast('请输入内容');
         } else{
           Vue.axios.get('https://elm.cangdu.org/v1/pois?city_id='+ this.mycity/*home传来的城市值*/+ '&keyword=' + this.inputval, null).then((res) => {
             this.list = res.data;
-
           });
         }
 
@@ -141,7 +139,6 @@ import { Toast } from 'mint-ui';
   .clearall{
     text-align:center;
     background-color:aliceblue;
-
   }
 span{
   font-size: 12px;
