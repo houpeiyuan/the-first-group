@@ -2,10 +2,13 @@
   <!--头部公共组件-->
   <nav class="nav navbar navbar-fixed-top" v-if="isShow2">
     <a href="###" class="pull-left" v-if="isShow">{{getLeaftNav}}</a>
-    <span v-else="isShow1" class="selectedLocation">郑州(实验参数)</span>
+    <span v-else="isShow1" class="selectedLocation">{{$store.state.zhang.city}}</span>
     <div class="pull-right">
-      <router-link :to="{name: 'login'}">登录 |</router-link>
+      <span v-if="$store.state.zhang.change1" >
+        <router-link :to="{name: 'login'}">登录 |</router-link>
       <router-link :to="{}">注册</router-link>
+      </span>
+      <router-link v-else :to="{}">切换城市</router-link>
     </div>
   </nav>
 </template>

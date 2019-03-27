@@ -2,15 +2,25 @@ import Vue from 'vue'
 import vuex from 'vuex'
 Vue.use(vuex)
 const moudleA = {
-  state: {},
+  state: {
+  },
   getters: {},
   mutations: {},
   actions: {}
 }
 const moudleB = {
-  state: {},
+  state: {
+    city:'city',
+    change1: true
+  },
   getters: {},
-  mutations: {},
+  mutations: {
+    changeCity(state,pl) {
+      state.city=pl.name;
+      state.change1=pl.bul
+      console.log(state.change1)
+    }
+  },
   actions: {}
 }
 const moudleC = {
@@ -18,7 +28,6 @@ const moudleC = {
     navleft: 'ele.me'
   },
   getters: {
-
   },
   mutations: {
   },

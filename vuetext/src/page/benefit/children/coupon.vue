@@ -1,5 +1,7 @@
 <template>
-<!--代金券说明-->
+<div>
+  <h2>这是代金券</h2>
+</div>
 </template>
 
 <script>
@@ -9,5 +11,8 @@
 </script>
 
 <style scoped>
-
+div{
+  padding-top: 3rem;
+  background-color: black;
+}
 </style>

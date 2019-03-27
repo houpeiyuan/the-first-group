@@ -19,6 +19,10 @@ import coupon from '../page/benefit/children/coupon'
 import exchange from '../page/benefit/children/exchange'
 import hbDseription from '../page/benefit/children/hbDsecription'
 import hbHistory from '../page/benefit/children/hbHistory'
+import shop from '../page/shop/shop'
+import shopDetail from  '../page/shop/children/shopDetail'
+import foodDetail from '../page/shop/children/foodDetail'
+import shopSafe from '../page/shop/children/children/shopSafe'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -95,28 +99,54 @@ export default new Router({
           path:'commend',
           name:'commend',
           component: commend
-        },
-        {
-          path:'coupon',
-          name:'coupon',
-          component: coupon
-        },
-        {
-          path:'exchange',
-          name:'exchange',
-          component: exchange
-        },
-        {
-          path:'hbDseription',
-          name:'hbDseription',
-          component: hbDseription
-        },
-        {
-          path:'hbHistory',
-          name:'hbHistory',
-          component: hbHistory
         }
       ]
+    },
+    //历史红包
+    {
+      path:'/hbHistory',
+      name:'hbHistory',
+      component: hbHistory
+    },
+    //兑换红包
+    {
+      path:'/exchange',
+      name:'exchange',
+      component: exchange
+    },
+    //推荐有奖
+    {
+      path:'/hbDseription',
+      name:'hbDseription',
+      component: hbDseription
+    },
+    //代金券
+    {
+      path:'coupon',
+      name:'coupon',
+      component: coupon
+    },
+    {
+      path: 'shop',
+      name: 'shop',
+      component: shop,
+      children: [
+        {
+          path:'foodDetail',
+          name:'foodDetail',
+          component: foodDetail
+        },
+        {
+          path:'shopDetail',
+          name:'shopDetail',
+          component: shopDetail
+        }
+      ]
+    },
+    {
+      path:'shopSafe',
+      name:'shopSafe',
+      component: shopSafe
     }
   ],
 
