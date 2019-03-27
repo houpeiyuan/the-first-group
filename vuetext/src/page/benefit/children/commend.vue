@@ -22,8 +22,8 @@
     <router-link :to="{path:'/hbHistory'}">历史红包</router-link>
   </div>
   <section>
-    <div><router-link :to="{path: '/benefit/exchange'}">兑换红包</router-link></div>
-    <div><router-link :to="{path:'/benefit/hbDseription'}">推荐有奖</router-link></div>
+    <div><router-link :to="{path: '/exchange'}">兑换红包</router-link></div>
+    <div><router-link :to="{path:'/hbDseription'}">推荐有奖</router-link></div>
   </section>
 </div>
 </template>

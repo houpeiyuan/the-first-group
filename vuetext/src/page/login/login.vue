@@ -71,7 +71,7 @@
           log (){
             Vue.axios.post("https://elm.cangdu.org/v2/login",{username:this.username,password:this.password,captcha_code:this.msg}).then((response)=>{
               this.message=response.data.message
-              if (response.data.message=='验证码失效') {
+              if (response.data.message=='验证码失效'&this.password!="") {
                 this.bul=true
                 this.bul2=true
               }

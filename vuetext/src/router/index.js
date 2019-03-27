@@ -23,7 +23,6 @@ import shop from '../page/shop/shop'
 import shopDetail from  '../page/shop/children/shopDetail'
 import foodDetail from '../page/shop/children/foodDetail'
 import shopSafe from '../page/shop/children/children/shopSafe'
-import good from '../page/shop/good'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -100,28 +99,32 @@ export default new Router({
           path:'commend',
           name:'commend',
           component: commend
-        },
-        {
-          path:'coupon',
-          name:'coupon',
-          component: coupon
-        },
-        {
-          path:'exchange',
-          name:'exchange',
-          component: exchange
-        },
-        {
-          path:'hbDseription',
-          name:'hbDseription',
-          component: hbDseription
-        },
-        {
-          path:'hbHistory',
-          name:'hbHistory',
-          component: hbHistory
         }
       ]
+    },
+    //历史红包
+    {
+      path:'/hbHistory',
+      name:'hbHistory',
+      component: hbHistory
+    },
+    //兑换红包
+    {
+      path:'/exchange',
+      name:'exchange',
+      component: exchange
+    },
+    //推荐有奖
+    {
+      path:'/hbDseription',
+      name:'hbDseription',
+      component: hbDseription
+    },
+    //代金券
+    {
+      path:'coupon',
+      name:'coupon',
+      component: coupon
     },
     {
       path: 'shop',
@@ -144,11 +147,6 @@ export default new Router({
       path:'shopSafe',
       name:'shopSafe',
       component: shopSafe
-    },
-    {
-      path: 'good',
-      name: 'good',
-      component: good
     }
   ],
 

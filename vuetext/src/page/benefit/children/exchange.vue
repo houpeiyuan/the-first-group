@@ -44,7 +44,7 @@
         },
         login () {
           Vue.axios.post('https://elm.cangdu.org/v2/login',{password: this.change1,captcha_code:this.change2}).then((response)=>{console.log(response.data)
-            if (response.data.message=='验证码失效'){
+            if (response.data.message=='验证码失效'&&this.change1!=""){
               this.bul=true
               this.bul2=true
             }
@@ -62,11 +62,12 @@
 
 <style scoped>
 .wrap{
-  width: 200% !important;
+  width:100%;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 .wrap>input{
-  border: 0.01rem solid green;
   margin: 0.1rem 0;
 }
   .wrap>input:nth-child(1){
@@ -81,7 +82,6 @@
   width: 25%;
   height: 0.5rem;
   margin:0.1rem 0 0.1rem 5%;
-  border: 0.01rem solid green;
   display: flex;
   justify-content: space-around;
 }
@@ -107,11 +107,12 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -4rem;
+    bottom: -2.5rem;
     margin: 0 auto;
     width: 3rem;
     height: 2rem;
     border: 0.01rem solid darkgreen;
+    text-align: center;
   }
   .box p:nth-child(1){
     width: 100%;
