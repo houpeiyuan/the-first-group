@@ -1,5 +1,7 @@
 <template>
-<!--- 单个商铺信息页-->
+<div class="wrap">
+  <div class="box"></div>
+</div>
 </template>
 
 <script>
@@ -9,5 +11,12 @@
 </script>
 
 <style scoped>
-
+.wrap{
+  width: 100%;
+}
+  .box{
+    width: 100%;
+    background-color: red;
+    height: 4rem;
+  }
 </style>

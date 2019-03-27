@@ -127,7 +127,7 @@ export default new Router({
       component: coupon
     },
     {
-      path: 'shop',
+      path: '/shop',
       name: 'shop',
       component: shop,
       children: [

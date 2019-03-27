@@ -11,7 +11,8 @@ const moudleA = {
 const moudleB = {
   state: {
     city:'city',
-    change1: true
+    change1: true,
+    id:''
   },
   getters: {},
   mutations: {
@@ -19,6 +20,9 @@ const moudleB = {
       state.city=pl.name;
       state.change1=pl.bul
       console.log(state.change1)
+    },
+    changeId(state,id){
+      state.id=id
     }
   },
   actions: {}

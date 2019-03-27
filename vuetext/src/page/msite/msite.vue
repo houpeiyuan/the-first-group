@@ -11,7 +11,8 @@
     </swiper>
     <div>
       <div class="shop">
-        <div class="shopRoot" v-for="item in shoplist">
+        <router-link :to="{path:'/shop'}">
+        <div class="shopRoot" v-for="item in shoplist" @click="$store.commit('changeId',item.id)">
           <div class="shopL"><img src="https://fuss10.elemecdn.com/2/35/696aa5cf9820adada9b11a3d14bf5jpeg.jpeg" alt=""></div>
           <div class="shopC">
             <div class="top1"><span>品牌</span><span>{{item.name}}</span></div>
@@ -24,6 +25,7 @@
             <p>1447.2公里/{{item.order_lead_time}}</p>
           </div>
         </div>
+        </router-link>
         </div>
     </div>
   </section>
@@ -67,6 +69,7 @@
       }),
         Vue.axios.get('https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762',null).then(reponse => {
           that.shoplist = reponse.data;
+          console.log(reponse.data[1].id)
         })
       }
     }
