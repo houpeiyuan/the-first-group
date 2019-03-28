@@ -1,6 +1,6 @@
 <template>
 <!--食品筛选排序页-->
-<div>
+<div class="root">
    <!--分类列表-->
    <div class="selectFood">
      <div class="goodFood">
@@ -18,143 +18,160 @@
    </div>
 
 
-   <div >
+   <div class="shop2">
      <!-- 食品列表左 -->
-     <div v-show="isTrue1_1" class="shop1">
-       <transition name="shopTransite">
-         <div class="listClass" v-if="isTrue1">
-
-           <li class="shopListLeft">
-             <div v-for="(item,index) in listClass" :key="index">
-               <p @click="changePColor(index)" :style="{backgroundColor:index===isblue?'lightblue':'lightgreen'}">
-                 <img :src="item.image_url.slice(-4).endsWith('png')===true?http+item.image_url+'.png':http+item.image_url+'.jpeg'" alt="">
-                 <span class="shopName">{{item.name}}</span>
-                 <span class="count">{{item.count}}</span>
-                 <span> ></span>
+     <div v-show="isTrue1_1">
+       <div class="listClass" v-show="isTrue1" >
+         <transition name="shopTransite">
+           <div v-if="isTrue1">
+             <li class="shopListLeft">
+               <div v-for="(item,index) in listClass" :key="index">
+                 <p @click="changePColor(index)" :style="{backgroundColor:index===isblue?'lightblue':'lightgreen'}" class="shopLeftP">
+                   <img :src="item.image_url.slice(-4).endsWith('png')===true?http+item.image_url+'.png':http+item.image_url+'.jpeg'" alt="">
+                   <span class="shopName">{{item.name}}</span>
+                   <span class="count">{{item.count}}</span>
+                   <span> ></span>
+                 </p>
+               </div>
+             </li>
+             <!--食品列表-->
+             <li class="listShopRight">
+               <p v-for="(item,index) in snackArr" v-if="index===0?false:true" class="rightList" @click="getShopName(item)" :key="index">
+                 <span>{{item.name}}</span>
+                 <span>{{item.count}}</span>
                </p>
-             </div>
-           </li>
-           <!--食品列表-->
-           <li class="listShopRight">
-             <p v-for="(item,index) in snackArr" v-if="index===0?false:true" class="rightList" @click="getShopName(item)" :key="index">
-               <span>{{item.name}}</span>
-               <span>{{item.count}}</span>
-             </p>
-           </li>
-         </div>
-       </transition>
+             </li>
+           </div>
+         </transition>
+       </div>
+
      </div>
 
 
 
      <!--排序-->
-     <div v-show="isTrue2_1">
-       <transition name="shopTransite">
-         <div class="sort" v-if="isTrue2">
-           <div @click="changeStyle2" class="shopList">
-             <div @click="chooseFocus(1)">
-               <i class="iconfont iconfont1">&#xe621;</i>
-               <p>
-                 <span>智能排序</span>
-                 <span v-show="index===1">✔</span>
-               </p>
-             </div>
-             <div @click="chooseFocus(2)">
-               <i class="iconfont iconfont1">&#xe696;</i>
-               <p>
-                 <span>距离最近</span>
-                 <span v-show="index===2">✔</span>
-               </p>
-             </div>
-             <div @click="chooseFocus(3)">
-               <i class="iconfont iconfont2" >&#xe602;</i>
-               <p>
-                 <span>销量最高</span>
-                 <span v-show="index===3">✔</span>
-               </p>
-             </div>
-             <div @click="chooseFocus(4)">
-               <i class="iconfont iconfont3">&#xe60f;</i>
-               <p>
-                 <span>起送价最低</span>
-                 <span v-show="index===4">✔</span>
-               </p>
-             </div>
-             <div @click="chooseFocus(5)">
-               <i class="iconfont iconfont1">&#xe601;</i>
-               <p>
-                 <span>配送速度最快</span>
-                 <span v-show="index===5">✔</span>
-               </p>
-             </div>
-             <div @click="chooseFocus(6)">
-               <i class="iconfont iconfont3">&#xe63b;</i>
-               <p>
-                 <span>评分最高</span>
-                 <span v-show="index===6">✔</span>
-               </p>
+     <div v-show="isTrue2_1" class="shop1">
+       <div class="listClass" v-show="isTrue2" >
+         <transition name="shopTransite">
+           <div v-if="isTrue2">
+             <div class="sort">
+               <div @click="changeStyle2" class="shopList">
+                 <div @click="chooseFocus(1)">
+                   <i class="iconfont iconfont1">&#xe621;</i>
+                   <p>
+                     <span>智能排序</span>
+                     <span v-show="index===1">✔</span>
+                   </p>
+                 </div>
+                 <div @click="chooseFocus(2)">
+                   <i class="iconfont iconfont1">&#xe696;</i>
+                   <p>
+                     <span>距离最近</span>
+                     <span v-show="index===2">✔</span>
+                   </p>
+                 </div>
+                 <div @click="chooseFocus(3)">
+                   <i class="iconfont iconfont2" >&#xe602;</i>
+                   <p>
+                     <span>销量最高</span>
+                     <span v-show="index===3">✔</span>
+                   </p>
+                 </div>
+                 <div @click="chooseFocus(4)">
+                   <i class="iconfont iconfont3">&#xe60f;</i>
+                   <p>
+                     <span>起送价最低</span>
+                     <span v-show="index===4">✔</span>
+                   </p>
+                 </div>
+                 <div @click="chooseFocus(5)">
+                   <i class="iconfont iconfont1">&#xe601;</i>
+                   <p>
+                     <span>配送速度最快</span>
+                     <span v-show="index===5">✔</span>
+                   </p>
+                 </div>
+                 <div @click="chooseFocus(6)">
+                   <i class="iconfont iconfont3">&#xe63b;</i>
+                   <p>
+                     <span>评分最高</span>
+                     <span v-show="index===6">✔</span>
+                   </p>
+                 </div>
+               </div>
              </div>
            </div>
-         </div>
-       </transition>
+
+         </transition>
+       </div>
+
      </div>
-      <div v-show="isTrue3_1" class="delivery">
-        <transition name="shopTransite">
-          <div v-if="isTrue3">
-            <div class="distribution shopList">
-              <p>配送方式</p>
-              <div class="bird">
-                <i class="iconfont iconfontbird">&#xe631;</i>
-                <span>蜂鸟专送</span>
+      <div v-show="isTrue3_1" class="delivery shop1">
+        <div class="listClass" v-show="isTrue3" >
+          <transition name="shopTransite">
+            <div v-if="isTrue3" >
+              <div class="sort">
+                <div class="distribution shopList">
+                  <p>配送方式</p>
+                  <div class="bird">
+                    <i class="iconfont iconfontbird">&#xe631;</i>
+                    <span>蜂鸟专送</span>
+                  </div>
+                  <p>商家属性 (可以多选)</p>
+                  <ul>
+                    <li class="bird" @click="sign1=!sign1; sign1?count++:count--">
+                      <span v-if="sign1" class="duihao">✔</span>
+                      <span v-if="!sign1" class="sign">品</span>
+                      <span>品牌商家</span>
+                    </li>
+                    <li class="bird" @click="sign2=!sign2; sign2?count++:count--">
+                      <span v-if="sign2" class="duihao">✔</span>
+                      <span v-if="!sign2" class="sign">保</span>
+                      <span>外卖保</span>
+                    </li>
+                    <li class="bird" @click="sign3=!sign3; sign3?count++:count--">
+                      <span v-if="sign3" class="duihao">✔</span>
+                      <span class="sign" v-if="!sign3">准</span>
+                      <span>准时达</span>
+                    </li>
+                    <li class="bird" @click="sign4=!sign4; sign4?count++:count--">
+                      <span v-if="sign4" class="duihao">✔</span>
+                      <span v-if="!sign4" class="sign">新</span>
+                      <span>新店</span>
+                    </li>
+                    <li class="bird" @click="sign5=!sign5; sign5?count++:count--">
+                      <span v-if="sign5" class="duihao">✔</span>
+                      <span v-if="!sign5" class="sign">付</span>
+                      <span>在线支付</span>
+                    </li>
+                    <li class="bird" @click="sign6=!sign6; sign6?count++:count--">
+                      <span v-if="sign6" class="duihao">✔</span>
+                      <span v-if="!sign6" class="sign">开</span>
+                      <span>开发票</span>
+                    </li>
+                  </ul>
+                  <button class="btn-default">清空</button>
+                  <button class="btn-success">确认 <span v-if="count!==0">({{count}})</span> </button>
+                </div>
+
               </div>
-              <p>商家属性 (可以多选)</p>
-                <ul>
-                  <li class="bird" @click="sign1=!sign1;sign1?count++:count--">
-                    <span v-if="sign1" class="duihao">✔</span>
-                    <span v-if="!sign1" class="sign">品</span>
-                    <span>品牌商家</span>
-                  </li>
-                  <li class="bird" @click="sign2=!sign2;sign2?count++:count--">
-                    <span v-if="sign2" class="duihao">✔</span>
-                    <span v-if="!sign2" class="sign">保</span>
-                    <span>外卖保</span>
-                  </li>
-                  <li class="bird" @click="sign3=!sign3;sign3?count++:count--">
-                    <span v-if="sign3" class="duihao">✔</span>
-                    <span class="sign" v-if="!sign3" @click="sign3">准</span>
-                    <span>准时达</span>
-                  </li>
-                  <li class="bird" @click="sign4=!sign4;sign4?count++:count--">
-                    <span v-if="sign4" class="duihao">✔</span>
-                    <span v-if="!sign4" class="sign">新</span>
-                    <span>新店</span>
-                  </li>
-                  <li class="bird" @click="sign5=!sign5;sign5?count++:count--">
-                    <span v-if="sign5" class="duihao">✔</span>
-                    <span v-if="!sign5" class="sign">付</span>
-                    <span>在线支付</span>
-                  </li>
-                  <li class="bird" @click="sign6=!sign6;sign6?count++:count--">
-                    <span v-if="sign6" class="duihao">✔</span>
-                    <span v-if="!sign6" class="sign">开</span>
-                    <span>开发票</span>
-                  </li>
-                </ul>
-              <button class="btn-default">清空</button>
-              <button class="btn-success">确认 <span v-if="count!==0">({{count}})</span> </button>
             </div>
 
-          </div>
-        </transition>
+          </transition>
+        </div>
+
       </div>
    </div>
+  <shoplist class="shoplist1"></shoplist>
  </div>
 </template>
 ▼
 <script>
   import Vue from  'vue'
+  import Shoplist from "../../components/common/shoplist";
     export default {
       name: "food",
+      components: {Shoplist},
       data() {
         return {
           goodFood: '美食',
@@ -179,7 +196,9 @@
           sign4:false,
           sign5:false,
           sign6:false,
-          count:0
+          count:0,
+          latitude: '31.22967',
+          longitude: '121.4762',
         }
       },
       created() {
@@ -222,10 +241,12 @@
           this.goodFood = item.name
           this.isTrue1_1 = false
           this.isTrue1 = !this.isTrue1
+          console.log(this.snackArr)
+          this.$store.commit('getskip',item)
         },
         chooseFocus(i){
           this.index = i
-        },
+        }
       }
     }
 </script>
@@ -237,8 +258,9 @@
     background-color: lightgrey;
     height: 0.5rem;
     line-height: 0.5rem;
-    position: relative;
-    z-index: 2;
+    position: fixed;
+    top: 0rem;
+    z-index: 33;
     width: 100%;
   }
   .goodFood,.rank,.sizer{
@@ -253,22 +275,22 @@
     position: relative;
   }
   .shopTransite-enter-active{
-    transition: all .5s linear;
+    transition: all .3s linear;
   }
   .shopTransite-leave-active{
-    transition: all .3s linear;
+    transition: all .1s linear;
   }
   .shopTransite-enter-to,.shopTransite-leave{
     position: absolute;
-    top:1rem;
-    opacity: 1;
-    z-index: 0;
+    top:0rem;
+    width: 100%;
+    z-index: 22;
   }
   .shopTransite-enter,.shopTransite-leave-to{
     position: absolute;
     top:-6rem;
-    opacity: 0;
-    z-index: 0;
+    width: 100%;
+    z-index: 22;
   }
   .span{
     color: blue;
@@ -282,7 +304,7 @@
     transform: rotateZ(180deg);
   }
   span{
-    font-size: larger;
+    font-size: small;
     display: inline-block;
   }
   .span1{
@@ -293,12 +315,16 @@
   }
   .listClass{
     width: 100%;
+    height: 120%;
+    background-color: rgba(0,0,0,0.1);
+    position: fixed;
+    z-index: 22;
   }
   .count{
     background-color: #90B4FC;
     width: 0.3rem;
     height: 0.13rem;
-    font-size: 0.12rem;
+    font-size:small;
     border-radius: 0.13rem;
     text-align: center;
     margin-right: 0.1rem;
@@ -310,18 +336,24 @@
   .shopList{
     width: 100%;
   }
+  .shopLeftP{
+    height: 0.4rem !important;
+    vertical-align: middle;
+  }
   .shopListLeft{
     width:50%;
     background-color: lightgreen;
     float: left;
-    height:5.04rem;
+    height:3.6rem;
+    margin-top: 0.5rem;
   }
   .listShopRight{
     background-color: lightblue;
     width: 50%;
     float: left;
-    height:5.0888rem;
+    height:3.6rem;
     overflow: auto;
+    margin-top: 0.5rem;
   }
   .listShopRight::-webkit-scrollbar{
     display: none;
@@ -330,9 +362,11 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 0.02rem solid grey;
+    height: 0.4rem;
+    line-height:0rem;
   }
   .rightList>span{
-    font-size: 0.16rem;
+    font-size: small;
     margin: 0.2rem 0.05rem 0.2rem 0.05rem;
   }
   .sort p>span+span{
@@ -369,8 +403,8 @@
     color: gold
   }
   .sort{
-    background-color: lightgrey;
     width: 100%;
+    background-color: white;
   }
   .sort>div>div>p{
     border-bottom: 0.01rem solid #e4e4e4;
@@ -386,6 +420,7 @@
   }
   .iconfontbird{
     color: blue;
+    padding: 0;
   }
   .bird{
     width: 31%;
@@ -470,7 +505,6 @@
     padding:0.2rem 0;
   }
   .delivery{
-    background-color: lightblue;
   }
   .duihao{
     padding: 0 0 0.25rem 0.03rem;
@@ -485,5 +519,36 @@
     height: 0.5rem;
     margin: 0.2rem 1%;
     border-radius: 0.1rem;
+  }
+  .shop1{
+    position: relative;
+    width: 100%;
+    height: 5rem;
+    top:0.4rem
+  }
+.root{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  .shop2{
+    height: 100%;
+  }
+  .food{
+    position: absolute;
+    top:0rem;
+    height: 100%;
+    width: 100%;
+    background-color: lawngreen;
+  }
+  .shoplist1{
+    position: absolute;
+    z-index: 2;
+    top: 0.3rem;
+    overflow: auto;
+  }
+  .shoplist1::-webkit-scrollbar{
+    display: none;
   }
 </style>
