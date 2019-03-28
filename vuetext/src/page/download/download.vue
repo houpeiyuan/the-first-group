@@ -17,14 +17,21 @@
 
 <style scoped>
   .top{
-    width: 60%;
     height: 1.2rem;
-    border-radius: 20%;
     text-align: center;
   }
-  botton{
-    width: 70%;
-    margin-left: 15%;
+  img{
+    width: 2rem;
+    border-radius: 20%;
+          margin-top: 10%;
+  }
+  button{
+
+    width:80%;
+    height: .3rem;
+    margin-left: 10%;
     background-color: blue;
+    margin-top: 40%;
+
   }
 </style>

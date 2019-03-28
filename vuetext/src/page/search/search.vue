@@ -19,7 +19,8 @@
              <p class="nowarp">月销售:{{item.recent_order_num}}</p>
              <div>{{item.float_minimum_order_amount}}元起送/距离{{item.distance}}</div>
              <p class="box"></p>
-         </div>
+           </div>
+           <hr>
        </div>
        </div>
    </div>
@@ -90,5 +91,13 @@
     height: 0.5rem;
     margin-top: 0.1rem;
     margin-left: 0.2rem;
+  }
+  .box{
+    width: 100%;
+   border-bottom: 1px solid lightgrey;
+  }
+  .frist{
+    margin-top: -0.4rem;
+    margin-left: 0.8rem;
   }
 </style>
