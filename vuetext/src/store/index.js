@@ -23,6 +23,9 @@ const moudleB = {
     },
     changeId(state,id){
       state.id=id
+    },
+    getskip(msg){
+      return  msg
     }
   },
   actions: {}

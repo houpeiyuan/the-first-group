@@ -1,6 +1,5 @@
 <template>
   <section>
-
     <swiper  v-if="swiperSlides" :options="swiperOption">
       <swiper-slide v-for="swiper in swiperSlides":key="swiper[0].id">
           <router-link v-for="(item,index) in swiper" :to="{name:'food'}" :key="index">
@@ -9,34 +8,18 @@
           </router-link>
       </swiper-slide>
     </swiper>
-    <div>
-      <div class="shop">
-        <router-link :to="{path:'/shop'}">
-        <div class="shopRoot" v-for="item in shoplist" @click="$store.commit('changeId',item.id)">
-          <div class="shopL"><img src="https://fuss10.elemecdn.com/2/35/696aa5cf9820adada9b11a3d14bf5jpeg.jpeg" alt=""></div>
-          <div class="shopC">
-            <div class="top1"><span>品牌</span><span>{{item.name}}</span></div>
-            <div>月售100单</div>
-            <p>20起送/{{item.piecewise_agent_fee.tips}}</p>
-          </div>
-          <div class="shopR">
-            <p>保准票</p>
-            <div><span>{{item.delivery_mode.text}}</span><span>{{item.supports[1].name}}</span></div>
-            <p>1447.2公里/{{item.order_lead_time}}</p>
-          </div>
-        </div>
-        </router-link>
-        </div>
-    </div>
+    <shoplist></shoplist>
   </section>
 </template>
 
 <script>
   import {swiper, swiperSlide} from 'vue-awesome-swiper'
   import Vue from 'vue'
+  import Shoplist from "../../components/common/shoplist";
     export default {
       name: "msite",
       components: {
+        Shoplist,
         swiper,
         swiperSlide
       },
@@ -102,52 +85,5 @@ section{
     height: 0.1rem;
     text-align: center;
   }
-  .shop{
-    width: 100%;
-    margin-top: 0.2rem;
-  }
-  .shopL{
-    width: 20%;
-    height: 100%;
-  }
-  .shopL img{
-    width: 100%;
-  }
-  .shopC{
-    width: 40%;
-    height: 100%;
-  }
-  .shopR{
-    width: 40%;
-    height: 100%;
-  }
-  .top1 span:nth-child(1){
-    background-color: yellow;
-    padding-right:0.1rem;
-  }
-.top1 span:nth-child(2){
-  padding-left:0.1rem ;
-  font-size: 0.2rem;
-}
-  .shopR p:nth-child(1){
-    text-align: right;
-  }
-  .shopR div{
-    text-align: right;
-  }
-  .shopR div span:nth-child(1){
-    background-color: deepskyblue;
-  }
-.shopR div span:nth-child(2){
-  border: 1px solid blue;
-  margin-left: 0.1rem;
-}
-  .shopRoot{
-    width: 100%;
-    height: 1rem;
-    display: flex;
-    justify-content: space-around;
-    padding-bottom: 0.1rem;
-    border-bottom: 0.01rem solid gray;
-  }
+
 </style>
