@@ -24,7 +24,7 @@ import shopDetail from  '../page/shop/children/shopDetail'
 import foodDetail from '../page/shop/children/foodDetail'
 import shopSafe from '../page/shop/children/children/shopSafe'
 import balance from '../page/balance/balance'
-import detaile from '../page/points/children/detaile'
+import detaile from  '../page/points/children/detaile'
 import points from '../page/points/points'
 import detail from '../page/balance/children/detail'
 import vipcard from '../page/vipcard/vipcard'
@@ -284,6 +284,11 @@ export default new Router({
       path:'/nn1',
       name:'nn1',
       component:nn1
+    },
+    {
+      path:'/nn2',
+      name:'nn2',
+      component:nn2
     },
     {
       path:'/nn3',
