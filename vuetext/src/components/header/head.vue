@@ -1,16 +1,24 @@
 <template>
   <!--头部公共组件-->
-  <nav class="nav navbar navbar-fixed-top" v-if="isShow2">
-    <a href="###" class="pull-left" v-if="isShow">{{getLeaftNav}}</a>
-    <span v-else="isShow1" class="selectedLocation">{{$store.state.zhang.city}}</span>
-    <div class="pull-right">
-      <span v-if="$store.state.zhang.change1" >
+  <div>
+    <div v-if="ishead">
+      <nav class="nav navbar navbar-fixed-top">
+        <a href="###" class="pull-left" v-if="getLeaftNav">{{getLeaftNav}}</a>
+        <span @click="$router.go(-1)" v-else="isretreat" class="pull-left retreat"><</span>
+        <span v-if="getCity" class="selectedLocation city1">{{getCity}}</span>
+        <div class="pull-right">
+      <span v-if="isLogin" >
         <router-link :to="{name: 'login'}">登录 |</router-link>
-      <router-link :to="{}">注册</router-link>
+        <router-link :to="{name: 'login'}">注册</router-link>
       </span>
-      <router-link v-else :to="{}">切换城市</router-link>
+          <router-link  :to="{name:'home'}" v-show="isCut">切换城市</router-link>
+          <router-link  v-if="getpron" :to="{name:'profile'}" class="personal">☺</router-link>
+        </div>
+      </nav>
     </div>
-  </nav>
+
+  </div>
+
 </template>
 
 <script>
@@ -26,18 +34,51 @@
         computed:{
           //自己写方法,此方法用于接受created里面改变的变量
          getLeaftNav() {
-           this.isShow = this.$store.state.isShow
-           return this.$store.state.hou.navleft
-         }
+           return this.$store.state.zhang.navleft
+         },
+         getCity() {
+           return this.$store.state.zhang.city
+         },
+         isLogin() {
+           return this.$store.state.zhang.change1
+         },
+          getpron(){
+           return this.$store.state.zhang.bull
+          },
+          isCut() {
+           return this.$store.state.zhang.iscut
+          },
+          isretreat() {
+           return this.$store.state.zhang.retreat
+          },
+          ishead(){
+           console.log(this.$store.state.zhang.ishead)
+           return this.$store.state.zhang.ishead
+          }
       },
       created(){
           //这是传参数的地方,通过该方法向action里面传值,第一个为action自己的声明函数名,第二个参数为需要传的参数
-         this.$store.dispatch('changeNav1',false)
+         //this.$store.dispatch('changeNav1',false)
       }
     }
 </script>
 
 <style scoped>
+  .retreat{
+    font-size: 0.3rem;
+    padding-left: 0.2rem;
+  }
+  .city1{
+    color: white !important;
+    display: inline-block;
+    width: 1rem !important;
+    height: 0.5rem;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+  }
+  .personal{
+    font-size: 0.3rem;
+  }
   .nav{
      background-color: blue;
      width: 100%;
@@ -56,6 +97,9 @@
     line-height: 0.5rem;
   }
   .selectedLocation{
+    color: white;
+  }
+  .pull-left{
     color: white;
   }
 </style>

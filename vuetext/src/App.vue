@@ -18,6 +18,11 @@ export default {
 </script>
 
 <style>
+  /*去掉所有页面的滚动条*/
+  @import 'style/icon.css';
+  *::-webkit-scrollbar{
+    display: none;
+  }
   a{
     text-decoration: none !important;
   }

@@ -21,7 +21,7 @@
               <span class="border" v-for="sup in item.supports">{{sup.icon_name}}</span>
             </p>
 
-            <div><span>{{item.delivery_mode.text}}</span><span>{{item.supports[1].name}}</span></div>
+            <div><span>蜂鸟快送</span><span>准时达</span></div>
             <p class="kmRight">{{item.distance}}  {{item.order_lead_time}}</p>
           </div>
         </div>
@@ -38,14 +38,74 @@
             value5: 3.7,
             shoplist: [],
             latitude: '31.22967',
-            longitude: '121.4762',
+            longitude: '121.4762'
           }
         },
-      created() {
-        Vue.axios.get('https://elm.cangdu.org/shopping/restaurants?latitude='+this.latitude+'&longitude='+this.longitude,null).then(res => {
-          console.log(res.data)
-          this.shoplist = res.data
-        })
+      created(){
+
+      },
+     computed:{
+          msg(){
+            //返回排序的计算属性
+            return this.$store.state.zhang.count1
+          },
+          getids(){
+            //返回单类店铺的计算属性
+            return this.$store.state.zhang.ids
+          },
+       getHobbit() {
+            //返回用户爱好的计算属性
+            return this.$store.state.zhang.sizer
+         }
+     },
+      methods:{
+          disposeSizer(shoplist) {
+            //这是处理数据的函数
+            if(this.getHobbit.length ===0){
+              this.shoplist = shoplist
+            }else{
+              for(let item of this.getHobbit){
+                  this.shoplist = this.shoplist.filter((item1) => {
+                    return  JSON.stringify(item1[item.type]).indexOf(JSON.stringify(item.value).slice(1,-1)) !== -1
+                  })
+            }
+            }
+          }
+       },
+      //检测计算属性的变化时触发
+      watch: {
+          //发现用户爱好发生变化时触发
+        getHobbit: {
+          handler(){
+            Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762&restaurant_category_ids[]=${this.getids}&order_by=${this.msg}
+`,null).then(res => {
+              //调用函数处理数据
+              this.disposeSizer(this.shoplist)
+            })
+          },
+          immediate: false,
+          deep:true
+        },
+        //店铺id跟排序发生变化时触发
+        msg:{
+            handler(){
+              Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762&restaurant_category_ids[]=${this.getids}&order_by=${this.msg}
+`,null).then(res => {
+                //智能排序和店铺筛选
+                this.shoplist = res.data
+              })
+            },
+            immediate: false
+          },
+      //更改商铺列表的请求
+        getids:{
+          handler(){
+            Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762&restaurant_category_ids[]=${this.getids}`,null).then(res => {
+              this.shoplist = res.data
+            })
+          },
+          immediate: true
+        }
       }
     }
 </script>

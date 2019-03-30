@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="shop">
   <section>
     <div class="left">
       <img :src="http+shop.image_path" alt="">
@@ -38,6 +38,7 @@
           }
       },
       created(){
+          this.$store.commit('ishead', false)
           var that=this
           Vue.axios.get('https://elm.cangdu.org/shopping/restaurant/'+that.$store.state.zhang.id,null).then((response)=>{that.shop=response.data
           if (response.data.activities.length==0){
@@ -46,11 +47,18 @@
             that.bul=true
           }
           })
+      },
+      beforeRouteLeave(to,from,next){
+        this.$store.commit('ishead', true)
+        next()
       }
     }
 </script>
 
 <style scoped>
+  #shop{
+    margin-top: -0.49rem;
+  }
 section{
   width: 100%;
   display: flex;

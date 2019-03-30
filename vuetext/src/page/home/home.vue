@@ -52,6 +52,7 @@
       }
     },
     created() {
+      this.$store.commit('isEle','ele.me')
       Vue.axios.get('https://elm.cangdu.org/v1/cities?type=guess',null).then(res=>{
         this.local_city = res.data.name
       }).catch(err => {
@@ -73,6 +74,10 @@
         this.keyArr = Object.keys(res.data).sort()
         this.cityObj = res.data
       })
+    },
+    beforeRouteLeave(to,from,next){
+      this.$store.commit('isEle','')
+      next()
     }
   }
 </script>
