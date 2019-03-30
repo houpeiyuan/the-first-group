@@ -57,6 +57,11 @@ import useCart from '../page/vipcard/children/useCart'
 import vipDescription from '../page/vipcard/children/vipDescription'
 import invoiceRecord from '../page/vipcard/children/invoiceRecord'
 import invoice from  '../page/vipcard/children/invoice'
+import setusername from '../page/profile/children/setusername'
+import info from '../page/profile/children/info'
+import address from '../page/profile/children/children/address'
+import add from '../page/profile/children/children/children/add'
+import addDetail from '../page/profile/children/children/children/children/addDetail'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -363,7 +368,32 @@ export default new Router({
       path:'/invoice',
       name:'invoice',
       component:invoice
-    }
+    },
+    {
+      path:'/setusername',
+      name: 'setusername',
+      component: setusername
+    },
+    {
+      path:'/info',
+      name: 'info',
+      component: info
+    },
+    {
+      path:'/add',
+      name: 'add',
+      component: add
+    },
+    {
+      path:'/address',
+      name: 'address',
+      component: address
+    },
+    {
+      path:'/addDetail',
+      name: 'addDetail',
+      component: addDetail
+    },
   ],
 
 })

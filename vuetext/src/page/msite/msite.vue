@@ -3,8 +3,11 @@
     <swiper  v-if="swiperSlides" :options="swiperOption">
       <swiper-slide v-for="swiper in swiperSlides":key="swiper[0].id">
           <router-link v-for="(item,index) in swiper" :to="{name:'food'}" :key="index">
-            <img :src=" http+item.image_url" alt="">
-            <p>{{item.title}}</p>
+            <div @click="$store.commit('getFoodKind',index)">
+              <img :src=" http+item.image_url" alt="">
+              <p>{{item.title}}</p>
+            </div>
+
           </router-link>
       </swiper-slide>
     </swiper>
@@ -52,17 +55,23 @@
       }),
         Vue.axios.get('https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762',null).then(reponse => {
           that.shoplist = reponse.data;
-          console.log(reponse.data[1].id)
         })
+      },
+      created(){
+        //开启个人中心
+        this.$store.commit('ispron',true)
+        this.$store.state.zhang.change1 = false
+        this.$store.commit('isretreat', false)
+      },
+      beforeRouteLeave(to,from,next){
+        this.$store.commit('ispron',false)
+        next()
       }
     }
 
 </script>
 
 <style scoped>
-section{
-  padding-top: 0.55rem;
-}
   .swiper-container{
     width: 100%;
     height: 2rem;

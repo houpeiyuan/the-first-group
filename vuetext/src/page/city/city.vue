@@ -48,9 +48,9 @@ import { Toast } from 'mint-ui';
         his:""
       }
     },
-    component:{
-      //注册组件
-
+    created(){
+       this.$store.commit('isEle','')
+       this.$store.commit('isCut', true)
     },
     mounted:function(){
       //生命周期
@@ -58,8 +58,9 @@ import { Toast } from 'mint-ui';
         this.his=JSON.parse(localStorage.getItem("his"));
       }
     },
-    computed:{
-      //计算属性
+    beforeRouteLeave(to,from,next){
+      this.$store.commit('isCut', false)
+      next()
     },
     methods:{
       //函数
