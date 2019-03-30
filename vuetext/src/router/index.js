@@ -56,6 +56,7 @@ import retingStar from '../components/common/ratingStar'
 import useCart from '../page/vipcard/children/useCart'
 import vipDescription from '../page/vipcard/children/vipDescription'
 import invoiceRecord from '../page/vipcard/children/invoiceRecord'
+import invoice from  '../page/vipcard/children/invoice'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -356,6 +357,12 @@ export default new Router({
       path:'/vipDescription',
       name:'vipDescription',
       component:vipDescription
+    },
+    {
+      //发票
+      path:'/invoice',
+      name:'invoice',
+      component:invoice
     }
   ],
 

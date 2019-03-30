@@ -2,7 +2,7 @@
 <!-- 会员卡办理页-->
   <div>
     <div class="top">
-      <span>为账户dome购买会员</span>
+      <span>为账户账号名购买会员</span>
     </div>
     <div class="box">
       <div class="member">
@@ -32,9 +32,20 @@
       <p>
            开通会员
       </p>
-      <div>
-        <span>1个月￥20元</span>
+      <div class="p">
+        <p>1个月￥20元</p>
+        <div>
+          <router-link :to="{name:'invoiceRecord'}"><div class="bord pull-right">购买</div> </router-link>
+        </div>
       </div>
+    </div>
+    <div class="botton">
+      <span>兑换会员</span>
+      <router-link :to="{name:'useCart'}" class="pull-right">使用卡号密码》</router-link>
+    </div>
+    <div class="botton">
+      <span>购买记录</span>
+      <router-link :to="{name:'invoice'}" class="pull-right">开发票》</router-link>
     </div>
   </div>
 </template>
@@ -93,6 +104,37 @@
 .content{
   margin-top: 0.2rem;
   height: .7rem;
-  background-color:aliceblue;
+  margin-left: 0.06rem;
 }
+  .bord{
+    width: .5rem;
+    height: 0.3rem;
+    border: 1px solid orangered;
+    border-radius: 10%;
+    padding-top: 0.08rem;
+    padding-left: 0.09rem;
+    overflow: hidden;
+    margin-top: -0.2rem
+  }
+  .p{
+    height: 0.6rem;
+    margin-top: 0.2rem;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+
+  }
+  .p>p{
+    margin-top: 0.2rem;
+    font-size: 15px;
+  }
+  .botton{
+    height: 0.6rem;
+    margin-top: .2rem;
+    padding-top: 0.4rem;
+    border-bottom: 1px solid lightgray;
+  }
+  .botton>span{
+    font-size: 16px;
+
+  }
 </style>
