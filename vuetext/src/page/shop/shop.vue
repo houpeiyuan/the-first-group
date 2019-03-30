@@ -1,5 +1,6 @@
 <template>
 <div id="shop">
+  <span class="restreat" @click="$router.go(-1)"><</span>
   <section>
     <div class="left">
       <img :src="http+shop.image_path" alt="">
@@ -39,6 +40,7 @@
       },
       created(){
           this.$store.commit('ishead', false)
+          this.$store.commit('isfood', false)
           var that=this
           Vue.axios.get('https://elm.cangdu.org/shopping/restaurant/'+that.$store.state.zhang.id,null).then((response)=>{that.shop=response.data
           if (response.data.activities.length==0){
@@ -50,12 +52,21 @@
       },
       beforeRouteLeave(to,from,next){
         this.$store.commit('ishead', true)
+        this.$store.commit('isfoot',true)
         next()
       }
     }
 </script>
 
 <style scoped>
+  .restreat{
+    font-size: 0.3rem;
+    position: fixed;
+    top: 0.1rem;
+    left: 0.1rem;
+    color: white;
+    z-index: 999;
+  }
   #shop{
     margin-top: -0.49rem;
   }

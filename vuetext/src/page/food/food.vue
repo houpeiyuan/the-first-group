@@ -279,10 +279,11 @@
               return 1};
           }
         })()
-        console.log(this.isbule)
       },
       computed: {
 
+      },
+      mounted() {
       },
       methods: {
         changeStyle1() {
@@ -295,6 +296,7 @@
           this.isTrue3 = false
           Vue.axios.get("https://elm.cangdu.org/shopping/v2/restaurant/category",null).then(res=>{
             this.listClass = res.data
+            this.snackArr = this.listClass[this.isbule].sub_categories
           })
         },
         changeStyle2() {
@@ -315,7 +317,7 @@
         },
         changePColor(index){
           this.isbule = index
-     this.snackArr = this.listClass[index].sub_categories
+          this.snackArr = this.listClass[index].sub_categories
         },
         getShopName(item){
           this.goodFood = item.name

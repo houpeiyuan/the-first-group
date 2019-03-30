@@ -62,6 +62,7 @@
         this.$store.commit('ispron',true)
         this.$store.state.zhang.change1 = false
         this.$store.commit('isretreat', false)
+        this.$store.commit('isfoot',true)
       },
       beforeRouteLeave(to,from,next){
         this.$store.commit('ispron',false)
