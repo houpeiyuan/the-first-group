@@ -9,7 +9,7 @@
     <input type="text" placeholder="输入6位卡密" class="ninput" name="passWord" v-model="passWord" maxlength="6">
   </div>
     <p class="determine" :class="{could_pay: couldPay}" @click="popupl">兑换</p>
-    <div class="content" v-if="frame">
+    <div class="content animated heartBeat" v-if="frame">
       <img src="https://ss0.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=905010147,1377287211&fm=200&gp=0.jpg" alt="">
       <p>无效的卡号</p>
       <button @click="confirm" v-if="fram">确定</button>
@@ -17,6 +17,7 @@
   </section>
 </template>
 <script>
+  import { Toast } from 'mint-ui';
   import {mapState, mapMutations} from 'vuex'
   import alertTip from '../../../../src/components/common/alertTip'
     export default {
@@ -25,7 +26,6 @@
           return{
             cartNumber: null,
             passWord: null,
-            showAlert: false,
             alertText: null,
             frame:false,
             fram:true
@@ -44,8 +44,8 @@
       },
       methods: {
         popupl(){
-           this.frame=true
-           },
+          this.frame = true;
+        },
         confirm(){
           this.frame=false
         }
@@ -94,8 +94,8 @@
    margin-top: 0.03rem;
  }
  button{
-    width: 1.5rem;
+     width: 1.5rem;
      height: 0.3rem;
-   background-color: #3190e8;
+     background-color: blueviolet;
   }
 </style>
