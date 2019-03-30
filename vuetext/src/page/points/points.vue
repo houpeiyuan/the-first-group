@@ -4,7 +4,9 @@
       <div class="two">
         <span>当前积分</span>
         <router-link :to="{name:'detaile'}"><p class="pull-right"><i class="iconfont">&#xe62b;</i>积分说明</p></router-link>
-        <button class="one">提交</button>
+        <div>
+          <button class="one">提交</button>
+        </div>
       </div>
       <div class="a">
         <span class="p">0.00</span>
@@ -19,6 +21,9 @@
         <p>最近30天无积分记录</p>
         <p>快去下单赚取大量积分吧</p>
       </div>
+    </div>
+    <div class="finally">
+      <img src="https://ss0.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=905010147,1377287211&fm=200&gp=0.jpg" alt="">
     </div>
   </section>
 
@@ -102,4 +107,9 @@
   font-size: 10px;
   margin-top: .1rem;
 }
+  .finally{
+  }
+  img{
+    width: 0.7rem;
+  }
 </style>
