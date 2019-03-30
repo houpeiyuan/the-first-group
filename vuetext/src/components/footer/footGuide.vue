@@ -2,9 +2,9 @@
   <!--底部公共组件-->
   <section>
   <div class="foot navbar-fixed-bottom">
-    <router-link :to="{name:'msite'}" ><i class="iconfont">&#xe61b;</i><p >外卖</p></router-link>
+    <router-link :to="{name:'msite'}" ><i class="iconfont">&#xe61b;</i><p>外卖</p></router-link>
     <router-link :to="{name:'search'}"><i class="iconfont">&#xe683;</i><p>搜索</p></router-link>
-    <router-link :to="{name:'order'}"><i class="iconfont ">&#xe601;</i><p>订单</p></router-link>
+    <router-link :to="{name:'order'}"><i class="iconfont ">&#xe605;</i><p>订单</p></router-link>
     <router-link :to="{name:'profile'}"><i class="iconfont">&#xe600;</i><p>我的</p></router-link>
   </div>
   </section>
@@ -37,7 +37,6 @@
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.002rem;
     -moz-osx-font-smoothing: grayscale;
-    color: black;
       }
   .foot{
     display: flex;

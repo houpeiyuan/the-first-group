@@ -45,6 +45,7 @@
         Vue.axios.get('https://elm.cangdu.org/shopping/restaurants?latitude='+this.latitude+'&longitude='+this.longitude+'&order_by=4',null).then(res => {
           console.log(res.data)
           this.shoplist = res.data
+          console.log(this.$store.state.zhang.id)
         })
       }
     }

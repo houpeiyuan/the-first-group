@@ -1,7 +1,6 @@
 <template>
 <!--问题详情-->
 </template>
-
 <script>
     export default {
         name: "questionDtail"
