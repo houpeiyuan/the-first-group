@@ -11,18 +11,18 @@
         </div>
       </router-link>
       </div>
-    <router-link :to="{}" class="pull-left">
+    <router-link :to="{name:'balance'}" class="pull-left">
       <span class="left">0</span><span class="a">元</span>
       <br>
       <span>我的余额</span>
     </router-link>
     <router-link :to="{name:'benefit'}" class="pull-left">
-      <span class="content">1</span><span class="a">个</span>
+      <span class="content">3</span><span class="a">个</span>
       <br>
       <span>优惠券</span>
     </router-link>
-    <router-link :to="{}" class="pull-left">
-      <span class="right">560</span><span class="a">分</span>
+    <router-link :to="{name:'points'}" class="pull-left">
+      <span class="right">0</span><span class="a">分</span>
       <br>
       <span>我的积分</span>
     </router-link>
@@ -49,7 +49,7 @@
 <style scoped>
   .iconfont1{
     font-family:"iconfont" !important;
-    font-size:0.25rem;font-style:normal;
+    font-size:0.25rem  !important;font-style:normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
@@ -57,7 +57,7 @@
   }
   .iconfont2{
     font-family:"iconfont" !important;
-    font-size:0.25rem;font-style:normal;
+    font-size:0.25rem !important;font-style:normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
@@ -65,7 +65,7 @@
   }
   .iconfont3{
     font-family:"iconfont" !important;
-    font-size:0.25rem;font-style:normal;
+    font-size:0.25rem  !important;font-style:normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
@@ -73,7 +73,7 @@
   }
   .iconfont4{
     font-family:"iconfont" !important;
-    font-size:0.25rem;font-style:normal;
+    font-size:0.25rem !important;font-style:normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
@@ -81,7 +81,7 @@
   }
   .iconfont5{
     font-family:"iconfont" !important;
-    font-size:0.25rem;font-style:normal;
+    font-size:0.25rem !important;font-style:normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
@@ -89,7 +89,7 @@
   }
   .iconfont6{
     font-family:"iconfont" !important;
-    font-size:0.25rem;font-style:normal;
+    font-size:0.25rem !important;font-style:normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
@@ -146,10 +146,9 @@
    margin-top: -13px;
  }
   .right{
-    font-size: 25px;
+    font-size: 30px;
     color: darkorange;
     position: absolute;
-    margin-left: -17px;
     margin-top: -13px;
   }
   .list{

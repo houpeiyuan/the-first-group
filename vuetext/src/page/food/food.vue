@@ -82,7 +82,7 @@
                      </p>
                    </div>
                    <div @click="chooseFocus(5)">
-                     <i class="iconfont iconfont1">&#xe601;</i>
+                     <i class="iconfont iconfont1">&#xe66b;</i>
                      <p>
                        <span>配送速度最快</span>
                        <span v-show="index===5">✔</span>
@@ -448,6 +448,7 @@
     margin: 0 0.1rem;
   }
   .shopList{
+    margin-top: 0.12rem;
     width: 100%;
   }
   .shopLeftP{
@@ -495,8 +496,9 @@
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
-    padding: 0.2rem 0 0.2rem 0rem;
-    font-size: 0.2rem;
+     position: relative;
+     top: 0.4rem;
+     font-size: 0.2rem;
   }
   .iconfont1{
     color: blue;

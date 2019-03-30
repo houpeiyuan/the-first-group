@@ -9,6 +9,8 @@ import mint from 'mint-ui'
 import '../node_modules/mint-ui/lib/style.css'
 import ElementUI from 'element-ui';
 import '../node_modules/element-ui/lib/theme-chalk/index.css'
+import animated from 'animate.css'
+Vue.use(animated)
 Vue.use(mint)
 Vue.use(ElementUI)
 new Vue({

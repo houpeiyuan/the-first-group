@@ -18,7 +18,6 @@
       <router-link :to="{name:'profile'}"><i class="iconfont">&#xe607;</i></router-link>
       <p :style="{color:istrue===4?'blue':'black'}">我的</p>
     </div>
-
   </div>
   </section>
 </template>
@@ -56,7 +55,6 @@
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.002rem;
     -moz-osx-font-smoothing: grayscale;
-    color: black;
       }
   .foot{
     display: flex;

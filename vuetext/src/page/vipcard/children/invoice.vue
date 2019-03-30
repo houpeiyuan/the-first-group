@@ -1,10 +1,13 @@
 <template>
-    <!--积分说明-->
+    <!--发票-->
+  <h2>
+    最近无记录
+  </h2>
 </template>
 
 <script>
     export default {
-        name: "detail"
+        name: "invoice"
     }
 </script>
 

@@ -23,6 +23,45 @@ import shop from '../page/shop/shop'
 import shopDetail from  '../page/shop/children/shopDetail'
 import foodDetail from '../page/shop/children/foodDetail'
 import shopSafe from '../page/shop/children/children/shopSafe'
+import balance from '../page/balance/balance'
+import detaile from  '../page/points/children/detaile'
+import points from '../page/points/points'
+import detail from '../page/balance/children/detail'
+import vipcard from '../page/vipcard/vipcard'
+import service from  '../page/service/service'
+import download from '../page/download/download'
+import questionDetail from '../page/service/children/questionDtail'
+import n1 from '../page/service/n1'
+import n2 from '../page/service/n2'
+import n3 from '../page/service/n3'
+import n4 from '../page/service/n4'
+import n5 from '../page/service/n5'
+import n6 from '../page/service/n6'
+import n7 from '../page/service/n7'
+import n8 from '../page/service/n8'
+import n9 from '../page/service/n9'
+import n10 from '../page/service/n10'
+import n11 from '../page/service/n11'
+import nn1 from '../page/service/nn1'
+import nn2 from '../page/service/nn2'
+import nn3 from '../page/service/nn3'
+import nn4 from '../page/service/nn4'
+import nn5 from '../page/service/nn5'
+import nn6 from '../page/service/nn6'
+import nn7 from '../page/service/nn7'
+import nn8 from '../page/service/nn8'
+import nn9 from '../page/service/nn9'
+import nn10 from '../page/service/nn10'
+import retingStar from '../components/common/ratingStar'
+import useCart from '../page/vipcard/children/useCart'
+import vipDescription from '../page/vipcard/children/vipDescription'
+import invoiceRecord from '../page/vipcard/children/invoiceRecord'
+import invoice from  '../page/vipcard/children/invoice'
+import setusername from '../page/profile/children/setusername'
+import info from '../page/profile/children/info'
+import address from '../page/profile/children/children/address'
+import add from '../page/profile/children/children/children/add'
+import addDetail from '../page/profile/children/children/children/children/addDetail'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -147,7 +186,214 @@ export default new Router({
       path:'shopSafe',
       name:'shopSafe',
       component: shopSafe
-    }
+    },
+    {
+      // 余额
+      path:'/balance',
+      name:'balance',
+      component:balance
+    },
+    {
+      //余额说明
+      path:'/detail',
+      name:'detail',
+      component:detail
+    },
+    {
+      //积分页
+      path:'/points',
+      name:'points',
+      component:points
+    },
+    {
+      //积分说明
+     path:'/detaile',
+      name:'detaile',
+      component:detaile
+    },
+    {
+      // 饿了么会员卡
+      path:'/vipcard',
+      name:'vipcard',
+      component:vipcard
+    },
+    {
+      // 服务中心
+      path:'/service',
+      name:'service',
+      component:service
+    },
+    {
+      path:'/download',
+      name:'download',
+      component:download
+    },
+    {
+      // 问题
+      path:'/questionDetail',
+      name:'questionDetail',
+      component:questionDetail
+    },
+    {
+      path:'/n1',
+      name:'n1',
+      component:n1
+    },
+    {
+      path:'/n2',
+      name:'n2',
+      component:n2
+    },
+    {
+      path:'/n3',
+      name:'n3',
+      component:n3
+    },
+    {
+      path:'/n4',
+      name:'n4',
+      component:n4
+    },
+    {
+      path:'/n5',
+      name:'n5',
+      component:n5
+    },
+    {
+      path:'/n6',
+      name:'n6',
+      component:n6
+    },
+    {
+      path:'/n7',
+      name:'n7',
+      component:n7
+    },
+    {
+      path:'/n8',
+      name:'n8',
+      component:n8
+    },
+    {
+      path:'/n9',
+      name:'n9',
+      component:n9
+    },
+    {
+      path:'/n10',
+      name:'n10',
+      component:n10
+    },
+    {
+      path:'/n11',
+      name:'n11',
+      component:n11
+    },
+    {
+      path:'/nn1',
+      name:'nn1',
+      component:nn1
+    },
+    {
+      path:'/nn2',
+      name:'nn2',
+      component:nn2
+    },
+    {
+      path:'/nn3',
+      name:'nn3',
+      component:nn3
+    },
+    {
+      path:'/nn4',
+      name:'nn4',
+      component:nn4
+    },
+    {
+      path:'/nn5',
+      name:'nn5',
+      component:nn5
+    },
+    {
+      path:'/nn6',
+      name:'nn6',
+      component:nn6
+    },
+    {
+      path:'/nn7',
+      name:'nn7',
+      component:nn7
+    },
+    {
+      path:'/nn8',
+      name:'nn8',
+      component:nn8
+    },
+    {
+     path:'/nn9',
+       name:'nn9',
+      component:nn9
+    },
+    {
+      path:'/nn10',
+      name:'nn10',
+      component:nn10
+    },
+    {
+      //星星
+      path:'/retingStar',
+      name:'retingStar',
+      component:retingStar
+    },
+    {
+      //会员卡购买
+      path:'/useCart',
+      name:'useCart',
+      component:useCart
+    },
+    {
+      //购买记录
+      path:'/invoiceRecord',
+      name:'invoiceRecord',
+      component:invoiceRecord
+    },
+    {
+      // 会员说明
+      path:'/vipDescription',
+      name:'vipDescription',
+      component:vipDescription
+    },
+    {
+      //发票
+      path:'/invoice',
+      name:'invoice',
+      component:invoice
+    },
+    {
+      path:'/setusername',
+      name: 'setusername',
+      component: setusername
+    },
+    {
+      path:'/info',
+      name: 'info',
+      component: info
+    },
+    {
+      path:'/add',
+      name: 'add',
+      component: add
+    },
+    {
+      path:'/address',
+      name: 'address',
+      component: address
+    },
+    {
+      path:'/addDetail',
+      name: 'addDetail',
+      component: addDetail
+    },
   ],
 
 })

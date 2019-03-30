@@ -20,7 +20,6 @@
             <p class="borderF">
               <span class="border" v-for="sup in item.supports">{{sup.icon_name}}</span>
             </p>
-
             <div><span>蜂鸟快送</span><span>准时达</span></div>
             <p class="kmRight">{{item.distance}}  {{item.order_lead_time}}</p>
           </div>
@@ -105,9 +104,9 @@
             })
           },
           immediate: true
-        }
-      }
+        },
     }
+  }
 </script>
 
 <style scoped>
