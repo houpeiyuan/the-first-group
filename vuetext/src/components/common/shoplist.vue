@@ -21,7 +21,7 @@
               <span class="border" v-for="sup in item.supports">{{sup.icon_name}}</span>
             </p>
 
-            <div><span>{{item.delivery_mode.text}}</span><span>{{item.supports[1].name}}</span></div>
+            <div><span>蜂鸟快递</span><span>准时达</span></div>
             <p class="kmRight">{{item.distance}}  {{item.order_lead_time}}</p>
           </div>
         </div>
@@ -38,11 +38,11 @@
             value5: 3.7,
             shoplist: [],
             latitude: '31.22967',
-            longitude: '121.4762',
+            longitude: '121.4762'
           }
         },
       created() {
-        Vue.axios.get('https://elm.cangdu.org/shopping/restaurants?latitude='+this.latitude+'&longitude='+this.longitude,null).then(res => {
+        Vue.axios.get('https://elm.cangdu.org/shopping/restaurants?latitude='+this.latitude+'&longitude='+this.longitude+'&order_by=4',null).then(res => {
           console.log(res.data)
           this.shoplist = res.data
         })
