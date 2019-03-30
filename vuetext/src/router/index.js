@@ -52,7 +52,10 @@ import nn7 from '../page/service/nn7'
 import nn8 from '../page/service/nn8'
 import nn9 from '../page/service/nn9'
 import nn10 from '../page/service/nn10'
-
+import retingStar from '../components/common/ratingStar'
+import useCart from '../page/vipcard/children/useCart'
+import vipDescription from '../page/vipcard/children/vipDescription'
+import invoiceRecord from '../page/vipcard/children/invoiceRecord'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -329,6 +332,30 @@ export default new Router({
       path:'/nn10',
       name:'nn10',
       component:nn10
+    },
+    {
+      //星星
+      path:'/retingStar',
+      name:'retingStar',
+      component:retingStar
+    },
+    {
+      //会员卡购买
+      path:'/useCart',
+      name:'useCart',
+      component:useCart
+    },
+    {
+      //购买记录
+      path:'/invoiceRecord',
+      name:'invoiceRecord',
+      component:invoiceRecord
+    },
+    {
+      // 会员说明
+      path:'/vipDescription',
+      name:'vipDescription',
+      component:vipDescription
     }
   ],
 
