@@ -10,7 +10,7 @@ const moudleA = {
 }
 const moudleB = {
   state: {
-    city:'郑州',
+    city:'',
     change1: false,
     id:'',
     count1: 4,
@@ -22,10 +22,17 @@ const moudleB = {
     iscut: false,
     retreat: false,
     isfoot:true,
-    ishead:true
+    ishead:true,
+    foods:'',
+    bull2:false,
+    history: [],
+    cityid:0
   },
   getters: {},
   mutations: {
+    getHistory(state,history){
+      state.history = history
+    },
     //是否显示头部
     ishead(state,ishead) {
       state.ishead = ishead
@@ -44,8 +51,9 @@ const moudleB = {
     sizerFood(state, sizer){
       state.sizer = [...sizer]
     },
-    changeFood(state,payload){
-      state.city = payload
+    changecity1(state,pl1){
+      state.foods= pl1.name1;
+      state.bull2 = pl1.bull
     },
     //head中间的部分
     changeCity(state,pl) {
@@ -69,18 +77,25 @@ const moudleB = {
     },
     isCut(state, iscut){
       state.iscut = iscut
+    },
+    getcityid(state,cityid){
+      state.cityid = cityid
     }
   },
   actions: {}
 }
 const moudleC = {
   state: {
-    navleft: 'ele.me',
-    iscut: false
+      longitude: 0,
+      latitude: 0
   },
   getters: {
   },
   mutations: {
+    getLocation(state, location){
+      state.longitude= location.longitude
+      state.latitude = location.latitude
+    }
   },
   actions: {}
 }

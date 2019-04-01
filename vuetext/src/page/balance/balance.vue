@@ -4,7 +4,7 @@
     <div class="frist">
       <div class="two">
         <span>当前余额</span>
-        <router-link :to="{name:'detail'}"><p class="pull-right"><i class="iconfont">&#xe62b;</i>余额说明</p></router-link>
+        <router-link :to="{name:'detail'}"><p class="pull-right"><i class="iconfont">&#xe655;</i>余额说明</p></router-link>
         <p class="one">提交</p>
       </div>
     <div class="a">
@@ -16,7 +16,7 @@
     <div>
       <p>交易明细</p>
       <div class="end">
-        <i class="iconfont1">&#xe610;</i>
+        <i class="iconfont1">&#xe600;</i>
         <p>暂无明细记录</p>
       </div>
     </div>
@@ -30,24 +30,6 @@
 </script>
 
 <style scoped>
-  @font-face {
-    font-family: 'iconfont';  /* project id 1113823 */
-    src: url('//at.alicdn.com/t/font_1113823_gc9olc5clxv.eot');
-    src: url('//at.alicdn.com/t/font_1113823_gc9olc5clxv.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1113823_gc9olc5clxv.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1113823_gc9olc5clxv.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1113823_gc9olc5clxv.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1113823_gc9olc5clxv.svg#iconfont') format('svg');
-  }
-  @font-face {
-    font-family: 'iconfont';  /* project id 1114049 */
-    src: url('//at.alicdn.com/t/font_1114049_gxc5ztsn5l.eot');
-    src: url('//at.alicdn.com/t/font_1114049_gxc5ztsn5l.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1114049_gxc5ztsn5l.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1114049_gxc5ztsn5l.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1114049_gxc5ztsn5l.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1114049_gxc5ztsn5l.svg#iconfont') format('svg');
-  }
   .iconfont{
     font-family:"iconfont" !important;
     font-size:16px;font-style:normal;

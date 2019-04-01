@@ -5,7 +5,8 @@
       <nav class="nav navbar navbar-fixed-top">
         <a href="###" class="pull-left" v-if="getLeaftNav">{{getLeaftNav}}</a>
         <span @click="$router.go(-1)" v-else="isretreat" class="pull-left retreat"><</span>
-        <span v-if="getCity" class="selectedLocation city1">{{getCity}}</span>
+        <span v-if="getfoods">{{getfoods}}</span>
+        <span v-else="getCity" class="selectedLocation city1">{{getCity}}</span>
         <div class="pull-right">
       <span v-if="isLogin" >
         <router-link :to="{name: 'login'}">登录 |</router-link>
@@ -52,8 +53,10 @@
            return this.$store.state.zhang.retreat
           },
           ishead(){
-           console.log(this.$store.state.zhang.ishead)
            return this.$store.state.zhang.ishead
+          },
+          getfoods(){
+           return this.$store.state.zhang.foods
           }
       },
       created(){
@@ -75,6 +78,8 @@
     height: 0.5rem;
     white-space:nowrap;
     text-overflow:ellipsis;
+    word-break: keep-all;
+    overflow: hidden;
   }
   .personal{
     font-size: 0.3rem;

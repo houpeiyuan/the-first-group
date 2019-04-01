@@ -10,7 +10,7 @@
       </thead>
       <tbody class="table">
       <tr>
-        <td><router-link :to="{name: 'city'}">{{local_city}}</router-link></td>
+        <td @click="$store.commit('changeCity',{name:local_city,bul:false});$store.commit('getLocation',{latitude:local_cityL.latitude,longitude:local_cityL.longitude});$store.commit('ispron',false);$store.commit('getcityid',cityid)"><router-link :to="{name: 'city'}">{{local_city}}</router-link></td>
         <td class="two_td"><router-link :to="{}">> </router-link></td>
       </tr>
       </tbody>
@@ -23,7 +23,7 @@
       <p>热门城市</p>
       <div class="container">
         <ul class="row cityTotal">
-          <li class="col-xs-3 col-sm-3" v-for="item in cityHotArr" @click="$store.commit('changeCity',{name:item.name,bul:false})"><router-link :to="{name:'city'}" id="a1">{{item.name}}</router-link></li>
+          <li class="col-xs-3 col-sm-3" v-for="item in cityHotArr" @click="$store.commit('changeCity',{name:item.name,bul:false});$store.commit('getLocation',{latitude:item.latitude,longitude:item.longitude});$store.commit('ispron',false);$store.commit('getcityid',item.id)"><router-link :to="{name:'city'}" id="a1">{{item.name}}</router-link></li>
         </ul>
 
       </div>
@@ -32,7 +32,7 @@
     <div class="city_list border_top container" v-for="(value, key, index) in cityObj">
       <p><span>{{keyArr[index]}} </span><span class="font1">{{index===0?'(按字母排序)':''}}</span></p>
       <ul class="row cityTotal">
-        <li v-for="item in cityObj[keyArr[index]]" class="col-xs-3 col-sm-3" @click="$store.commit('changeCity',{name:item.name,bul:false})"><router-link :to="{name:'city'}">{{item.name}}</router-link></li>
+        <li v-for="item in cityObj[keyArr[index]]" class="col-xs-3 col-sm-3" @click="$store.commit('changeCity',{name:item.name,bul:false});$store.commit('getLocation',{latitude:item.latitude,longitude:item.longitude});$store.commit('ispron',false);$store.commit('getcityid',item.id)"><router-link :to="{name:'city'}">{{item.name}}</router-link></li>
       </ul>
     </div>
   </div>
@@ -44,28 +44,38 @@
     name: "home",
     data () {
       return {
+        cityid:0,
         cityHotArr: [],
         local_city: '',
+        local_cityL:{
+          latitude:0,
+          longitude:0
+        },
         countArr1:[],
         keyArr:[],
         cityObj: {}
       }
     },
+    beforeRouteEnter(to,from,next){
+      next(vm=>{
+        vm.$store.commit('isEle','ele.me')
+        vm.$store.commit('changeCity',{name:'',bul:''})
+        vm.$store.commit('ispron',true)
+      })
+    },
     created() {
-      this.$store.commit('isEle','ele.me')
+      this.$store.commit('isfoot',false)
       Vue.axios.get('https://elm.cangdu.org/v1/cities?type=guess',null).then(res=>{
         this.local_city = res.data.name
+        this.cityid = res.data.id
       }).catch(err => {
 
       })
       Vue.axios.get('https://elm.cangdu.org/v1/cities?type=hot',null).then(res => {
         this.cityHotArr = res.data
-        localStorage.setItem(res.data)
-        console.log(this.cityHotArr)
-        let count = Math.ceil(this.cityHotArr.length/4)
-        for (let i = 1;i<= count;i++){
-
-          this.countArr1.push(i)
+        this.local_cityL = {
+          latitude:res.data.latitude,
+          longitude:res.data.longitude
         }
       }).catch(err => {
 

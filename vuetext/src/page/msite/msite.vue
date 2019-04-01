@@ -53,16 +53,22 @@
         }
         that.swiperSlides = [that.arr1,that.arr2];
       }),
-        Vue.axios.get('https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762',null).then(reponse => {
+        Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}`,null).then(reponse => {
           that.shoplist = reponse.data;
         })
       },
-      created(){
-        //开启个人中心
-        this.$store.commit('ispron',true)
-        this.$store.state.zhang.change1 = false
-        this.$store.commit('isretreat', false)
-        this.$store.commit('isfoot',true)
+
+      beforeRouteEnter(to,from,next){
+        next(vm=>{
+          vm.$store.commit('ispron',true)
+          vm.$store.state.zhang.change1 = false
+          vm.$store.commit('isretreat', false)
+          vm.$store.commit('isfoot',true)
+          vm.$store.commit('changecity1',{name1:'',bull:''})
+          console.log('城市',vm.$store.state.zhang.city)
+          vm.$store.commit('changeCity',{name:vm.$store.state.zhang.city,bull:''})
+        })
+
       },
       beforeRouteLeave(to,from,next){
         this.$store.commit('ispron',false)

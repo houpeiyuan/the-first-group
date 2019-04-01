@@ -1,6 +1,22 @@
 <template>
 <div id="shop">
-  <span class="restreat" @click="$router.go(-1)"><</span>
+  <div v-if="isbull" class="black">
+    <h2 class="title">{{shop.name}}</h2>
+    <div>
+
+    </div>
+    <p>优惠信息</p>
+    <div v-for="item in shop.activities">
+      <p class="left1">
+        <span :style="{backgroundColor:'#'+item.icon_color}">{{item.icon_name}}</span>
+        <span>{{item.description}}(App专享)</span>
+      </p>
+    </div>
+    <p>商家公告</p>
+    <p class="left1">{{shop.promotion_info}}</p>
+    <div @click="isbull = !isbull" class="cical">x</div>
+  </div>
+  <span class="restreat" @click="$router.go(-2)"><</span>
   <section>
     <div class="left">
       <img :src="http+shop.image_path" alt="">
@@ -11,9 +27,10 @@
       <p>公告:{{shop.promotion_info}}</p>
     </div>
     <div class="btm" v-if="bul">
-    <p>{{shop.activities[0].description}}(APP专享)</p>
-    <p>1个活动</p>
+    <p v-if="0!==shop.activities.length">{{shop.activities[0].description}}(APP专享)</p>
+    <p v-show="0!==shop.activities.length" @click="isbull=!isbull">{{shop.activities.length}}个活动</p>
   </div>
+
   </section>
   <div class="rout">
     <div>
@@ -35,19 +52,36 @@
           return{
            http:'https://elm.cangdu.org/img/',
             shop:[],
-            bul:''
+            bul:'',
+            isbull:false
           }
       },
+      methods:{
+        goods(){
+          this.$router.push({name:'foodDetail'})
+        }
+      },
+      beforeRouteEnter(to,from,next){
+          next(
+            vm=>{
+              vm.$store.commit('ishead', false)
+              vm.$store.commit('isfoot', false)
+            }
+          )
+      },
       created(){
-          this.$store.commit('ishead', false)
-          this.$store.commit('isfood', false)
+        this.$store.commit('ishead', false)
+        this.$store.commit('isfoot', false)
           var that=this
-          Vue.axios.get('https://elm.cangdu.org/shopping/restaurant/'+that.$store.state.zhang.id,null).then((response)=>{that.shop=response.data
+          Vue.axios.get('https://elm.cangdu.org/shopping/restaurant/'+that.$store.state.zhang.id,null).then((response)=>{
+            that.shop=response.data
+            console.log(response.data)
           if (response.data.activities.length==0){
             that.bul=false
           } else {
             that.bul=true
           }
+            this.goods();
           })
       },
       beforeRouteLeave(to,from,next){
@@ -59,6 +93,39 @@
 </script>
 
 <style scoped>
+  .title{
+    margin-top: 0.3rem;
+  }
+  .black{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    z-index: 222;
+    text-align: center;
+  }
+  .black>p{
+    margin-top: 0.2rem;
+  }
+  .left1{
+    margin-left: 0.3rem;
+    margin-top: 0.1rem;
+    text-align: left;
+    color: white;
+  }
+  .cical{
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0.2rem;
+    border: 0.01rem solid white;
+    left:1.745rem;
+    font-size: 0.25rem;
+    color: white;
+    font-weight: 300;
+  }
   .restreat{
     font-size: 0.3rem;
     position: fixed;
@@ -69,6 +136,8 @@
   }
   #shop{
     margin-top: -0.49rem;
+    width: 100%;
+    height: 100%;
   }
 section{
   width: 100%;

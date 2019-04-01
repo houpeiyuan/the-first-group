@@ -41,8 +41,18 @@
 <script>
     export default {
         name: "profile",
-      created(){
-          this.$store.commit('changeCity',{name:'我的',bul:''})
+      beforeRouteEnter(to,from,next){
+          next(
+            vm=>{
+              vm.$store.commit('changecity1',{name1:'我的',bull:''})
+              vm.$store.commit('isfoot',true)
+            }
+          )
+      },
+      beforeRouteLeave(to,from,next){
+        this.$store.commit('changecity1',{name1:'',bull:''})
+        this.$store.commit('isfoot',false)
+        next()
       }
     }
 </script>

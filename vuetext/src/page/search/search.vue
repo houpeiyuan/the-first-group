@@ -5,14 +5,14 @@
      <input v-model="inputval" class="cityinput" required placeholder="输入商务楼，学校，地址">
      <button class="submit" @click="getS">提交</button>
      <div class="main">
-         <div class='maintop fs0-8 padlr10'>搜索历史</div>
-           <div v-for="" class="pad10 after"@click="">
-             <div class="nowarp"></div>
-           </div>
-           <div @click='' class="clearall ih30 pad10 col9f">
-             清空所有
-           </div>
-         <div v-for="item in list" @click="" class="pad10 after">
+         <div class='maintop fs0-8 padlr10' v-if="getHistory[0]" v-show="isshow1">
+           <h4 style="margin-bottom: 0.3rem">搜索历史</h4>
+           <h4 v-for="(item,index) in getHistory" @click="searchMsg(index)"  class="pad10 after nowarp">{{item}} <hr/></h4>
+         </div>
+           <p @click='deleteH' v-show="isshow" class="clearall ih30 pad10 col9f">
+             清空搜索历史
+           </p>
+         <div v-for="item in list" @click="pushLocation(item.id)" class="pad10 after">
            <img :src="'https://elm.cangdu.org/img/'+ item.image_path" alt="" class="picture">
            <div class="frist">
              <p class="nowarp">{{item.name}}</p>
@@ -35,7 +35,15 @@
       data() {
         return {
           inputval:'',//输入框的值
-          list:[]//搜索返回的结果
+          list:[],
+          isshow:false,
+          isshow1:false//搜索返回的结果,
+        }
+      },
+      created(){
+        if(this.$store.state.zhang.history[0]){
+          this.isshow1 = true
+          this.isshow = true
         }
       },
       mounted() {
@@ -43,8 +51,38 @@
       },
       computed: {
         //计算属性
+        getHistory(){
+          return this.$store.state.zhang.history
+        }
+      },
+      beforeRouteEnter(to,from,next){
+        next(
+          vm=>{
+            vm.$store.commit('isfoot',true)
+            vm.$store.commit('changecity1', {name1:'搜索',bull:""})
+            vm.isshow1 = true
+          }
+        )
+      },
+      beforeRouteLeave(to,from,next){
+        this.$store.commit('isfoot',false)
+        this.$store.commit('changecity1', {name1:'',bull:""})
+        next()
       },
       methods: {
+        pushLocation(id){
+          this.$store.commit('changeId',id)
+          this.$router.push({name:'shop'})
+        },
+        searchMsg(i){
+          this.inputval = this.$store.state.zhang.history[i]
+          setTimeout(this.getS,500)
+        },
+        deleteH(){
+          this.$store.state.zhang.history = []
+          this.isshow1 = false
+          this.isshow = false
+        },
         getS() {
           if (this.inputval == '') {
             Toast('请输入内容');
@@ -53,6 +91,9 @@
                this.list=res.data;
               console.log(res)
             });
+           this.$store.state.zhang.history.push(this.inputval)
+            this.isshow1 = false
+            this.isshow = false
           }
         },
       }
@@ -62,6 +103,9 @@
 </script>
 
 <style scoped>
+  .clearall{
+    text-align: center;
+  }
   .sum{
     width: 100%;
     height: .8rem;

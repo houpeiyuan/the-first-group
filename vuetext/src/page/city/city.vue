@@ -1,10 +1,6 @@
 <template>
 <!--当前城市页-->
   <section>
-    <!--<mt-header :title="上海" class='fs1-2' fixed>-->
-      <!--<mt-button slot="left"><mt-button icon="back"></mt-button></mt-button>-->
-      <!--<mt-button slot="right" class='fs0-8'>切换城市</mt-button>-->
-    <!--</mt-header>-->
   <div class='padtop50'>
     <div class="padlr10 bgfff padbot10">
       <form v-on:submit.prevent>
@@ -26,9 +22,9 @@
         </div>
       </div>
     </div>
-    <div v-if="list!=''" class='search bgfff'>
+    <div v-if="list[0]" class='search bgfff'>
       <div v-for="item in list" @click="goaddress(item)" class="pad10 after">
-        <div class="nowarp" @click="$store.commit('changeCity',{name:item.name,bul:true})">{{item.name}}</div>
+        <div class="nowarp" @click="$store.commit('changeCity',{name:item.address,bul:true})">{{item.name}}</div>
         <div class="nowarp">{{item.address}}</div>
       </div>
     </div>
@@ -51,6 +47,7 @@ import { Toast } from 'mint-ui';
     created(){
        this.$store.commit('isEle','')
        this.$store.commit('isCut', true)
+      this.$store.commit('isfoot',false)
     },
     mounted:function(){
       //生命周期
@@ -68,7 +65,7 @@ import { Toast } from 'mint-ui';
         if (this.inputval == '') {
           Toast('请输入内容');
         } else{
-          Vue.axios.get('https://elm.cangdu.org/v1/pois?city_id='+ this.mycity/*home传来的城市值*/+ '&keyword=' + this.inputval, null).then((res) => {
+          Vue.axios.get('https://elm.cangdu.org/v1/pois?city_id='+ this.$store.state.zhang.cityid/*home传来的城市值*/+ '&keyword=' + this.inputval, null).then((res) => {
             this.list = res.data;
           });
         }

@@ -215,70 +215,75 @@
           switch (this1.$store.state.zhang.kind) {
             case 0: {
               this1.goodFood = '甜品饮食'
-              this1.$store.commit('changeCity',{name:'甜品饮食',bul:''})
+              this1.$store.commit('changecity1',{name1:'甜品饮食',bull:''})
               return 8};
             case 1: {
               this1.goodFood = '商超便利'
-              this1.$store.commit('changeCity',{name:'商超便利',bul:''})
+              this1.$store.commit('changecity1',{name1:'商超便利',bull:''})
               return 5};
             case 2: {
               this1.goodFood = '美食'
-              this1.$store.commit('changeCity',{name:'美食',bul:''})
+              this1.$store.commit('changecity1',{name1:'美食',bull:''})
               return 1};
             case 3: {
               this1.goodFood = '美食'
-              this1.$store.commit('changeCity',{name:'美食',bul:''})
+              this1.$store.commit('changecity1',{name1:'美食',bull:''})
               return 1};
             case 4: {
               this1.goodFood = '美食'
-              this1.$store.commit('changeCity',{name:'美食',bul:''})
+              this1.$store.commit('changecity1',{name1:'美食',bull:''})
               return 1};
             case 5: {
               this1.goodFood = '美食'
-              this1.$store.commit('changeCity',{name:'美食',bul:''})
+              this1.$store.commit('changecity1',{name1:'美食',bull:''})
               return 1};
             case 6: {
               this1.goodFood = '美食'
-              this1.$store.commit('changeCity',{name:'美食',bul:''})
+              this1.$store.commit('changecity1',{name1:'美食',bull:''})
               return 1};
             case 7: {
               this1.goodFood = '美食'
-              this1.$store.commit('changeCity',{name:'美食',bul:''})
+              this1.$store.commit('changecity1',{name1:'美食',bull:''})
               return 1};
             case 8: {
               this1.goodFood = '小吃夜宵'
-              this1.$store.commit('changeCity',{name:'小吃夜宵',bul:''})
+              this1.$store.commit('changecity1',{name1:'小吃夜宵',bull:''})
               return 2};
             case 9: {
               this1.goodFood = '特色菜系'
-              this1.$store.commit('changeCity',{name:'特色菜系',bul:''})
+              this1.$store.commit('changecity1',{name1:'特色菜系',bull:''})
               return 4};
             case 10:{
               this1.goodFood = '小吃夜宵'
-              this1.$store.commit('changeCity',{name:'小吃夜宵',bul:''})
+              this1.$store.commit('changecity1',{name1:'小吃夜宵',bull:''})
               return 2};
             case 11:{
               this1.goodFood = '鲜花蛋糕'
-              this1.$store.commit('changeCity',{name:'鲜花蛋糕',bul:''})
+              this1.$store.commit('changecity1',{name1:'鲜花蛋糕',bull:''})
               return 6};
             case 12:{
               this1.goodFood = '异国料理'
-              this1.$store.commit('changeCity',{name:'异国料理',bul:''})
+              this1.$store.commit('changecity1',{name1:'异国料理',bull:''})
               return 0};
             case 13:{
               this1.goodFood = '果蔬生鲜'
-              this1.$store.commit('changeCity',{name:'果蔬生鲜',bul:''})
+              this1.$store.commit('changecity1',{name1:'果蔬生鲜',bull:''})
               return 3};
             case 14:{
               this1.goodFood = '美食'
-              this1.$store.commit('changeCity',{name:'美食',bul:''})
+              this1.$store.commit('changecity1',{name1:'美食',bull:''})
               return 1};
             case 15:{
               this1.goodFood = '美食'
-              this1.$store.commit('changeCity',{name:'美食',bul:''})
+              this1.$store.commit('changecity1',{name1:'美食',bull:''})
               return 1};
           }
         })()
+      },
+      beforeRouteLeave(to,from,next){
+        console.log('food离开')
+        this.$store.commit('changecity1',{name1:'',bull:''})
+        next()
       },
       computed: {
 
@@ -324,7 +329,7 @@
           this.isTrue1_1 = false
           this.isTrue1 = !this.isTrue1
           this.$store.commit('getskip',item.id)
-          this.$store.commit('changeFood',item.name)
+          this.$store.commit('changecity1',{name1:item.name,bull:''})
         },
         chooseFocus(i){
           this.index = i
