@@ -2,7 +2,7 @@
 <!--个人中心-->
   <section>
     <div class="header">
-      <router-link :to="{name:'login'}">
+      <router-link :to="{name:'info'}">
         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553596796415&di=7918ff2398947d38ae63ce05feacd827&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D662f3ce0c295d143da76e42b43f18296%2Fd96f0823dd54564eb6d034dab9de9c82d0584f53.jpg" alt="">
         <div class="pull-right frist">></div>
           <div class="log">

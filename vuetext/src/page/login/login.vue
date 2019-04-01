@@ -61,15 +61,17 @@
 
           },
           changeCode() {
-            Vue.axios.post('https://elm.cangdu.org/v1/captchas',null).then(res=> {
-              this.code = res.data.code
-            })
+            const url='https://elm.cangdu.org/v1/captchas'
+            this.$http({method:'post',url:url,withCredentials: true}).then((response)=>{this.code=response.data.code})
           },
           jumpPassword() {
             this.$router.push({path:'/forget'})
           },
           log (){
-            Vue.axios.post("https://elm.cangdu.org/v2/login",{username:this.username,password:this.password,captcha_code:this.msg,withCredentials: true}).then((response)=>{
+            const api='https://elm.cangdu.org/v2/login'
+          this.$http({method:'post',url:api,withCredentials: true,data:{captcha_code: this.msg,username:this.username,password:this.password}}).then((response)=>{
+            console.log(response.data)
+                this.$store.commit('userId',response.data.user_id)
               this.message=response.data.message
               if (response.data.message=='验证码失效'&this.password!="") {
                 this.bul=true

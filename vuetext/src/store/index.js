@@ -22,7 +22,8 @@ const moudleB = {
     iscut: false,
     retreat: false,
     isfoot:true,
-    ishead:true
+    ishead:true,
+    userId:''
   },
   getters: {},
   mutations: {
@@ -69,6 +70,9 @@ const moudleB = {
     },
     isCut(state, iscut){
       state.iscut = iscut
+    },
+    userId(state,id){
+      state.userId=id
     }
   },
   actions: {}

@@ -30,6 +30,7 @@
 </template>
 <script>
   import Vue from 'vue'
+  import { Indicator } from 'mint-ui';
     export default {
         name: "shoplist",
         data() {
