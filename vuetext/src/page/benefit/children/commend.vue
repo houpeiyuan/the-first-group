@@ -2,7 +2,7 @@
 <div class="box">
   <div class="head">
     <p>有3个红包即将过期</p>
-    <p>红包说明</p>
+    <p><router-link :to="{name:'redbao'}">红包说明</router-link></p>
   </div>
   <div v-for="item in money" class="center">
   <div class="centerL">

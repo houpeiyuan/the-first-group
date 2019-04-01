@@ -62,6 +62,9 @@ import info from '../page/profile/children/info'
 import address from '../page/profile/children/children/address'
 import add from '../page/profile/children/children/children/add'
 import addDetail from '../page/profile/children/children/children/children/addDetail'
+import explain from '../page/benefit/children/explain'
+import redbao from '../page/benefit/children/redbao'
+import mall from '../page/shopping mall/mall'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -138,8 +141,21 @@ export default new Router({
           path:'commend',
           name:'commend',
           component: commend
-        }
+        },
+        {
+          //  代金券
+          path:'coupon',
+          name:'coupon',
+          component: coupon
+        },
+
       ]
+    },
+    {
+      // 代金券说明
+      path:'explain',
+      name:'explain',
+      component:explain
     },
     //历史红包
     {
@@ -153,17 +169,17 @@ export default new Router({
       name:'exchange',
       component: exchange
     },
+    {
+      // 红包说明
+      path:'/redbao',
+      name:'redbao',
+      component:redbao
+    },
     //推荐有奖
     {
       path:'/hbDseription',
       name:'hbDseription',
       component: hbDseription
-    },
-    //代金券
-    {
-      path:'coupon',
-      name:'coupon',
-      component: coupon
     },
     {
       path: '/shop',
@@ -394,6 +410,12 @@ export default new Router({
       name: 'addDetail',
       component: addDetail
     },
+    {
+      // 积分商城
+      path:'/mall',
+      name:'mall',
+      component:mall
+    }
   ],
 
 })

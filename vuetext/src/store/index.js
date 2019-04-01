@@ -26,7 +26,8 @@ const moudleB = {
     foods:'',
     bull2:false,
     history: [],
-    cityid:0
+    cityid:0,
+    userId:''
   },
   getters: {},
   mutations: {
@@ -80,6 +81,9 @@ const moudleB = {
     },
     getcityid(state,cityid){
       state.cityid = cityid
+    },
+    userId(state,id){
+      state.userId=id
     }
   },
   actions: {}

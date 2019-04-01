@@ -1,4 +1,4 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
     <!--搜索页-->
   <section>
    <div class="sum">

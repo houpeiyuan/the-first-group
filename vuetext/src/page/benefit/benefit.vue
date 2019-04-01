@@ -17,17 +17,18 @@
 </script>
 
 <style scoped>
-.wrap{
-  width: 100%;
-  height: 0.5rem;
-  display: flex;
-  padding-top: 0.1rem;
-  flex-wrap: wrap;
-}
- .wrap>div{
-   width: 50%;
-   height: 100%;
-   text-align: center;
-   font-size: 0.2rem;
- }
+  .wrap{
+    width: 100%;
+    height: 0.5rem;
+    display: flex;
+    padding-top: 0.1rem;
+    flex-wrap: wrap;
+  }
+  .wrap>div{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    font-size: 0.2rem;
+  }
+
 </style>

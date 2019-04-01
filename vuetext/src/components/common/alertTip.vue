@@ -13,6 +13,7 @@
 
 <script>
   export default {
+    name:'alerTip',
     data(){
       return{
         positionY: 0,

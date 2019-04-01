@@ -2,7 +2,7 @@
 <!--个人中心-->
   <section>
     <div class="header">
-      <router-link :to="{name:'login'}">
+      <router-link :to="{name:'info'}">
         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553596796415&di=7918ff2398947d38ae63ce05feacd827&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D662f3ce0c295d143da76e42b43f18296%2Fd96f0823dd54564eb6d034dab9de9c82d0584f53.jpg" alt="">
         <div class="pull-right frist">></div>
           <div class="log">
@@ -31,10 +31,10 @@
         <router-link :to="{name:'order'}"><i class="iconfont2">&#xe667;</i>我的订单<span class="pull-right">></span></router-link>
       </ul>
       <div class="clearfix"></div>
-      <div class="list"><router-link :to="{}"><i class="iconfont3">&#xe680;</i>积分商城<span class="pull-right">></span></router-link></div>
-      <div class="list"><router-link :to="{}"><i class="iconfont4">&#xe610;</i>饿了么会员<span class="pull-right">></span></router-link></div>
-      <div class="list"><router-link :to="{}"><i class="iconfont5">&#xe60c;</i>服务中心<span class="pull-right">></span></router-link></div>
-      <div class="list"><router-link :to="{}"><i class="iconfont6">&#xe722;</i>下载饿了么APP<span class="pull-right">></span></router-link></div>
+      <div class="list"><router-link :to="{name:'mall'}"><i class="iconfont3">&#xe680;</i>积分商城<span class="pull-right">></span></router-link></div>
+      <div class="list"><router-link :to="{name:'vipcard'}"><i class="iconfont4">&#xe610;</i>饿了么会员<span class="pull-right">></span></router-link></div>
+      <div class="list"><router-link :to="{name:'service'}"><i class="iconfont5">&#xe60c;</i>服务中心<span class="pull-right">></span></router-link></div>
+      <div class="list"><router-link :to="{name:'download'}"><i class="iconfont6">&#xe722;</i>下载饿了么APP<span class="pull-right">></span></router-link></div>
     </div>
   </section>
 </template>
