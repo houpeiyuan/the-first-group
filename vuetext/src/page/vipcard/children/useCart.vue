@@ -1,6 +1,8 @@
 <template>
 <!--使用卡号购买-->
   <section>
+
+
 <div>
   成功兑换后将关联的账号：账号名
 </div>
@@ -8,7 +10,7 @@
     <input type="text"placeholder="输入10位卡号" name="cartNumber" class="ninput" v-model="cartNumber" maxlength="10">
     <input type="text" placeholder="输入6位卡密" class="ninput" name="passWord" v-model="passWord" maxlength="6">
   </div>
-    <p class="determine" :class="{could_pay: couldPay}" @click="popupl">兑换</p>
+    <p class="determine" :class="{could_pay: couldPay}" @click="cartNumber.length===10?popupl():null">兑换</p>
     <div class="content animated heartBeat" v-if="frame">
       <img src="https://ss0.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=905010147,1377287211&fm=200&gp=0.jpg" alt="">
       <p>无效的卡号</p>
@@ -17,15 +19,14 @@
   </section>
 </template>
 <script>
-  import { Toast } from 'mint-ui';
   import {mapState, mapMutations} from 'vuex'
   import alertTip from '../../../../src/components/common/alertTip'
     export default {
         name: "useCart",
       data(){
           return{
-            cartNumber: null,
-            passWord: null,
+            cartNumber: '',
+            passWord: '',
             alertText: null,
             frame:false,
             fram:true
@@ -57,7 +58,6 @@
 </script>
 
 <style scoped>
-
  .ninput{
    width: 100%;
    height: 0.5rem;
