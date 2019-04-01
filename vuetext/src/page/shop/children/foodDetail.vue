@@ -21,7 +21,8 @@
                  <p class="name">{{item.name}}</p>
                  <p class="des">{{item.description}}</p>
                  <p class="sale">月售{{item.sellCount}}份<span>好评率{{item.rating}}%</span></p>
-                 <p class="price">￥5</p>
+                 <p class="price">￥5
+                   <img src="https://raw.githubusercontent.com/bailicangdu/vue2-elm/master/src/images/add_address.png" alt="" class="a1 pull-right"></p>
                </div>
              </div>
            </li>
@@ -176,4 +177,7 @@
 .last{
   border-bottom: none;
 }
+  .a1{
+    width: 0.15rem;
+  }
 </style>

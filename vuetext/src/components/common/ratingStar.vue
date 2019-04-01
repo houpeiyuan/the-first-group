@@ -9,6 +9,7 @@
 <script>
 
   export default {
+    name:'ratingStar',
     data () {
       return {
         xxclass:"xxspan2 w",     //星星的class

@@ -31,10 +31,10 @@
         <router-link :to="{name:'order'}"><i class="iconfont2">&#xe667;</i>我的订单<span class="pull-right">></span></router-link>
       </ul>
       <div class="clearfix"></div>
-      <div class="list"><router-link :to="{}"><i class="iconfont3">&#xe680;</i>积分商城<span class="pull-right">></span></router-link></div>
-      <div class="list"><router-link :to="{}"><i class="iconfont4">&#xe610;</i>饿了么会员<span class="pull-right">></span></router-link></div>
-      <div class="list"><router-link :to="{}"><i class="iconfont5">&#xe60c;</i>服务中心<span class="pull-right">></span></router-link></div>
-      <div class="list"><router-link :to="{}"><i class="iconfont6">&#xe722;</i>下载饿了么APP<span class="pull-right">></span></router-link></div>
+      <div class="list"><router-link :to="{name:'mall'}"><i class="iconfont3">&#xe680;</i>积分商城<span class="pull-right">></span></router-link></div>
+      <div class="list"><router-link :to="{name:'vipcard'}"><i class="iconfont4">&#xe610;</i>饿了么会员<span class="pull-right">></span></router-link></div>
+      <div class="list"><router-link :to="{name:'service'}"><i class="iconfont5">&#xe60c;</i>服务中心<span class="pull-right">></span></router-link></div>
+      <div class="list"><router-link :to="{name:'download'}"><i class="iconfont6">&#xe722;</i>下载饿了么APP<span class="pull-right">></span></router-link></div>
     </div>
   </section>
 </template>

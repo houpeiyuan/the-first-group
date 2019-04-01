@@ -5,7 +5,7 @@
         <span>当前积分</span>
         <router-link :to="{name:'detaile'}"><p class="pull-right"><i class="iconfont">&#xe62b;</i>积分说明</p></router-link>
         <div>
-          <button class="one">提交</button>
+          <button class="one" @click="Tg">提交</button>
         </div>
       </div>
       <div class="a">
@@ -22,8 +22,10 @@
         <p>快去下单赚取大量积分吧</p>
       </div>
     </div>
-    <div class="finally">
+    <div class="finally animated heartBeat" v-if="isT">
       <img src="https://ss0.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=905010147,1377287211&fm=200&gp=0.jpg" alt="">
+      <p>快去下单赚取大量积分吧</p>
+      <div class="confirm"  v-if="isM" @click="propre">确定</div>
     </div>
   </section>
 
@@ -31,7 +33,21 @@
 
 <script>
     export default {
-        name: "points"
+        name: "points",
+      data(){
+          return{
+            isT:false,
+            isM:true
+          }
+      },
+      methods:{
+          Tg(){
+            this.isT=true
+          },
+          propre(){
+            this.isT=false
+          }
+      }
     }
 </script>
 
@@ -108,8 +124,24 @@
   margin-top: .1rem;
 }
   .finally{
+    width: 2rem;
+    height: 1rem;
+    background-color: white;
+    position:fixed;
+    top: 2rem;
+    left: 0.9rem;
+    text-align:center;
   }
   img{
-    width: 0.7rem;
+    width: 1rem;
+    border-radius: 50%;
+
+  }
+  .confirm{
+    width: 2rem;
+    height: 0.2rem;
+    background-color: blue;
+    margin-top: 0.2rem;
+    color: white;
   }
 </style>
