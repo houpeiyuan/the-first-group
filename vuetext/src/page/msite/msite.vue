@@ -80,7 +80,6 @@
         },
 
       created(){
-        this.show=false
         //开启个人中心
         this.$store.commit('ispron',true)
         this.$store.state.zhang.change1 = false
