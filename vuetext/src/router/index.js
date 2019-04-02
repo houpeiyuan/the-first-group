@@ -65,6 +65,7 @@ import addDetail from '../page/profile/children/children/children/children/addDe
 import explain from '../page/benefit/children/explain'
 import redbao from '../page/benefit/children/redbao'
 import mall from '../page/shopping mall/mall'
+import good from '../page/shop/good'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -199,7 +200,7 @@ export default new Router({
       ]
     },
     {
-      path:'shopSafe',
+      path:'/shopSafe',
       name:'shopSafe',
       component: shopSafe
     },
@@ -415,6 +416,11 @@ export default new Router({
       path:'/mall',
       name:'mall',
       component:mall
+    },
+    {
+      path:'/good',
+      name:'good',
+      component:good
     }
   ],
 

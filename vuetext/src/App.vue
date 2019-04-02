@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <head1></head1>
+    <Loading v-if="get1"></Loading>
     <div class="totalBox">
       <router-view></router-view>
       <FootGuide></FootGuide>
@@ -11,9 +12,33 @@
 import {} from './config/rem'
 import Head1 from "./components/header/head";
 import FootGuide from "./components/footer/footGuide";
+import Loading from "./components/common/loading";
 export default {
   name: 'App',
-  components: {FootGuide,Head1}
+  components: {Loading, FootGuide,Head1},
+  data(){
+    return {
+      isshow: false
+    }
+  },
+  methods:{
+
+  },
+  created(){
+    console.log('app',this.$store.state.zhang.isshow3)
+  },
+  computed:{
+    get1(){
+      return this.$store.state.zhang.isshow3
+    }
+  },
+  watch:{
+    get1:{
+      handler(){
+        console.log(this.get1)
+      }
+    }
+  }
 }
 </script>
 

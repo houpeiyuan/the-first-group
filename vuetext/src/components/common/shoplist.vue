@@ -3,32 +3,37 @@
   <div class="rootShop">
     <div class="shop">
       <router-link :to="{path:'/shop'}">
-        <div class="shopRoot" v-for="item in shoplist" @click="$store.commit('changeId',item.id)">
-          <div class="shopL"><img :src="'https://elm.cangdu.org/img/'+item.image_path" alt=""></div>
-          <div class="shopC">
-            <div class="top1"><span>品牌</span><span>{{item.name}}</span></div>
-            <div><el-rate
-              v-model="item.rating"
-              disabled
-              show-score
-              text-color="#000"
-              score-template="{value}">{{item.rating}}
-            </el-rate><span class="mouseSale">月售{{item.rating_count}}单</span></div>
-            <p>{{item.float_minimum_order_amount}}起送/{{item.piecewise_agent_fee.tips}}</p>
-          </div>
-          <div class="shopR">
-            <p class="borderF">
-              <span class="border" v-for="sup in item.supports">{{sup.icon_name}}</span>
-            </p>
-            <div><span>蜂鸟快送</span><span>准时达</span></div>
-            <p class="kmRight">{{item.distance}}  {{item.order_lead_time}}</p>
-          </div>
-        </div>
+       <div ref="root" class="box">
+         <div>
+           <div ref="product" v-for="(item,index) in shoplist" @click="$store.commit('changeId',item.id)" :key="index">
+             <div class="shopL"><img :src="'https://elm.cangdu.org/img/'+item.image_path" alt=""></div>
+             <div class="shopC">
+               <div class="top1"><span>品牌</span><span>{{item.name}}</span></div>
+               <div><el-rate
+                 v-model="item.rating"
+                 disabled
+                 show-score
+                 text-color="#000"
+                 score-template="{value}">{{item.rating}}
+               </el-rate><span class="mouseSale">月售{{item.rating_count}}单</span></div>
+               <p>{{item.float_minimum_order_amount}}起送/{{item.piecewise_agent_fee.tips}}</p>
+             </div>
+             <div class="shopR">
+               <p class="borderF">
+                 <span class="border" v-for="sup in item.supports">{{sup.icon_name}}</span>
+               </p>
+               <div><span>蜂鸟快送</span><span>准时达</span></div>
+               <p class="kmRight">{{item.distance}}  {{item.order_lead_time}}</p>
+             </div>
+           </div>
+         </div>
+       </div>
       </router-link>
     </div>
   </div>
 </template>
 <script>
+  import BScroll from 'better-scroll'
   import Vue from 'vue'
   import { Indicator } from 'mint-ui';
     export default {
@@ -38,11 +43,16 @@
             value5: 3.7,
             shoplist: [],
             latitude: '31.22967',
-            longitude: '121.4762'
+            longitude: '121.4762',
+            offset:0,
+            limit:20,
+            root:'',
+            arr:[0],
+            scrollY:'',
+            product:''
           }
         },
       created(){
-
       },
      computed:{
           msg(){
@@ -84,6 +94,7 @@
           //发现用户爱好发生变化时触发
         getHobbit: {
           handler(){
+            this.$store.commit('transitionend',true)
             Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&order_by=${this.msg}
 `,null).then(res => {
               //调用函数处理数据
@@ -96,6 +107,7 @@
         //店铺id跟排序发生变化时触发
         msg:{
             handler(){
+              this.$store.commit('transitionend',true)
               Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&order_by=${this.msg}
 `,null).then(res => {
                 //智能排序和店铺筛选
@@ -107,12 +119,54 @@
       //更改商铺列表的请求
         getids:{
           handler(){
-            Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}`,null).then(res => {
+               this.$store.commit('transitionend',true)
+            Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&offset=${this.offset}&limit=${this.limit}`,null).then(res => {
+              this.$store.commit('transitionend',false)
+              this.offset=this.offset+this.limit
               this.shoplist = res.data
+              this.$nextTick(()=>{
+                this.root=new BScroll(this.$refs.root,{click:true,probeType:1})
+                var that=this
+                that.$refs.product.forEach((el, index)=>{
+                  that.arr.push(el.offsetHeight+that.arr[index])
+                })
+                this.root.on('scroll',(res)=>{
+                  console.log(res.y)
+                  this.scrollY=Math.abs(res.y)
+                  if(this.scrollY >= 200){
+                    this.limit+=20
+                  }
+                })
+                this.root.on('touchEnd',(pos)=>{
+                })
+              })
             })
           },
           immediate: true
         },
+        limit:{
+          handler(){
+            Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&offset=${this.offset}&limit=${this.limit}`,null).then(res => {
+              this.offset=this.offset+this.limit
+              this.shoplist = res.data
+              this.$nextTick(()=>{
+                this.root=new BScroll(this.$refs.root,{click:true,probeType:1})
+                var that=this
+                that.$refs.product.forEach((el, index)=>{
+                  that.arr.push(el.offsetHeight+that.arr[index])
+                })
+                this.root.on('scroll',(res)=>{
+                  this.scrollY=Math.abs(res.y)
+                  if(this.scrollY >= 200){
+                  }
+                })
+                this.root.on('touchEnd',(pos)=>{
+                })
+              })
+            })
+          },
+          immediate: true
+        }
     }
   }
 </script>
@@ -125,6 +179,13 @@
   .shop{
     width: 100%;
     margin-top: 0.2rem;
+  }
+  .box{
+    position: relative;
+    height: 4rem;
+    overflow: hidden;
+    right: 0;
+    top: 0;
   }
   .shopL{
     width: 15%;
@@ -188,7 +249,10 @@
     padding: 0.02rem;
     color: green;
   }
-  .shopRoot{
+  .box>div{
+    width: 100%;
+  }
+  .box>div>div{
     width: 100%;
     height: 1rem;
     display: flex;

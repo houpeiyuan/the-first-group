@@ -58,7 +58,6 @@
        created(){
           var that=this
          Vue.axios.get('https://elm.cangdu.org/shopping/v2/menu?restaurant_id='+that.$store.state.zhang.id,null).then((response)=>{that.arr=response.data
-           console.log(response.data)
            this.$nextTick(()=>{
              that.left = new Better(that.$refs.l_list,{click:true})
              that.rgt = new Better(that.$refs.r_list,{click: true, probeType: 3})

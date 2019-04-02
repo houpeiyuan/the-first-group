@@ -47,7 +47,7 @@ import { Toast } from 'mint-ui';
     created(){
        this.$store.commit('isEle','')
        this.$store.commit('isCut', true)
-      this.$store.commit('isfoot',false)
+       this.$store.commit('isfoot',false)
     },
     mounted:function(){
       //生命周期

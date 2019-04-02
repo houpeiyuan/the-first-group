@@ -30,7 +30,7 @@
     <p v-if="0!==shop.activities.length">{{shop.activities[0].description}}(APP专享)</p>
     <p v-show="0!==shop.activities.length" @click="isbull=!isbull">{{shop.activities.length}}个活动</p>
   </div>
-
+  <router-link :to="{name:'shopSafe'}" class="shopSafe"> > </router-link>
   </section>
   <div class="rout">
     <div>
@@ -75,7 +75,6 @@
           var that=this
           Vue.axios.get('https://elm.cangdu.org/shopping/restaurant/'+that.$store.state.zhang.id,null).then((response)=>{
             that.shop=response.data
-            console.log(response.data)
           if (response.data.activities.length==0){
             that.bul=false
           } else {
@@ -87,12 +86,20 @@
       beforeRouteLeave(to,from,next){
         this.$store.commit('ishead', true)
         this.$store.commit('isfoot',true)
+        this.$store.commit('getActive',this.shop.activities)
         next()
       }
     }
 </script>
 
 <style scoped>
+  .shopSafe{
+    color: white;
+    font-size: 0.3rem;
+    position: absolute;
+    right: 0.1rem;
+    top: 0.25rem;
+  }
   .title{
     margin-top: 0.3rem;
   }
