@@ -165,9 +165,10 @@
 <script>
   import Vue from  'vue'
   import Shoplist from "../../components/common/shoplist";
+  import Loading from "../../components/common/loading";
     export default {
       name: "food",
-      components: {Shoplist},
+      components: {Loading, Shoplist},
       data() {
         return {
           sizerP1: {},
@@ -281,7 +282,6 @@
         })()
       },
       beforeRouteLeave(to,from,next){
-        console.log('food离开')
         this.$store.commit('changecity1',{name1:'',bull:''})
         next()
       },

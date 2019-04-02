@@ -42,7 +42,6 @@
           }
         },
       created(){
-
       },
      computed:{
           msg(){
@@ -84,6 +83,7 @@
           //发现用户爱好发生变化时触发
         getHobbit: {
           handler(){
+            this.$store.commit('transitionend',true)
             Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&order_by=${this.msg}
 `,null).then(res => {
               //调用函数处理数据
@@ -96,6 +96,7 @@
         //店铺id跟排序发生变化时触发
         msg:{
             handler(){
+              this.$store.commit('transitionend',true)
               Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&order_by=${this.msg}
 `,null).then(res => {
                 //智能排序和店铺筛选
@@ -107,8 +108,10 @@
       //更改商铺列表的请求
         getids:{
           handler(){
+            this.$store.commit('transitionend',true)
             Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}`,null).then(res => {
               this.shoplist = res.data
+             this.$store.commit('transitionend',false)
             })
           },
           immediate: true
