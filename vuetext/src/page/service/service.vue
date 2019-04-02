@@ -1,17 +1,19 @@
 <template>
   <!-- 服务中心-->
-  <section>
+  <section class="container-fluid">
     <div class="frist">
-      <router-link :to="{}">
-         <span>
-         <i class="iconfont">&#xe60e;</i>
-         <p>在线客服</p>
-       </span>
-      </router-link>
-      <span>
-        <i class="iconfont1">&#xe600;</i>
-        <p>在线客服</p>
-      </span>
+      <div class="befor">
+      <a href="###" >
+        <img src="../../../src/image/1.png" alt="" class="img1">
+        <p>在线服务</p>
+      </a>
+      </div>
+      <div class="pull-right after">
+        <a href="tel:10105757">
+            <img src="../../../src/image/2.jpg" alt="" class="img2">
+            <p>在线客服</p>
+        </a>
+      </div>
     </div>
     <p class="mide">热门问题</p>
     <div>
@@ -148,40 +150,18 @@
     name: "service",
     data() {
       return {
+
       }
     },
+    methods:{
+    }
   }
 </script>
 
 <style scoped>
-  @font-face {
-    font-family: 'iconfont';  /* project id 1112552 */
-    src: url('//at.alicdn.com/t/font_1112552_lcv30si1gge.eot');
-    src: url('//at.alicdn.com/t/font_1112552_lcv30si1gge.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1112552_lcv30si1gge.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1112552_lcv30si1gge.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1112552_lcv30si1gge.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1112552_lcv30si1gge.svg#iconfont') format('svg');
-  }
-  .iconfont{
-    font-family:"iconfont" !important;
-    font-size:20px;font-style:normal;
-      -webkit-font-smoothing: antialiased;
-      -webkit-text-stroke-width: 0.2px;
-      -moz-osx-font-smoothing: grayscale;
-    color: firebrick;
-  }
-  .iconfont1{
-    font-family:"iconfont" !important;
-    font-size:20px;font-style:normal;
-      -webkit-font-smoothing: antialiased;
-      -webkit-text-stroke-width: 0.2px;
-      -moz-osx-font-smoothing: grayscale;
-    color: firebrick;
-  }
   .frist{
     width: 100%;
-    height: 40px;
+    height: 0.4rem;
   }
   span{
     float: left;
@@ -200,11 +180,23 @@
   .mide{
     width: 100%;
     margin-top:.5rem;
-    padding-left: 25px;
+    padding-left: 0.25rem;
     border-bottom: 1px solid lightgray;
-    font-size: 20px;
+    font-size: 0.2rem;
   }
-  .pull-right{
-    float: right;
+  .img1{
+    width: 0.3rem;
+    margin-left: -0.1rem;
+  }
+  .img2{
+    width: 0.3rem;
+  }
+  .befor{
+    margin-left: 1rem;
+    margin-top: -0.2rem;
+  }
+  .after{
+    margin-right: 1rem;
+    margin-top: -0.65rem;
   }
 </style>
