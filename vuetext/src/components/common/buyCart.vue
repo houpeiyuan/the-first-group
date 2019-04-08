@@ -1,161 +1,130 @@
 <template>
-  <section class="cart_module">
-    <section v-if="!foods.specifications.length" class="cart_button">
-      <transition name="showReduce">
-                <span @click="removeOutCart(foods.category_id, foods.item_id, foods.specfoods[0].food_id, foods.specfoods[0].name, foods.specfoods[0].price, '', foods.specfoods[0].packing_fee, foods.specfoods[0].sku_id, foods.specfoods[0].stock)" v-if="foodNum">
-                    <svg>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-minus"></use>
-                    </svg>
-                </span>
-      </transition>
-      <transition name="fade">
-        <span class="cart_num" v-if="foodNum">{{foodNum}}</span>
-      </transition>
-      <svg class="add_icon" @click="addToCart(foods.category_id, foods.item_id, foods.specfoods[0].food_id, foods.specfoods[0].name, foods.specfoods[0].price, '', foods.specfoods[0].packing_fee, foods.specfoods[0].sku_id, foods.specfoods[0].stock, $event)">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-add"></use>
-      </svg>
-    </section>
-    <section v-else class="choose_specification">
-      <section class="choose_icon_container">
-        <transition name="showReduce">
-          <svg class="specs_reduce_icon" v-if="foodNum" @click="showReduceTip">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-minus"></use>
-          </svg>
-        </transition>
-        <transition name="fade">
-          <span class="cart_num" v-if="foodNum">{{foodNum}}</span>
-        </transition>
-        <span class="show_chooselist" @click="showChooseList(foods)">选规格</span>
-      </section>
-    </section>
-  </section>
+<div class="wrap">
+  <div class="list" v-if="bul">
+    <div class="listS" v-if="$store.state.zhang.num.length" v-for=" item in $store.state.zhang.num">
+      <div class="jia" @click="add(item)"><span>{{item.count}}</span> +</div>
+      <div class="jian" @click="del(item)">-</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="left">
+      <div class="car" @click="showCar"><i class="iconfont">&#xe6e6;</i></div>
+      <input type="text"  v-if="$store.state.zhang.money" v-model="$store.state.zhang.money" disabled>
+      <input type="text" v-else v-model="st" disabled>
+      <p>配送费￥5</p>
+    </div>
+    <div class="right">去结算</div>
+  </div>
+</div>
 </template>
-
 <script>
-  import {mapState, mapMutations} from 'vuex'
   export default {
     name:'buyCart',
     data(){
       return{
-        showMoveDot: [], //控制下落的小圆点显示隐藏
+       st:0,
+        bul:false,
+        h:0,
+        t:0
       }
     },
-    mounted(){
-    },
-    computed: {
-      ...mapState([
-        'cartList'
-      ]),
-      /**
-       * 监听cartList变化，更新当前商铺的购物车信息shopCart，同时返回一个新的对象
-       */
-      shopCart: function (){
-        return Object.assign({},this.cartList[this.shopId]);
-      },
-      //shopCart变化的时候重新计算当前商品的数量
-      foodNum: function (){
-        let category_id = this.foods.category_id;
-        let item_id = this.foods.item_id;
-        if (this.shopCart&&this.shopCart[category_id]&&this.shopCart[category_id][item_id]) {
-          let num = 0;
-          Object.values(this.shopCart[category_id][item_id]).forEach((item,index) => {
-            num += item.num;
-          })
-          return num;
+    methods:{
+      showCar(){
+        if(this.$store.state.zhang.num.length){
+          this.bul=!this.bul;
         }else {
-          return 0;
+          this.bul=false
         }
       },
-    },
-    props:['foods', 'shopId'],
-    methods: {
-      ...mapMutations([
-        'ADD_CART','REDUCE_CART',
-      ]),
-      //移出购物车
-      removeOutCart(category_id, item_id, food_id, name, price, specs, packing_fee, sku_id, stock){
-        if (this.foodNum > 0) {
-          this.REDUCE_CART({shopid: this.shopId, category_id, item_id, food_id, name, price, specs, packing_fee, sku_id, stock});
+      add(item){
+        item.count++
+        this.$store.commit('addMoney',item.price)
+      },
+      del(item){
+        var index=this.$store.state.zhang.idArr.indexOf(item._id)
+        if(item.count>=1){
+          item.count--
+          this.$store.commit('delMoney',item.price)
         }
-      },
-      //加入购物车，计算按钮位置。
-      addToCart(category_id, item_id, food_id, name, price, specs, packing_fee, sku_id, stock, event){
-        this.ADD_CART({shopid: this.shopId, category_id, item_id, food_id, name, price, specs, packing_fee, sku_id, stock});
-        let elLeft = event.target.getBoundingClientRect().left;
-        let elBottom = event.target.getBoundingClientRect().bottom;
-        this.showMoveDot.push(true);
-        this.$emit('showMoveDot', this.showMoveDot, elLeft, elBottom);
-      },
-      //显示规格列表
-      showChooseList(foodScroll){
-        this.$emit('showChooseList', foodScroll)
-      },
-      //点击多规格商品的减按钮，弹出提示
-      showReduceTip(){
-        this.$emit('showReduceTip')
-      },
-    },
+        if(item.count<1){
+          this.$store.state.zhang.idArr.splice(index,1)
+          this.$store.state.zhang.num.splice(index,1)
+        }
+      }
+    }
   }
 </script>
 
-<style lang="scss" scoped>
-  @import '../../style/mixin';
-  .cart_module{
-    .add_icon{
-      position: relative;
-      z-index: 999;
-    }
-    .cart_button{
-      display: flex;
-      align-items: center;
-    }
-    svg{
-      @include wh(.9rem, .9rem);
-      fill: #3190e8;
-    }
-    .specs_reduce_icon{
-      fill: #999;
-    }
-    .cart_num{
-      @include sc(.65rem, #666);
-      min-width: 1rem;
-      text-align: center;
-      font-family: Helvetica Neue,Tahoma;
-    }
-    .choose_specification{
-      .choose_icon_container{
-        display: flex;
-        align-items: center;
-        .show_chooselist{
-          display: block;
-          @include sc(.55rem, #fff);
-          padding: .1rem .2rem;
-          background-color: $blue;
-          border-radius: 0.2rem;
-          border: 1px solid $blue;
-        }
-      }
-    }
+<style scoped>
+.wrap{
+  width: 100%!important;
+  position: relative;
+}
+.list{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0.3rem;
+}
+.listS{
+  width: 100%;
+  height: 0.3rem;
+  display: flex;
+}
+.listS>div{
+  width: 50%;
+  height: 100%;
+  line-height: 0.3rem;
+  text-align: center;
+  font-size: 0.2rem;
+}
+.jia{
+  background-color: darksalmon;
+}
+  .box{
+    width: 100%;
+    display: flex;
+    font-size: 0.2rem;
   }
-  .showReduce-enter-active, .showReduce-leave-active {
-    transition: all .3s ease-out;
+  .left{
+    width: 60%;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    position: relative;
   }
-  .showReduce-enter, .showReduce-leave-active {
-    opacity: 0;
-    transform: translateX(1rem);
+  .right{
+    width: 40%;
+    height: 0.5rem;
+    line-height: 0.5rem;
   }
-  .fade-enter-active, .fade-leave-active {
-    transition: all .3s;
+  .left>input{
+    width:100% ;
+    height: 0.25rem;
+    background-color: #90B4FC;
+    padding-left: 0.6rem;
   }
-  .fade-enter, .fade-leave-active {
-    opacity: 0;
+  .left>p{
+    width:100% ;
+    font-size: 0.2rem;
+    line-height: 0;
   }
-  .fadeBounce-enter-active, .fadeBounce-leave-active {
-    transition: all .3s;
-  }
-  .fadeBounce-enter, .fadeBounce-leave-active {
-    opacity: 0;
-    transform: scale(.7);
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:0.25rem;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.002rem;
+  -moz-osx-font-smoothing: grayscale;
+}
+  .car{
+    position: absolute;
+    left: 0.1rem;
+    top: -0.1rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    text-align: center;
+    border-radius: 100%;
+    background-color: #3190e8;
   }
 </style>
 

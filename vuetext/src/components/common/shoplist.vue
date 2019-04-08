@@ -42,6 +42,7 @@
           return {
             value5: 3.7,
             shoplist: [],
+            shoplist2:[],
             latitude: '31.22967',
             longitude: '121.4762',
             offset:0,
@@ -118,52 +119,60 @@
       //更改商铺列表的请求
         getids:{
           handler(){
-            Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&offset=${this.offset}&limit=${this.limit}`,null).then(res => {
-              this.offset=this.offset+this.limit
+            Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&offset=${this.offset}&limit=20`,null).then(res => {
               this.shoplist = res.data
               this.$nextTick(()=>{
-                this.root=new BScroll(this.$refs.root,{click:true,probeType:1})
-                var that=this
-                that.$refs.product.forEach((el, index)=>{
-                  that.arr.push(el.offsetHeight+that.arr[index])
-                })
+                if (!this.root) {
+                  this.root=new BScroll(this.$refs.root,{click:true,probeType:1})
+                }else {
+                  this.root.refresh();
+                }
                 this.root.on('scroll',(res)=>{
-                  console.log(res.y)
+                  // console.log('上拉')
                   this.scrollY=Math.abs(res.y)
-                  if(this.scrollY >= 200){
-                    this.limit+=20
-                  }
                 })
                 this.root.on('touchEnd',(pos)=>{
+                  if(this.root.maxScrollY >= pos.y-10){
+                    console.log(this.offset)
+                    this.offset+=20
+                    // console.log('刷新')
+                    this.root.refresh();
+                  }
                 })
               })
             })
           },
           immediate: true
         },
-        limit:{
-          handler(){
-            Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&offset=${this.offset}&limit=${this.limit}`,null).then(res => {
-              this.offset=this.offset+this.limit
-              this.shoplist = res.data
-              this.$nextTick(()=>{
-                this.root=new BScroll(this.$refs.root,{click:true,probeType:1})
-                var that=this
-                that.$refs.product.forEach((el, index)=>{
-                  that.arr.push(el.offsetHeight+that.arr[index])
-                })
-                this.root.on('scroll',(res)=>{
-                  this.scrollY=Math.abs(res.y)
-                  if(this.scrollY >= 200){
-                  }
-                })
-                this.root.on('touchEnd',(pos)=>{
-                })
-              })
-            })
-          },
-          immediate: true
-        }
+       offset:{
+         handler(){
+           Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&offset=${this.offset}&limit=20`,null).then(res => {
+             this.shoplist = [...this.shoplist,...res.data]
+             // console.log(this.shoplist)
+
+             this.$nextTick(()=>{
+               if (!this.root) {
+                 this.root=new BScroll(this.$refs.root,{click:true,probeType:1})
+               }else {
+                 this.root.refresh();
+               }
+               this.root.on('scroll',(res)=>{
+                 // console.log('上拉')
+                 this.scrollY=Math.abs(res.y)
+               })
+               this.root.on('touchEnd',(pos)=>{
+                 if(this.root.maxScrollY >= pos.y+5){
+                   console.log(this.offset)
+                   this.offset+=20
+                   // console.log('刷新')
+                   this.root.refresh();
+                 }
+               })
+             })
+           })
+         },
+         immediate: true
+       }
     }
   }
 </script>
