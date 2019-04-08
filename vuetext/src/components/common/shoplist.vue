@@ -53,6 +53,7 @@
           }
         },
       created(){
+
       },
      computed:{
           msg(){
@@ -94,7 +95,6 @@
           //发现用户爱好发生变化时触发
         getHobbit: {
           handler(){
-            this.$store.commit('transitionend',true)
             Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&order_by=${this.msg}
 `,null).then(res => {
               //调用函数处理数据
@@ -107,7 +107,6 @@
         //店铺id跟排序发生变化时触发
         msg:{
             handler(){
-              this.$store.commit('transitionend',true)
               Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&order_by=${this.msg}
 `,null).then(res => {
                 //智能排序和店铺筛选
@@ -119,9 +118,7 @@
       //更改商铺列表的请求
         getids:{
           handler(){
-               this.$store.commit('transitionend',true)
             Vue.axios.get(`https://elm.cangdu.org/shopping/restaurants?latitude=${this.$store.state.hou.latitude}&longitude=${this.$store.state.hou.longitude}&restaurant_category_ids[]=${this.getids}&offset=${this.offset}&limit=${this.limit}`,null).then(res => {
-              this.$store.commit('transitionend',false)
               this.offset=this.offset+this.limit
               this.shoplist = res.data
               this.$nextTick(()=>{
@@ -174,7 +171,7 @@
 <style scoped>
   .rootShop{
     width:100%;
-    overflow: auto;
+    overflow: auto ;
   }
   .shop{
     width: 100%;
@@ -182,7 +179,6 @@
   }
   .box{
     position: relative;
-    height: 4rem;
     overflow: hidden;
     right: 0;
     top: 0;
