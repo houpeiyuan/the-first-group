@@ -2,10 +2,9 @@
 <div class="wrap">
   <input @input="change" :style="{borderColor:bul?'red':'black'}" type="text" placeholder="请输入用户名" v-model="num">
   <p :style="{color:bul?'red':'black'}">用户名长度在5到24位之间</p>
-  <button>确认修改</button>
+  <button @click="frist">确认修改</button>
 </div>
 </template>
-
 <script>
     export default {
         name: "setusername",
@@ -21,8 +20,12 @@
               this.bul=true;
             }else {
               this.bul=false;
+
             }
-          }
+          },
+        frist(){
+            this.$router.push({name:'info'})
+        }
       }
     }
 </script>

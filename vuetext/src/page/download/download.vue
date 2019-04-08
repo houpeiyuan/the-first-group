@@ -6,6 +6,7 @@
     <p>下载饿了么APP</p>
   </div>
   <button>下载</button>
+  <router-link :to="{name:'confirmOrder'}">2222222222</router-link>
 </section>
 </template>
 

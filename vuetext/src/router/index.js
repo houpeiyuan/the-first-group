@@ -66,6 +66,12 @@ import explain from '../page/benefit/children/explain'
 import redbao from '../page/benefit/children/redbao'
 import mall from '../page/shopping mall/mall'
 import good from '../page/shop/good'
+import confirmOrder from '../page/confirmOrder/confirmOrder'
+import chooseAddress from  '../page/confirmOrder/children/chooseAddress'
+import remark from '../page/confirmOrder/children/remark'
+import invoic from  '../page/confirmOrder/children/invoic'
+import addAddress from '../page/confirmOrder/children/children/addAddress'
+import searchAddress from '../page/confirmOrder/children/children/children/searchAddress'
 Vue.use(Router)
 Vue.use(Vueaxios, axios)
 export default new Router({
@@ -421,6 +427,42 @@ export default new Router({
       path:'/good',
       name:'good',
       component:good
+    },
+    {
+      // 确认订单页
+      path:'/confirmOrder',
+      name:'confirmOrder',
+      component:confirmOrder
+    },
+    {
+      // 选择地址页
+      path:'/chooseAddress',
+      name:'chooseAddress',
+      component:chooseAddress
+    },
+    {
+      // 订单备注
+      path:'/remark',
+      name:'remark',
+      component:remark
+    },
+    {
+      //发票
+      path:'/invoic',
+      name:'invoic',
+      component:invoic
+    },
+    {
+      // 添加地址
+        path:'/addAddress',
+        name:'addAddress',
+       component:addAddress
+    },
+    {
+      // 搜索地址
+      path:'/searchAddress',
+      name:'searchAddress',
+      component:searchAddress
     }
   ],
 

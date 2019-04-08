@@ -22,7 +22,7 @@
                  <p class="des">{{item.description}}</p>
                  <p class="sale">月售{{item.sellCount}}份<span>好评率{{item.rating}}%</span></p>
                  <p class="price">￥5
-                   <img src="https://raw.githubusercontent.com/bailicangdu/vue2-elm/master/src/images/add_address.png" alt="" class="a1 pull-right"></p>
+                   <span @click="del(item,index)" class="jian pull-right">-</span><span>{{$store.state.zhang.idArr.indexOf(item._id)==-1?0:$store.state.zhang.num[$store.state.zhang.idArr.indexOf(item._id)].count}}</span><img src="https://raw.githubusercontent.com/bailicangdu/vue2-elm/master/src/images/add_address.png" alt="" class="a1 pull-right" @click="addCar(item,index,$event)"></p>
                </div>
              </div>
            </li>
@@ -31,6 +31,8 @@
      </div>
    </section>
  </div>
+    <div id="ball" ref="ball"></div>
+    <buyCart></buyCart>
   </div>
 </template>
 
@@ -39,10 +41,24 @@
   https://blog.csdn.net/weixin_42852657/article/details/84400324
   better scroll
    */
+  /*
+  json解析
+  https://blog.csdn.net/weixin_41014370/article/details/79002097
+   */
+  /*
+  http://www.cnblogs.com/buerjj/p/8405443.html
+   */
+  /*
+  https://www.cnblogs.com/chengxiang123/p/9214641.html
+   */
   import Better from 'better-scroll'
   import Vue from 'vue'
+  import buyCart from '../../../components/common/buyCart'
     export default {
         name: "foodDetail",
+      components:{
+        buyCart
+      },
       data(){
         return {
           arr:[],
@@ -58,6 +74,7 @@
        created(){
           var that=this
          Vue.axios.get('https://elm.cangdu.org/shopping/v2/menu?restaurant_id='+that.$store.state.zhang.id,null).then((response)=>{that.arr=response.data
+           // console.log(response.data)
            this.$nextTick(()=>{
              that.left = new Better(that.$refs.l_list,{click:true})
              that.rgt = new Better(that.$refs.r_list,{click: true, probeType: 3})
@@ -84,6 +101,15 @@
          })
        },
       methods:{
+          sendMsg(msg1,msg2){
+            for(let item1 of this.arr){
+              for(let item2 of item1.foods){
+                if (item2._id==msg1){
+                  item2.count=msg2
+                }
+              }
+            }
+          },
         change(index){
           this.actli=index;
           this.flag = false;
@@ -91,12 +117,32 @@
           setTimeout(()=>{
             this.flag = true
           },100)
+        },
+        addCar(item,index,$event){
+            this.$store.commit('add',item)
+          this.$refs.ball.style.top = $event.pageY+'px';
+          this.$refs.ball.style.left = $event.pageX+'px';
+          this.$refs.ball.style.transition = 'left 0s, top 0s';
+          setTimeout(()=>{
+            this.$refs.ball.style.top = window.innerHeight+'px';
+            this.$refs.ball.style.left = '0px';
+            this.$refs.ball.style.transition = 'left 1s linear, top 1s ease-in';
+          }, 20)
+      },
+        del(item,index){
+            this.$store.commit('del',item)
         }
-      }
     }
+  }
 </script>
 
 <style scoped>
+  .jian{
+    font-size: 0.2rem;
+    color: #3190e8;
+    background: red;
+    margin-left: 0.1rem;
+  }
   .wrap{
     width: 200% !important;
     padding-top: 0.2rem;
@@ -178,5 +224,13 @@
 }
   .a1{
     width: 0.15rem;
+  }
+  #ball {
+    width:12px;
+    height:12px;
+    background: #5EA345;
+    border-radius: 50%;
+    position: fixed;
+    transition: left 1s linear, top 1s ease-in;
   }
 </style>

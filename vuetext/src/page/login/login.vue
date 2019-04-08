@@ -65,14 +65,25 @@
             this.$http({method:'post',url:url,withCredentials: true}).then((response)=>{this.code=response.data.code})
           },
           jumpPassword() {
-            this.$router.push({path:'/forget'})
+            this.$router.push({path:'/addDetail'})
           },
           log (){
             const api='https://elm.cangdu.org/v2/login'
-          this.$http({method:'post',url:api,withCredentials: true,data:{captcha_code: this.msg,username:this.username,password:this.password}}).then((response)=>{
-            console.log(response.data)
-                this.$store.commit('userId',response.data.user_id)
+          this.$http({method:'post',url:api,withCredentials: true,data:{
+            captcha_code: this.msg,
+              username:this.username,
+              password:this.password
+          }
+          }).then((response)=>{
+            // console.log(response.data)
+            if (response.data.message){
               this.message=response.data.message
+            }else{
+              this.$store.commit('userId',response.data.user_id)
+              this.$router.push({name:'profile'})
+              this.$store.commit('username',response.data.username)
+              // console.log(response.data.username)
+            }
               if (response.data.message=='验证码失效'&this.password!="") {
                 this.bul=true
                 this.bul2=true

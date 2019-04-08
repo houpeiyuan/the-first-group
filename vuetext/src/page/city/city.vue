@@ -139,7 +139,7 @@ import { Toast } from 'mint-ui';
     background-color:aliceblue;
   }
 span{
-  font-size: 12px;
+  font-size: 0.12rem;
 }
   .nowarp{
     width: 100%;
