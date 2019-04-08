@@ -13,7 +13,9 @@
       <input type="text" v-else v-model="st" disabled>
       <p>配送费￥5</p>
     </div>
+    <router-link :to="{name:'confirmOrder'}">
     <div class="right">去结算</div>
+    </router-link>
   </div>
 </div>
 </template>

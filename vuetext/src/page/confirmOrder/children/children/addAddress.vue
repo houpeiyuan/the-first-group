@@ -11,7 +11,7 @@
     <hr>
     <div>
       <span>联系电话</span>
-      <input type="text" name="phone" placeholder="你的手机号" class="put">
+      <input type="text" name="phone" placeholder="你的手机号" class="put" v-model="phone">
     </div>
    <div class="box">
      <span class="pull-left">送餐地址</span>
@@ -24,11 +24,12 @@
       <span>标签</span>
       <input type="text" name="tag" placeholder="无/家/学校/公司" v-model="tag" class="put">
     </div>
-    <div class="btn">确定</div>
+    <div class="btn" @click="addAddress">确定</div>
   </section>
 </template>
 
 <script>
+  import { Toast } from 'mint-ui';
     export default {
         name: "addAddress",
       data(){
@@ -37,7 +38,8 @@
             phone:'',// 电话
              sex:1, //性别
             address_detail:'',// 详细地址
-            tag:''//备注
+             tag:'',//备注
+            tag_type: 1, //备注类型
           }
       },
       computed:{
@@ -52,8 +54,38 @@
       methods:{
         chooseSex(sex){
           this.sex=sex
+        },
+        addAddress(){
+          if (this.name===''){
+            Toast('请输入姓名')
+          }else if (this.phone===''){
+            Toast('请输入电话')
+          }else if (this.address_detail===''){
+            Toast('请输入详细地址')
+          }
+          if (this.tag == '家') {
+            this.tag_type = 2;
+          }else if(this.tag == '学校'){
+            this.tag_type = 3;
+          }else if(this.tag == '公司'){
+            this.tag_type = 4;
+          }
+        const api='https://elm.cangdu.org/v1/users/'+this.$store.state.zhang.userId+'/addresses'
+          this.$http({method:'post',url:api,data:{
+              address:this.$store.state.zhang.site,
+              name:this.name,
+              phone:this.phone,
+              sex:this.sex,
+              address_detail:this. address_detail,
+              tag:this.tag,
+              tag_type:this.tag_type,
+              geohash:this.$store.state.zhang.geohash,
+            }}).then((response)=>{
+              console.log(response.data)
+              this.$router.go(-1);
+            })
         }
-      }
+      },
     }
 </script>
 

@@ -111,6 +111,12 @@ const moudleB = {
     site(state,name) {
       state.site = name
     },
+    geohash(state,site){
+      state.geohash=site
+    },
+    item(state,name){
+      state.item=name
+    },
     add(state,item){
       var index = state.idArr.indexOf(item._id)
       if(index==-1){

@@ -2,12 +2,20 @@
 <!--确认订单页-->
   <section>
     <div class="box">
-      <router-link :to="{name:'chooseAddress'}">
+      <router-link :to="{path:'/chooseAddress'}">
       <img src="../../../src/image/3.jpg" alt="" class="img1">
-      <p class="p1">配送的地址
+      <div class="p1">配送的地址
         <br>
-        1234321
-      </p>
+        <div>
+          <span class="a">{{last.name}}</span>
+          <span>{{last.sex==1? '先生' : '女士'}}</span>
+          <span>{{last.phone}}</span>
+        </div>
+        <div class="address_detail ellipsis">
+        <span v-if="last.tag" :style="{backgroundColor: '#ccc', color: '#fff'}">{{last.tag}}</span>
+        <span>{{last.address_detail}}</span>
+        </div>
+      </div>
       <span class="pull-right p2">></span>
       </router-link>
     <div class="con">
@@ -34,13 +42,13 @@
       <p>订单金额</p>
     </div>
     <div class="end">
-      <router-link :to="{name:'remark'}">
+      <router-link :to="{path:'/remark'}">
         <p class="pull-left">订单备注</p>
-        <p class="pull-right">{{name}}></p>
+        <p class="pull-right">{{name1}}></p>
       </router-link>
       <br>
       <hr>
-      <router-link :to="{name:'invoic'}">
+      <router-link :to="{path:'/invoic'}">
         <p class="pull-left">发票抬头</p>
         <p class="pull-right">不需要开发票></p>
       </router-link>
@@ -55,21 +63,24 @@
         name: "confirmOrder",
       data(){
           return{
-            boot:'' // 餐盒费
+            boot:'' , // 餐盒费
+            last:this.$store.state.zhang.item  //送货地址
           }
       },
       computed:{
-         name(){
+         name1(){
            if (this.$store.state.zhang.input){
              return this.$store.state.zhang.input
            } else{
              return '口味,偏好等'
            }
-         }
+         },
       },
       created(){
-          this.$store.commit('isfoot',false)
-      }
+
+        this.$store.commit('isfoot',false)
+        console.log(this.last)
+      },
     }
 </script>
 
@@ -86,7 +97,7 @@
     margin-top: -0.2rem;
   }
   .p2{
-    margin-top: -0.2rem;
+    margin-top: -0.3rem;
     font-size: 0.2rem;
   }
   .img2{
@@ -124,5 +135,8 @@
   .end{
     height: 0.5rem;
     margin-top: 0.3rem;
+  }
+  .a{
+    font-size: 0.2rem;
   }
 </style>
