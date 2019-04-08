@@ -28,6 +28,9 @@ const moudleB = {
     history: [],
     cityid:0,
     userId:'',
+    money:0,
+    num:[],
+    idArr:[],
     active: [],
     isshow3:false,
   },
@@ -97,6 +100,7 @@ const moudleB = {
     userId(state,id){
       state.userId=id
     },
+
     // 用户的名字
     username(state,name){
        state.username=name
@@ -104,8 +108,54 @@ const moudleB = {
      input(state,name){
       state.input=name
      },
-    site(state,name){
-     state.site=name
+    site(state,name) {
+      state.site = name
+    },
+    add(state,item){
+      var index = state.idArr.indexOf(item._id)
+      if(index==-1){
+        state.idArr = [...new Set([...state.idArr,item._id])]
+        Object.assign(item,{
+          count:0,
+          pay:0
+        })
+        item.count++;
+        item.pay=item.count*item.specfoods[0].price
+        state.money+=item.specfoods[0].price
+        state.num.push({
+          count:item.count,
+          pay:item.pay,
+          id:item.restaurant_id,
+          fee:item.specfoods[0].packing_fee,
+          _id:item._id,
+          price:item.specfoods[0].price
+        })
+      }else {
+        state.num[index].count++;
+        state.num[index].pay=state.num[index].count*state.num[index].price;
+        state.money+=state.num[index].price
+        console.log(state.num[index].count)
+      }
+    },
+    del(state,item){
+      var index1=state.idArr.indexOf(item._id)
+      if(index1===-1)return;
+      if(state.num[index1].count>=1){
+        state.num[index1].count--;
+        state.num[index1].pay=state.num[index1].count*state.num[index1].price
+        state.money-=state.num[index1].price
+      }
+      if(state.num[index1].count<1){
+        state.num.splice(index1,1)
+        state.idArr.splice(index1,1)
+      }
+    },
+    addMoney(state,money){
+      state.money+=money
+      console.log('触发了')
+    },
+    delMoney(state,money){
+      state.money-=money
     }
   },
   actions: {}
