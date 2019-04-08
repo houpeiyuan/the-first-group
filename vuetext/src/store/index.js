@@ -40,7 +40,6 @@ const moudleB = {
     //是否结束过渡动画
     transitionend(state, isshow3){
       state.isshow3 = isshow3
-      console.log('vuex',state.isShow3)
     },
     //活动属性
     getActive(state, active){
