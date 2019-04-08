@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div class="wrap1">
  <div class="box">
    <ul class="left" ref="l_list">
      <li @click="change(index)" ref="l_item" :class="{'act':index === actli}"
@@ -31,8 +31,8 @@
      </div>
    </section>
  </div>
-    <div id="ball" ref="ball"></div>
     <buyCart></buyCart>
+    <div id="ball" ref="ball"></div>
   </div>
 </template>
 
@@ -143,9 +143,10 @@
     background: red;
     margin-left: 0.1rem;
   }
-  .wrap{
+  .wrap1{
     width: 200% !important;
     padding-top: 0.2rem;
+    overflow: hidden;
   }
   .box{
     width: 100%;
@@ -232,5 +233,6 @@
     border-radius: 50%;
     position: fixed;
     transition: left 1s linear, top 1s ease-in;
+    z-index: -3;
   }
 </style>
