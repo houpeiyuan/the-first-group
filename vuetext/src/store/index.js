@@ -32,7 +32,7 @@ const moudleB = {
     num:[],
     idArr:[],
     active: [],
-    isshow3:false
+    isshow3:false,
   },
   getters: {
   },
@@ -40,7 +40,6 @@ const moudleB = {
     //是否结束过渡动画
     transitionend(state, isshow3){
       state.isshow3 = isshow3
-      console.log('vuex',state.isShow3)
     },
     //活动属性
     getActive(state, active){
@@ -99,6 +98,17 @@ const moudleB = {
     },
     userId(state,id){
       state.userId=id
+    },
+
+    // 用户的名字
+    username(state,name){
+       state.username=name
+    },
+     input(state,name){
+      state.input=name
+     },
+    site(state,name) {
+      state.site = name
     },
     add(state,item){
       var index = state.idArr.indexOf(item._id)

@@ -2,14 +2,15 @@
 <!--个人中心-->
   <section>
     <div class="header">
-      <router-link :to="{name:'info'}">
+      <router-link :to="$store.state.zhang.username?'/info':'/login'">
         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553596796415&di=7918ff2398947d38ae63ce05feacd827&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D662f3ce0c295d143da76e42b43f18296%2Fd96f0823dd54564eb6d034dab9de9c82d0584f53.jpg" alt="">
         <div class="pull-right frist">></div>
           <div class="log">
-         <p>登陆|注册</p>
-          <p class="phone"><i class="iconfont1">&#xe608;</i>暂无绑定手机</p>
+            <p>{{name}}</p>
         </div>
+        <p class="phone"><i class="iconfont1">&#xe608;</i>暂无绑定手机</p>
       </router-link>
+
       </div>
     <router-link :to="{name:'balance'}" class="pull-left">
       <span class="left">0</span><span class="a">元</span>
@@ -41,6 +42,20 @@
 <script>
     export default {
         name: "profile",
+
+      data(){
+          return{
+          }
+      },
+      computed:{
+            name(){
+              if (this.$store.state.zhang.username){
+                 return this.$store.state.zhang.username
+              } else{
+                  return '登录/注册'
+              }
+            }
+      },
       beforeRouteEnter(to,from,next){
           next(
             vm=>{
@@ -112,7 +127,8 @@
     margin-left: 0.1rem;
   }
   .phone{
-    padding-top: 0.05rem;
+   margin-top: -0.3rem;
+    margin-left:1rem;
   }
   .header{
     height: 1.2rem;
@@ -120,9 +136,11 @@
   }
 .log{
     position:absolute;
+    margin-left: 0.2rem;
     top: 0.9rem;
     left: 1rem;
-    color:white;
+    color:black;
+    overflow: hidden;
   }
   p{
     font-size: 0.2rem;
@@ -141,25 +159,25 @@
     padding-top:5%;
   }
   .left{
-    font-size: 30px;
+    font-size: 0.3rem;
     color: darkorange;
      position: absolute;
-    margin-top: -13px;
+    margin-top: -0.13rem;
   }
   .a{
-    margin-left: 30px;
+    margin-left: 0.3rem;
   }
  .content{
-   font-size: 30px;
+   font-size: 0.3rem;
    color: darkorange;
    position: absolute;
-   margin-top: -13px;
+   margin-top: -0.13rem;
  }
   .right{
-    font-size: 30px;
+    font-size: 0.3rem;
     color: darkorange;
     position: absolute;
-    margin-top: -13px;
+    margin-top: -.13rem;
   }
   .list{
     height: 0.5rem;

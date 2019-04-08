@@ -25,29 +25,21 @@ export default {
 
   },
   created(){
-    console.log('app',this.$store.state.zhang.isshow3)
   },
   computed:{
     get1(){
       return this.$store.state.zhang.isshow3
     }
   },
-  watch:{
-    get1:{
-      handler(){
-        console.log(this.get1)
-      }
-    }
-  }
 }
 </script>
 
 <style>
   /*去掉所有页面的滚动条*/
   @import 'style/icon.css';
-  *::-webkit-scrollbar{
-    display: none;
-  }
+  /**::-webkit-scrollbar{*/
+    /*display: none;*/
+  /*}*/
   a{
     text-decoration: none !important;
   }
