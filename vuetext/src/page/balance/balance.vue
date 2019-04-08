@@ -4,7 +4,7 @@
     <div class="frist">
       <div class="two">
         <span>当前余额</span>
-        <router-link :to="{name:'detail'}"><p class="pull-right"><i class="iconfont">&#xe655;</i>余额说明</p></router-link>
+        <router-link :to="{name:'detail'}"><p class="pull-right"><img src="../../../src/image/description.png" alt="" class="img1">余额说明</p></router-link>
         <p class="one">提交</p>
       </div>
     <div class="a">
@@ -16,7 +16,7 @@
     <div>
       <p>交易明细</p>
       <div class="end">
-        <i class="iconfont1">&#xe600;</i>
+        <img src="../../../src/image/no-log.png" alt="" class="img2">
         <p>暂无明细记录</p>
       </div>
     </div>
@@ -30,20 +30,6 @@
 </script>
 
 <style scoped>
-  .iconfont{
-    font-family:"iconfont" !important;
-    font-size:16px;font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .iconfont1{
-    font-family:"iconfont" !important;
-    font-size:100px;font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
-  }
   .frist{
     width: 100%;
     height: 1.7rem;
@@ -81,5 +67,11 @@
   }
   .end>p{
     margin-left: .3rem;
+  }
+  .img1{
+    width: 0.15rem;
+  }
+  .img2{
+    margin-left: -0.8rem ;
   }
 </style>

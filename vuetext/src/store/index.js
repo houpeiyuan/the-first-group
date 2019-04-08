@@ -29,7 +29,7 @@ const moudleB = {
     cityid:0,
     userId:'',
     active: [],
-    isshow3:false
+    isshow3:false,
   },
   getters: {
   },
@@ -96,6 +96,16 @@ const moudleB = {
     },
     userId(state,id){
       state.userId=id
+    },
+    // 用户的名字
+    username(state,name){
+       state.username=name
+    },
+     input(state,name){
+      state.input=name
+     },
+    site(state,name){
+     state.site=name
     }
   },
   actions: {}

@@ -7,7 +7,7 @@
   </div>
   <div class="us">
     <p>用户名</p>
-    <p>dome<router-link :to="{path:'/setusername'}">></router-link></p>
+    <p>{{this.$store.state.zhang.username}} <router-link :to="{path:'/setusername'}">></router-link></p>
   </div>
   <div class="address">
     <p>收货地址</p>
@@ -31,9 +31,18 @@
   import Vue from 'vue'
     export default {
         name: "info",
+     data(){
+          return{
+
+          }
+     },
       methods:{
           back(){
-            Vue.axios.get('https://elm.cangdu.org/admin/singout').then((response)=>{console.log(response.data)})
+            Vue.axios.get('https://elm.cangdu.org/admin/singout').then((response)=>{
+              console.log(response.data.success)
+              this.$store.commit('success',response.data.success)
+              this.$router.push({name:'profile'})
+            })
           }
       }
     }
