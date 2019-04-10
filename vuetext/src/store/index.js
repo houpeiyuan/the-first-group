@@ -33,6 +33,11 @@ const moudleB = {
     idArr:[],
     active: [],
     isshow3:false,
+    item:[],
+    geohash:'',
+    site:'',
+    input:[],
+    username:''
   },
   getters: {
   },

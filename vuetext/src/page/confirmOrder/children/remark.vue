@@ -1,158 +1,122 @@
 <template>
-<!--订单备注页-->
   <section>
-    <p class="p1">快速备注</p>
-    <div class="a1">
-<div v-for="(item,index) in taste[0]" class="pull-left">
-  <p>{{item}}</p>
-</div>
+    <div class="head">
+      <i class="iconfont" @click="get">&#xe64b;</i>
+      <span>订单备注</span>
     </div>
-    <div class="pull-right a2">
-    <div v-for="item in taste[1]">
-      <p>{{item}}</p>
+
+    <div class="content">
+      <p>快速备注</p>
+      <el-radio-group v-model="radio3"  size="small">
+        <el-radio-button label="不要辣"></el-radio-button>
+        <el-radio-button label="少点辣"></el-radio-button>
+        <el-radio-button label="多点辣"></el-radio-button>
+      </el-radio-group>
+      <el-radio-group v-model="radio4" class="NO"  size="small">
+        <el-radio-button label="不要香菜"></el-radio-button>
+      </el-radio-group>
+      <div class="Z">
+        <el-radio-group v-model="radio5" class="NO1"  size="small">
+          <el-radio-button label="不要洋葱"></el-radio-button>
+        </el-radio-group>
+        <el-radio-group v-model="radio6" class="NO"  size="small">
+          <el-radio-button label="多点醋"></el-radio-button>
+        </el-radio-group>
+        <el-radio-group v-model="radio7" class="NO"  size="small">
+          <el-radio-button label="多点葱"></el-radio-button>
+        </el-radio-group>
+      </div>
+      <div class="s">
+        <el-radio-group v-model="radio5" class="NO1"  size="small">
+          <el-radio-button label="去冰"></el-radio-button>
+          <el-radio-button label="少冰"></el-radio-button>
+        </el-radio-group>
+      </div>
     </div>
-    </div>
-    <div  class="pull-left a3">
-    <div v-for="item in taste[2]">
-      <p>{{item}}</p>
-    </div>
-    </div>
-    <div class="pull-left a4">
-    <div v-for="item in taste[3]">
-      <p>{{item}}</p>
-    </div>
-    </div>
-    <div class="pull-left a5">
-    <div v-for="item in taste[4]">
-      <p>{{item}}</p>
-    </div>
-    </div>
-    <div class="a6">
-    <div v-for="item in taste[5]" class="pull-left" >
-      <p>{{item}}</p>
-    </div>
-    </div>
-    <div class="end">
+
+    <div class="foot">
       <p>其他备注</p>
-      <textarea class="input"v-model="input1" placeholder="请输入备注内容(可不填)"></textarea>
+      <textarea v-model="tX">请输入备注内容(可不填)</textarea>
     </div>
-    <div class="determine" @click="sure">确定</div>
+    <button class="btn btn-success" @click="getXX">确定</button>
   </section>
 </template>
 
 <script>
-  import Vue from 'vue'
-    export default {
-        name: "remark",
-      data(){
-               return{
-                 taste:[],
-                 input1:''// 输入框的值
-               }
+  export default {
+    name: "car_Order",
+    data(){
+      return {
+        radio3:'',
+        radio4:'',
+        radio5:'',
+        radio6:'',
+        radio7:'',
+        tX:'',
+        Arr:[]
+      }
+    },
+    methods:{
+      get(){
+        window.history.go(-1)
       },
-      created(){
-          Vue.axios.get('https://elm.cangdu.org/v1/carts/1/remarks').then(res=>{
-            console.log(res.data)
-            this.taste=res.data.remarks
-            this.input1=''
-          })
-      },
-      methods:{
-          sure(){
-            this.$store.commit('input',this.input1)
-            this.$router.push({name:'confirmOrder'})
-          }
+      getXX(){
+        // this.$store.str=this.radio3+this.radio4+this.radio5+this.radio6+this.radio7+this.tX;
+        this.Arr=[this.radio3, this.radio4, this.radio5, this.radio6, this.radio7, this.tX].filter((item)=>{
+          return item
+        });
+        this.$store.commit('input',this.Arr)
+        this.$router.go(-1);
       }
     }
+  }
 </script>
 
 <style scoped>
-.p1{
-  margin-top: 0.7rem;
-}
-  .a1{
-       width: 1.8rem;
-       height: 0.3rem;
-       border-radius: 0.08rem;
-       margin-top: 0.1rem;
-       padding-top: 0.1rem;
-       padding-left: 0.1rem;
-      border: 0.01rem solid blue;
-    margin-left: 0.2rem;
-    overflow: hidden;
-  }.a1>div+div{
-        margin-left: 0.1rem;
-        border-left: 1px solid red;
-         padding-left: 0.05rem;
-     }
-  .a2{
-    width: 0.7rem;
-    height: 0.3rem;
-    border: 1px solid blue;
-    padding-top: 0.1rem;
-    border-radius: 0.07rem;
-    margin-top: -0.3rem;
-    margin-right: 0.6rem;
-    padding-left: 0.05rem;
-    border-radius: 0.08rem;
+  .iconfont{
+    font-family:"iconfont" !important;
+    font-size:0.26rem;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    float:left;
+    color: white;
   }
-  .a3{
-    width: 0.7rem;
-    height: 0.3rem;
-    border: 1px solid blue;
-    margin-left: 0.2rem;
-    margin-top: 0.1rem;
-    padding-top: 0.1rem;
-    padding-left: 0.05rem;
-    border-radius: 0.08rem;
-  }
-  .a4{
-    width: 0.7rem;
-     height: 0.3rem;
-    border: 1px solid blue;
-    margin-left: 0.2rem;
-    margin-top: 0.1rem;
-    padding-top: 0.1rem;
-    padding-left: 0.1rem;
-    border-radius: 0.08rem;
-  }
-  .a5{
-    width: 0.7rem;
-    height: 0.3rem;
-    border: 1px solid blue;
-    margin-top: 0.1rem;
-    margin-left: 0.2rem;
-    padding-top: 0.1rem;
-    padding-left: 0.1rem;
-    border-radius: 0.08rem;
-  }
-  .a6{
-    width: 1rem;
-    height: 0.3rem;
-    margin-top: 0.5rem;
-    border: 1px solid blue;
-    margin-left: 0.2rem;
-    padding-top: 0.1rem;
-    padding-left: 0.1rem;
-    border-radius: 0.08rem;
-  }
-  .a6>div+div{
-   margin-left: 0.1rem;
-    border-left:0.01rem solid blue;
-    padding-left: 0.05rem;
-  }
-  .end{
-    margin-top: 0.3rem;
-  }
-  .input{
+  .head{
     width: 100%;
-    height: 1.5rem;
+    height: 0.5rem;
+    background-color: blue;
+    line-height:0.5rem ;
+    font-size: 0.2rem;
+    text-align: center;
+    color: white;
   }
-.determine{
-  width: 100%;
-  background-color: #4cd964;
-  text-align: center;
-  line-height: 0.4rem;
-  border-radius: 0.05rem;
-}
+  .content{
+    width: 100%;
+    height: 2rem;
+    background-color: white;
+    margin-top: 0.1rem;
+  }
+  p{
+    padding-top: 0.2rem;
+  }
+  .NO{
+    margin-left: 0.2rem;
+  }
+  .foot{
+    width: 100%;
+    height: 1.8rem;
+    background-color: white;
+    margin-top: 0.1rem;
+  }
+  textarea{
+    width: 80%;
+    height: 1.1rem;
+    margin-left: 10%;
+    background-color: lightgray;
+  }
+  button{
+    width: 90%;
+    margin-left: 5%;
+  }
 </style>

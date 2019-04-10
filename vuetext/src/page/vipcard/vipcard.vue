@@ -51,7 +51,10 @@
 </template>
 <script>
     export default {
-        name: "vipcard"
+        name: "vipcard",
+      created(){
+        this.$store.commit('changecity1',{name1:'会员',bull:false})
+      }
     }
 </script>
 

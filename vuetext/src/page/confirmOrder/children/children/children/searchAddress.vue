@@ -2,15 +2,14 @@
 <!--搜索地址页-->
   <section>
   <input type="search" name="search" placeholder="请输入小区/写字楼/学校等" v-model="searchValue" class="put">
-    <div class="pull-right bac" @click="choooedAddress">搜索</div>
-    <ul class="address_list" v-if="searchData">l
-      <li v-for="(item, index) in searchData" :key="index" @click="choooedAddress">
-
+    <div class="pull-right sou" @click="choooedAddress">搜索</div>
+    <div class="address_list" v-if="searchData">
+      <div class="site" v-for="(item, index) in searchData" :key="index" @click="choooedAddress">
         <p @click="man(index)">{{item.name}}<br>
           <span>{{item.address}}</span></p>
+      </div>
 
-      </li>
-    </ul>
+    </div>
   </section>
 </template>
 
@@ -25,6 +24,9 @@
             amb:'',
             geohas:''// 经纬度
           }
+      },
+      created(){
+        this.$store.commit('changecity1',{name1:'搜索地址',bull:false})
       },
       methods: {
         choooedAddress(){
@@ -48,21 +50,31 @@
 </script>
 
 <style scoped>
+  section{
+    overflow: auto;
+  }
 .put{
   height: 0.2rem;
   margin-top: 0.2rem;
   width: 1.8rem;
+  margin-left: 0.1rem;
 }
-  .bac{
+  .sou{
     width: 0.6rem;
     height: 0.2rem;
     background-color: forestgreen;
     text-align: center;
     margin-top: .2rem;
-   margin-right: 1rem;
+   margin-right: 1.2rem;
+    padding-top: 0.05rem;
     color:snow;
   }
-  li>*{
-    margin-top: 0.2rem;
+  .site{
+    width: 100%;
+    height: 0.7rem;
+    background-color: white;
+    padding-top: 0.1rem;
+    margin-left: 0.2rem;
+    border-bottom: 0.01rem solid lightgrey;
   }
 </style>

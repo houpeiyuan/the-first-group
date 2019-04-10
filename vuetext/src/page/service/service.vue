@@ -153,7 +153,8 @@
 
       }
     },
-    methods:{
+    created(){
+      this.$store.commit('changecity1',{name1:'服务中心',bull:false})
     }
   }
 </script>

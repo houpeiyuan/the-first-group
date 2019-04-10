@@ -37,6 +37,9 @@
          money: []
           }
       },
+  created(){
+    this.$store.commit('changecity1',{name1:'优惠券',bull:false})
+  },
       mounted() {
           var that=this
           Vue.axios.get('https://elm.cangdu.org/promotion/v2/users/1/hongbaos?limit=3&offset=0',null).then((response)=>{that.money=response.data})

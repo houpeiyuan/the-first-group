@@ -4,11 +4,12 @@
     <span>联系人</span>
   <input type="text" placeholder="你的名字" class="put" v-model="name">
     <hr>
-    <div>
-      <span class="sp" @click="chooseSex(1)" :class="{choosed:sex==1}">✔</span><span>先生</span>
-      <span class="sp" @click="chooseSex(2)" :class="{choosed:sex==2}">✔</span> <span>女士</span>
+    <div class="bon">
+      <p class="sp pull-left" @click="chooseSex(1)" :class="{choosed:sex==1}">✔</p>
+      <span class="pull-left">先生</span>
+      <p class="sp pull-left" @click="chooseSex(2)" :class="{choosed:sex==2}">✔</p>
+      <span class="pull-left">女士</span>
     </div>
-    <hr>
     <div>
       <span>联系电话</span>
       <input type="text" name="phone" placeholder="你的手机号" class="put" v-model="phone">
@@ -51,6 +52,9 @@
             }
           }
       },
+      created(){
+        this.$store.commit('changecity1',{name1:'添加地址',bull:false})
+      },
       methods:{
         chooseSex(sex){
           this.sex=sex
@@ -82,7 +86,7 @@
               geohash:this.$store.state.zhang.geohash,
             }}).then((response)=>{
               console.log(response.data)
-              this.$router.go(-1);
+            this.$router.push({name:'chooseAddress'})
             })
         }
       },
@@ -95,10 +99,12 @@
   margin-top: 0.2rem;
 }
   .sp{
-    width: 0.3rem;
-    height: 0.3rem;
+    width: 0.2rem;
+    height: 0.2rem;
     border-radius: 50%;
-    margin-left: .2rem;
+    margin-left: .25rem;
+    padding-left: 0.05rem;
+    padding-top: 0.02rem;
   }
 .choosed{
   background-color:#4cd964 ;
@@ -117,5 +123,10 @@
     margin-top: 0.1rem;
     background-color: greenyellow;
     margin-left: 10%;
+  }
+  .bon{
+    width: 100%;
+    height: 0.4rem;
+    border-bottom: 0.01rem solid lightgrey;
   }
 </style>

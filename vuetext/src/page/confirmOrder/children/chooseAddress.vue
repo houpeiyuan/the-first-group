@@ -1,7 +1,6 @@
 <template>
 <!--选择地址页-->
   <section>
-    <div class="conty">
     <div v-for="(item,index) in addressList" class="box" @click="general(item)">
       <div class="pull-left img1" :class="{img2:app==index}" @click="man(index)">
       </div >
@@ -16,7 +15,6 @@
         <span>{{item.address_detail}}</span>
       </div>
       <hr>
-    </div>
     </div>
   <div class="navbar-fixed-bottom  bofer">
     <router-link :to="{name:'addAddress'}">
@@ -38,7 +36,8 @@
           }
       },
       created(){
-          Vue.axios.get('https://elm.cangdu.org/v1/users/'+this.$store.state.zhang.userId+'/addresses').then(res=>{
+        this.$store.commit('changecity1',{name1:'选择地址',bull:false})
+          Vue.axios.get('https://elm.cangdu.org/v1/users/'+this .$store.state.zhang.userId+'/addresses').then(res=>{
             console.log(res.data)
             this.addressList=res.data
           })
@@ -49,21 +48,15 @@
           },
         general(i){
             this.$store.commit('item',i)
-          this.$router.go(-1);
+          this.$router.push({name:'confirmOrder'})
         }
       }
     }
 </script>
 
 <style scoped>
-  .conty{
-    width: 100%;
-    height: 70%;
-    overflow: auto;
-  }
 .bofer{
   text-align: center;
-  margin-bottom: 0.2rem;
 }
   img{
     width: 0.2rem;
