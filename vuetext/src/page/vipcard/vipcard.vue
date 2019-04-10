@@ -11,7 +11,7 @@
       </div>
       <div>
             <div class="pull-left befor">
-              <i class="iconfont">&#xe6b5;</i>
+              <img src="../../../src/image/sheng.jpeg.png" alt="" class="img1">
               <div class="pull-right after">
                <span>减免配送费</span>
                 <p>每月减免30单，每日可减免3单，每单最高减4元</p>
@@ -19,7 +19,7 @@
               </div>
             </div>
         <div class="pull-left befor">
-          <i class="iconfont">&#xe606;</i>
+          <img src="../../../src/image/jifen.jpeg.png" alt="" class="img1">
           <div class="pull-right after">
             <span>减免配送费</span>
             <p>每月减免30单，每日可减免3单，每单最高减4元</p>
@@ -59,21 +59,6 @@
 </script>
 
 <style scoped>
-  @font-face {
-    font-family: 'iconfont';  /* project id 1116698 */
-    src: url('//at.alicdn.com/t/font_1116698_efp8q4a4pr.eot');
-    src: url('//at.alicdn.com/t/font_1116698_efp8q4a4pr.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1116698_efp8q4a4pr.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1116698_efp8q4a4pr.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1116698_efp8q4a4pr.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1116698_efp8q4a4pr.svg#iconfont') format('svg');
-  }
-  .iconfont{
-    font-family:"iconfont" !important;
-    font-size:40px;font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;}
 .top{
   width:100%;
   height: 0.3rem;
@@ -138,5 +123,8 @@
   }
   .botton>span{
     font-size: 16px;
+  }
+  .img1{
+    width: 0.4rem;
   }
 </style>
