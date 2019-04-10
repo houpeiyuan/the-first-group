@@ -1,11 +1,12 @@
 <template>
   <section>
+    <div class="box">
     <div class="head">
-      <i class="iconfont" @click="get">&#xe64b;</i>
       <span>{{project1}}</span>
     </div>
     <div class="content">
       <p>{{project}}</p >
+    </div>
     </div>
   </section>
 </template>
@@ -23,27 +24,16 @@
     created(){
       Vue.axios.get('https://elm.cangdu.org/v3/profile/explain',null).then((e,q)=>{
         this.project=e.data.activityContent
-        console.log(e)
         this.project1=e.data.activityCaption
       })
     },
-    methods:{
-      get(){
-        window.history.go(-1)
-      }
-    }
   }
 </script>
 
 <style scoped>
-  .iconfont{
-    font-family:"iconfont" !important;
-    font-size:0.26rem;font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
-    float:left;
-    color: white;
+  .box{
+    width: 90%;
+    margin-left: 5%;
   }
   .head{
     width: 100%;
