@@ -35,7 +35,6 @@
     <div id="ball" ref="ball"></div>
   </div>
 </template>
-
 <script>
   /*
   https://blog.csdn.net/weixin_42852657/article/details/84400324

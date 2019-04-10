@@ -188,7 +188,7 @@
     overflow: hidden;
     right: 0;
     top: 0;
-    height: 4.5rem;
+    height: 3.5rem;
   }
   .shopL{
     width: 15%;
