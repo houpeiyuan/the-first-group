@@ -243,6 +243,7 @@
     margin-top: 10px;
   }
   .scoreitemright{
+    height: 1.5rem;
     padding-top: 0.4rem;
   }
   .punctual{

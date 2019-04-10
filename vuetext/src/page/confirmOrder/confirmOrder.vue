@@ -99,7 +99,7 @@
     margin-left: 0.3rem;
   }
   .p2{
-    /*margin-top: -0.3rem;*/
+    margin-top: -0.3rem;
     font-size: 0.2rem;
   }
   .img2{

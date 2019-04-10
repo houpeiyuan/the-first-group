@@ -3,14 +3,14 @@
   <section class="container-fluid">
     <div class="frist">
       <div class="befor">
-        <img src="../../../src/image/1.png" alt="" class="img1">
       <a href="###">
+        <img src="../../../src/image/1.png" alt="" class="img1">
         <p>在线服务</p>
       </a>
       </div>
       <div class="pull-right after">
-        <img src="../../../src/image/2.jpg" alt="" class="img2">
         <a href="tel:10105757">
+            <img src="../../../src/image/2.jpg" alt="" class="img2">
             <p>在线客服</p>
         </a>
       </div>
@@ -171,10 +171,10 @@
   p{
     margin-left: -19px;
   }
-  /*div{*/
-    /*padding-top: .2rem;*/
-    /*padding-left: .1rem;*/
-  /*}*/
+  div{
+    padding-top: .2rem;
+    padding-left: .1rem;
+  }
   div>*{
     color: black;
   }
@@ -193,9 +193,10 @@
   }
   .befor{
     margin-left: 0.5rem;
+    margin-top: -0.2rem;
   }
   .after{
     margin-right: 0.7rem;
-    margin-top: -0.58rem;
+    margin-top: -0.65rem;
   }
 </style>
