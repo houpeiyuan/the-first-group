@@ -2,21 +2,26 @@
   <!--底部公共组件-->
   <section v-show="isfoot">
   <div class="foot navbar-fixed-bottom">
-    <div @click="istrue=1" class="div1">
-      <router-link :to="{name:'msite'}"><i class="iconfont i1">&#xe722;</i> </router-link>
-      <p :style="{color:istrue===1?'blue':'black'}" class="p1">外卖</p>
+    <div @click="istrue=1" class="div2">
+      <router-link :to="{name:'msite'}"><i class="iconfont i1">&#xe722;</i>
+        <div :style="{color:istrue===1?'blue':'black'}" class="p1">外卖</div>
+      </router-link>
+
     </div>
-    <div @click="istrue=2">
-      <router-link :to="{name:'search'}"><i class="iconfont">&#xe711;</i></router-link>
-      <p :style="{color:istrue===2?'blue':'black'}">搜索</p>
+    <div @click="istrue=2" class="div1">
+      <router-link :to="{name:'search'}"><i class="iconfont">&#xe711;</i>
+        <div :style="{color:istrue===2?'blue':'black' }" class="p2">搜索</div>
+      </router-link>
     </div>
-    <div @click="istrue=3">
-      <router-link :to="{name:'order'}"><i class="iconfont ">&#xe667;</i></router-link>
-      <p :style="{color:istrue===3?'blue':'black'}">订单</p>
+    <div @click="istrue=3" class="div1">
+      <router-link :to="{name:'order'}"><i class="iconfont ">&#xe667;</i>
+        <div :style="{color:istrue===3?'blue':'black'}" class="p2">订单</div>
+      </router-link>
     </div>
-    <div @click="istrue=4">
-      <router-link :to="{name:'profile'}"><i class="iconfont">&#xe607;</i></router-link>
-      <p :style="{color:istrue===4?'blue':'black'}">我的</p>
+    <div @click="istrue=4" class="div1">
+      <router-link :to="{name:'profile'}"><i class="iconfont">&#xe607;</i>
+        <div :style="{color:istrue===4?'blue':'black'}" class="p2">我的</div>
+      </router-link>
     </div>
   </div>
   </section>
@@ -40,12 +45,15 @@
 </script>
 
 <style scoped>
-  .div1{
-    position: relative;
-    bottom: -0.1rem;
-  }
+  /*.div1{*/
+    /*margin-top: 0.04rem;*/
+    /*padding-top: 0.1rem;*/
+  /*}*/
+  /*.div2{*/
+    /*margin-top: 0.15rem;*/
+  /*}*/
   .i1{
-    font-size: 0.4rem !important;
+    font-size: 0.45rem !important;
     display: inline-block;
     margin-left: -0.05rem;
   }
@@ -57,22 +65,21 @@
     -moz-osx-font-smoothing: grayscale;
       }
   .foot{
+    height: 0.6rem;
     display: flex;
-    z-index: 222;
     justify-content: space-around;
-    bottom: -0.2rem;
     background-color: white;
     border-top:0.02rem solid #e4e4e4 ;
+    overflow: hidden;
   }
-  p{
+  .p2{
     font-size: 0.12rem;
-    position: absolute;
-    margin-top: -0.3rem;
-    margin-bottom: 0.1rem;
+    /*margin-top: -0.4rem;*/
+    /*margin-bottom: 0.1rem;*/
   }
   .p1{
-    position: absolute;
-    margin-top: -0.55rem;
+    font-size: 0.12rem;
+    margin-top: -0.07rem;
   }
 
   a{

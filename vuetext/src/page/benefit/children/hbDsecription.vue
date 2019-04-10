@@ -62,7 +62,9 @@
 
 <style scoped>
 .img1{
+  margin-top: 0.1rem;
   width: 100%;
+  height: 1.8rem;
 }
 .after{
   width: 100%;

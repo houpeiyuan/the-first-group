@@ -145,7 +145,7 @@
     border-bottom: 0.01rem solid #e4e4e4;
     border-left: 0.01rem solid #e4e4e4;
     border-right: 0.01rem solid #e4e4e4;
-    font-size: 0.016rem;
+    font-size: 0.2rem;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: keep-all;
@@ -160,6 +160,6 @@
   }
   .font1{
     color: lightgrey;
-    font-size: 0.012rem;
+    font-size: 0.2rem;
   }
 </style>

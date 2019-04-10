@@ -157,14 +157,13 @@
                    this.root.refresh()
                  }
                })
-               // this.root.on('touchEnd',(pos)=>{
-               //   if(this.root.maxScrollY >= pos.y-5){
-               //     // console.log(this.offset)
-               //     this.offset+=20
-               //     console.log('刷新2')
-               //     this.root.refresh();
-               //   }
-               // })
+               this.root.on('touchEnd',(pos)=>{
+                 if(this.root.maxScrollY >= pos.y-5){
+                   // console.log(this.offset)
+                   console.log('刷新2')
+                   this.root.refresh();
+                 }
+               })
              })
            })
          },
@@ -292,13 +291,13 @@
     display: inline-block;
   }
   .el-rate__icon, .el-icon-star-on{
-    font-size: 0.10rem;
+    font-size: 0.05rem;
   }
   .el-rate__item{
-    width: 0.10rem;
+    width: 0.12rem;
   }
   .el-rate__text{
-    font-size: 0.10rem;
+    font-size: 0.05rem;
     margin-left: 0.1rem;
   }
 </style>
