@@ -8,7 +8,7 @@
         <br>
         <div>
           <span class="a">{{last.name}}</span>
-          <span>{{last.sex==1? '先生' : '女士'}}</span>
+          <span>{{last.sex==1?'先生':'女士'}}</span>
           <span>{{last.phone}}</span>
         </div>
         <div class="address_detail ellipsis">
@@ -44,7 +44,8 @@
     <div class="end">
       <router-link :to="{path:'/remark'}">
         <p class="pull-left">订单备注</p>
-        <p class="pull-right">{{name1}}></p>
+        <span class="pull-right">></span>
+        <span class="pull-right" v-for="item in name1">{{item}}</span>
       </router-link>
       <br>
       <hr>
@@ -53,6 +54,7 @@
         <p class="pull-right">不需要开发票></p>
       </router-link>
     </div>
+      <div class="roof"><</div>
     </div>
   </section>
 </template>
@@ -64,7 +66,8 @@
       data(){
           return{
             boot:'' , // 餐盒费
-            last:this.$store.state.zhang.item  //送货地址
+            last:this.$store.state.zhang.item,  //送货地址
+
           }
       },
       computed:{
@@ -77,7 +80,7 @@
          },
       },
       created(){
-
+        this.$store.commit('changecity1',{name1:'确认订单',bull:false})
         this.$store.commit('isfoot',false)
         console.log(this.last)
       },
@@ -138,5 +141,12 @@
   }
   .a{
     font-size: 0.2rem;
+  }
+  .roof{
+    z-index: 1000;
+    margin-top: -5.5rem;
+    font-size: 0.3rem;
+    left: 0.3rem;
+    color: red;
   }
 </style>

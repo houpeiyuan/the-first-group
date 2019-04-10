@@ -25,7 +25,10 @@
 
 <script>
     export default {
-        name: "balance"
+        name: "balance",
+      created(){
+        this.$store.commit('changecity1',{name1:'余额',bull:false})
+      }
     }
 </script>
 

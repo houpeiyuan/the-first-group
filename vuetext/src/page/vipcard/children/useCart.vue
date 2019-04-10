@@ -3,7 +3,7 @@
   <section>
 
 <div>
-  成功兑换后将关联的账号：账号名
+  成功兑换后将关联的账号：{{this.$store.state.zhang.username}}
 </div>
   <div>
     <input type="text"placeholder="输入10位卡号" name="cartNumber" class="ninput" v-model="cartNumber" maxlength="10">

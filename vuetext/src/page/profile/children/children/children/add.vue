@@ -21,7 +21,7 @@
           school:'',
           address:'',
           phone1:'',
-          phone2:''
+          phone2:'',
         }
       },
       methods:{
@@ -37,7 +37,7 @@
              phone_bk:this.phone2,
              tag_type:2,
              geohash:'31.22967,121.4762',
-           }}).then((response)=>{console.log(response.data)})
+           }}).then((response)=>{ this.$router.push({name:'address'})})
           }
       }
     }

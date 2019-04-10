@@ -36,6 +36,9 @@
 
           }
      },
+      created(){
+        this.$store.commit('changecity1',{name1:'账户信息',bull:false})
+      },
       methods:{
           back(){
             Vue.axios.get('https://elm.cangdu.org/v2/signout').then((response)=>{

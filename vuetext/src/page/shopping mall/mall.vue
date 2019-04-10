@@ -9,7 +9,10 @@
 
 <script>
     export default {
-        name: "mall"
+        name: "mall",
+      created(){
+        this.$store.commit('changecity1',{name1:'积分商城',bull:false})
+      }
     }
 </script>
 
