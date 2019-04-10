@@ -1,23 +1,22 @@
 <template>
   <div class="wrap2">
     <transition name="upCar">
-      <div class="list"  v-if="bul" @scroll="scroll">
-        <div class="head" ref="ht">购物车列表</div>
+      <div class="list"  v-if="bul">
         <div class="listS" v-if="$store.state.zhang.num.length" v-for=" item in $store.state.zhang.num">
           <div class="jia" @click="add(item)"><span>{{item.count}}</span> +</div>
           <div class="jian" @click="del(item)">-</div>
         </div>
       </div>
     </transition>
-    <div class="box">
-      <div class="left">
-        <div class="car" @click="showCar"><i class="iconfont">&#xe6e6;</i></div>
-        <input type="text"  v-if="$store.state.zhang.money" v-model="$store.state.zhang.money" disabled>
-        <input type="text" v-else v-model="st" disabled>
-        <p>配送费￥5</p>
-      </div>
-      <div class="right">去结算</div>
+  <div class="box">
+    <div class="left">
+      <div class="car" @click="showCar"><i class="iconfont">&#xe6e6;</i></div>
+      <input type="text"  v-if="$store.state.zhang.money" v-model="$store.state.zhang.money" disabled>
+      <input type="text" v-else v-model="st" disabled>
+      <p>配送费￥5</p>
     </div>
+    <div class="right"><router-link :to="{name:'confirmOrder'}">去结算</router-link></div>
+  </div>
   </div>
 </template>
 <script>
@@ -76,10 +75,6 @@
 }
 .upCar-leave,.upCar-enter-to{
   transform: translateY(0rem);
-}
-.head{
-  width: 100%;
-  height: 0.3rem;
 }
 .list{
   width: 100%;

@@ -38,9 +38,9 @@
      },
       methods:{
           back(){
-            Vue.axios.get('https://elm.cangdu.org/admin/singout').then((response)=>{
-              console.log(response.data.success)
-              this.$store.commit('success',response.data.success)
+            Vue.axios.get('https://elm.cangdu.org/v2/signout').then((response)=>{
+              console.log(response.data.message)
+              this.$store.commit('username','未登录')
               this.$router.push({name:'profile'})
             })
           }

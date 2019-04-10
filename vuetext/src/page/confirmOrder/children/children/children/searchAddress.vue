@@ -22,7 +22,8 @@
           return{
             searchValue:'',// 输入的搜索内容
             searchData: '', //搜索的结果
-            amb:''
+            amb:'',
+            geohas:''// 经纬度
           }
       },
       methods: {
@@ -30,12 +31,16 @@
           Vue.axios.get('https://elm.cangdu.org/v1/pois?'+'&keyword='+this.searchValue).then(res=>{
             // console.log(res.data)
             this.searchData=res.data
+            this.geohas=res.data
+            // this.geohash=res.data.geohash
+            // console.log(this.geohash)
           })
         },
         man(index){
            this.$store.commit("site",this.searchData[index].name)
           console.log(this.searchData[index].name)
-
+          console.log(this.geohas[index].geohash)
+          this.$store.commit('geohash',this.geohas[index].geohash)
          this.$router.push({path:'/addAddress'})
         }
       }

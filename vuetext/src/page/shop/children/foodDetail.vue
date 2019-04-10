@@ -88,12 +88,6 @@
                for(let i = 0; i < that.set.length; i++){
                  if(that.scrollY > that.set[i] && that.scrollY < that.set[i + 1]){
                    that.actli = i
-                   if(i === that.$refs.l_item.length - 2){
-                     that.left.scrollToElement(that.$refs.l_item[1], 100, 0, 0)
-                   }
-                   if(i===2){
-                     that.left.scrollToElement(that.$refs.l_item[0], 100, 0, 0)
-                   }
                  }
                }
              })
@@ -116,7 +110,7 @@
           this.rgt.scrollToElement(this.$refs.product[index], 100, 0, 0)
           setTimeout(()=>{
             this.flag = true
-          },100)
+          },200)
         },
         addCar(item,index,$event){
             this.$store.commit('add',item)

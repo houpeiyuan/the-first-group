@@ -84,10 +84,11 @@
           this.isshow = false
         },
         getS() {
+          console.log('shousuo')
           if (this.inputval == '') {
             Toast('请输入内容');
           } else {
-            Vue.axios.get('https://elm.cangdu.org/v4/restaurants?geohash=31.22967,121.4762&keyword=' + this.inputval).then((res) => {
+            Vue.axios.get(`https://elm.cangdu.org/v4/restaurants?geohash=${this.$store.state.hou.latitude},${this.$store.state.hou.longitude}&keyword=${this.inputval}`).then((res) => {
                this.list=res.data;
               console.log(res)
             });

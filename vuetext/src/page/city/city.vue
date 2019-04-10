@@ -4,8 +4,8 @@
   <div class='padtop50'>
     <div class="padlr10 bgfff padbot10">
       <form v-on:submit.prevent>
-        <input v-model="inputval" class="cityinput" required placeholder="输入商务楼，学校，地址"></input>
-        <input type='submit' name='submit' value='提交' @click="searchcity" class="submit bgcol ih40"></input>
+        <input type="text" v-model="inputval" class="cityinput" required placeholder="输入商务楼，学校，地址">
+        <button name='submit' @click="searchcity" class="submit bgcol ih40">提交</button>
       </form>
     </div>
   </div>
@@ -85,6 +85,9 @@ import { Toast } from 'mint-ui';
             arr.unshift(e);
           }
         }else{
+          /*
+          向数组的开头添加元素
+           */
           arr.unshift(e);
         }
         localStorage.setItem("his",JSON.stringify(arr));
@@ -149,5 +152,4 @@ span{
   .after{
     border-bottom: 0.01rem solid lightgray;
   }
-
 </style>
