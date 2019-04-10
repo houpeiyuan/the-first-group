@@ -1,5 +1,4 @@
 <template>
-
  <div class="box">
    <div class="top">
        <div class="left" >
@@ -35,38 +34,40 @@
        <div class="scoremaintop after">
          <div v-for="(item,index) in scoretags" class="time pull-left" @click="chang(index)" :class="{shel: scoreindex==index}">{{item.name}}({{item.count}})</div>
        </div>
-     <div class="scoremaininfo">
-         <div class="scoreitem after" v-for="item in score">
-           <div class="scoreitemleft">
-             <img :src="item.avatar.endsWith('jpeg')===true?imgpath+item.avatar+'.jpeg':'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553869734396&di=ff7895187b0dcb832fafcadd88cb4521&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201607%2F25%2F20160725185442_K2ScQ.jpeg'
+     <div class="scoremaininfo" ref="abc">
+     <div>
+       <div class="scoreitem after" v-for="(item,index) in score" :key="index">
+         <div class="scoreitemleft">
+           <img :src="item.avatar.endsWith('jpeg')===true?imgpath+item.avatar+'.jpeg':'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553869734396&di=ff7895187b0dcb832fafcadd88cb4521&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201607%2F25%2F20160725185442_K2ScQ.jpeg'
 " class="pull-left cirle">
-           </div>
-           <div class="scoreitemright fs12 col9f">
-             <div>
+         </div>
+         <div class="scoreitemright fs12 col9f">
+           <div>
                <span class="big">
                  {{item.username}}
                </span>
-               <span class="right1 pull-right">{{item.rated_at}}</span>
-             </div>
-             <div class="pull-left stars">
-               <el-rate
-                 v-model="item.rating_star"
-                 disabled
-                 show-score
-                 text-color="#000"
-                 score-template=""></el-rate>
-             </div>
-             <div class='punctual'>
-               {{item.time_spent_desc}}
-             </div>
-             <div class="scoreimgbox">
-               <img v-for="itema in item.item_ratings" :src="itema.image_hash.endsWith('jpeg')===true?imgpath+itema.image_hash+'.jpeg':'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553869734396&di=ff7895187b0dcb832fafcadd88cb4521&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201607%2F25%2F20160725185442_K2ScQ.jpeg'">
-             </div>
-             <div class="namebox">
-               <div v-for="itemb in item.item_ratings">{{itemb.food_name}}</div>
-             </div>
+             <span class="right1 pull-right">{{item.rated_at}}</span>
+           </div>
+           <div class="pull-left stars">
+             <el-rate
+               v-model="item.rating_star"
+               disabled
+               show-score
+               text-color="#000"
+               score-template=""></el-rate>
+           </div>
+           <div class='punctual'>
+             {{item.time_spent_desc}}
+           </div>
+           <div class="scoreimgbox">
+             <img v-for="itema in item.item_ratings" :src="itema.image_hash.endsWith('jpeg')===true?imgpath+itema.image_hash+'.jpeg':'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553869734396&di=ff7895187b0dcb832fafcadd88cb4521&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201607%2F25%2F20160725185442_K2ScQ.jpeg'">
+           </div>
+           <div class="namebox">
+             <div v-for="itemb in item.item_ratings">{{itemb.food_name}}</div>
            </div>
          </div>
+       </div>
+     </div>
      </div>
    </div>
  </div>
@@ -74,6 +75,7 @@
 <script>
   import Vue from 'vue'
   import stars from '../../../components/common/ratingStar'
+  import BScroll from 'better-scroll'
     export default {
         name: "shopDetail",
       data(){
@@ -86,7 +88,9 @@
          scoreindex:0, //选中第几个评价分类
          fiex:'',
          evaluate:'',
-         imgpath:'https://fuss10.elemecdn.com/'//商家头像的路径地址path
+         imgpath:'https://fuss10.elemecdn.com/',//商家头像的路径地址path
+         offset:10,
+         root:''
        }
       },
       components:{
@@ -104,9 +108,9 @@
   },
       created(){
           //评论详情
-          Vue.axios.get('https://elm.cangdu.org/ugc/v2/restaurants/'+this.$store.state.zhang.id+'/ratings?offset=0&limit=10').then((res)=>{
-            this.score=res.data
-          })
+          // Vue.axios.get('https://elm.cangdu.org/ugc/v2/restaurants/'+this.$store.state.zhang.id+'/ratings?offset=0&limit=10').then((res)=>{
+          //   this.score=res.data
+          // })
         //评论分类
         Vue.axios.get('https://elm.cangdu.org/ugc/v2/restaurants/'+this.$store.state.zhang.id+'/ratings/tags').then(response=>{
           // console.log(response)
@@ -123,11 +127,45 @@
           console.log(this.$store.state.zhang.id)
           this.shopinfo=response.data
         })
+      },
+      watch:{
+          offset:{
+            handler(){
+              Vue.axios.get('https://elm.cangdu.org/ugc/v2/restaurants/'+this.$store.state.zhang.id+'/ratings?offset='+this.offset+'&limit=10').then(res =>{
+                this.score=[...this.score,...res.data]
+                this.$nextTick(()=>{
+                  if (!this.root) {
+                    this.root=new BScroll(this.$refs.abc,{click:true,probeType:1})
+                  }else {
+                    this.root.refresh();
+                  }
+                  this.root.on('scroll',(res)=>{
+                    if(this.root.maxScrollY>=res.y-5){
+                      this.offset+=10;
+                      this.root.refresh()
+                    }
+                  })
+                  this.root.on('touchEnd',(pos)=>{
+                    if(this.root.maxScrollY >= pos.y-5){
+                      // console.log(this.offset)
+                      console.log('刷新2')
+                      this.root.refresh();
+                    }
+                  })
+                })
+              })
+            },
+            immediate: true,
+            deep: true
+          }
       }
     }
 </script>
 
 <style scoped>
+  .content{
+    width: 200%;
+  }
   .cirle{
     width: 0.4rem;
     height: 0.4rem;
@@ -140,6 +178,10 @@
   }
   .top{
     height:1.2rem;
+  }
+  .scoremaininfo{
+    height: 2rem;
+    overflow: hidden;
   }
 .left{
   font-size: 16px;
@@ -174,16 +216,16 @@
     padding-top: 0.04rem;
    margin-left: 0.1rem;
   }
+  .scoremaintop{
+    overflow: hidden;
+    height: 2rem;
+  }
   .after{
-    width: 3.5rem;
+    width: 100%;
     margin-top: -1rem;
-    clear: both;
   }
 .shel{
   background-color: red;
-}
-.cintent{
-  margin-top: -2rem;
 }
   .scoreitemleft>img{
      width: 0.4rem;
@@ -195,7 +237,6 @@
   .big{
     font-size: 12px;
     margin-left: -1.7rem;
-
   }
   .right1{
     font-size: 12px;

@@ -144,7 +144,6 @@ const moudleB = {
         state.num[index].count++;
         state.num[index].pay=state.num[index].count*state.num[index].price;
         state.money+=state.num[index].price
-        console.log(state.num[index].count)
       }
     },
     del(state,item){
