@@ -16,6 +16,7 @@
       </div>
     </div>
     <p class="mide">热门问题</p>
+    <hr>
     <div>
       <router-link :to="{name:'n1'}">超级会员权益说明</router-link>
       <span class="pull-right">></span>
@@ -150,7 +151,6 @@
     name: "service",
     data() {
       return {
-
       }
     },
     created(){
@@ -180,9 +180,8 @@
   }
   .mide{
     width: 100%;
-    margin-top:.5rem;
+    margin-top:.6rem;
     padding-left: 0.25rem;
-    border-bottom: 1px solid lightgray;
     font-size: 0.2rem;
   }
   .img1{
@@ -193,11 +192,11 @@
     width: 0.3rem;
   }
   .befor{
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     margin-top: -0.2rem;
   }
   .after{
-    margin-right: 1rem;
+    margin-right: 0.7rem;
     margin-top: -0.65rem;
   }
 </style>

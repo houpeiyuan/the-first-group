@@ -86,7 +86,7 @@
          scoreindex:0, //选中第几个评价分类
          fiex:'',
          evaluate:'',
-         imgpath:'https://fuss10.elemecdn.com/'//商家头像的路径地址path
+         imgpath:'https://fuss10.elemecdn.com/',//商家头像的路径地址path
        }
       },
       components:{
@@ -123,7 +123,7 @@
           console.log(this.$store.state.zhang.id)
           this.shopinfo=response.data
         })
-      }
+      },
     }
 </script>
 
