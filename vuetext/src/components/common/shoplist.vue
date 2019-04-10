@@ -157,14 +157,13 @@
                    this.root.refresh()
                  }
                })
-               // this.root.on('touchEnd',(pos)=>{
-               //   if(this.root.maxScrollY >= pos.y-5){
-               //     // console.log(this.offset)
-               //     this.offset+=20
-               //     console.log('刷新2')
-               //     this.root.refresh();
-               //   }
-               // })
+               this.root.on('touchEnd',(pos)=>{
+                 if(this.root.maxScrollY >= pos.y-5){
+                   // console.log(this.offset)
+                   console.log('刷新2')
+                   this.root.refresh();
+                 }
+               })
              })
            })
          },
