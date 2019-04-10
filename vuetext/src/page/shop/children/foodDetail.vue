@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div class="wrap1">
  <div class="box">
    <ul class="left" ref="l_list">
      <li @click="change(index)" ref="l_item" :class="{'act':index === actli}"
@@ -31,8 +31,8 @@
      </div>
    </section>
  </div>
-    <div id="ball" ref="ball"></div>
     <buyCart></buyCart>
+    <div id="ball" ref="ball"></div>
   </div>
 </template>
 
@@ -88,12 +88,6 @@
                for(let i = 0; i < that.set.length; i++){
                  if(that.scrollY > that.set[i] && that.scrollY < that.set[i + 1]){
                    that.actli = i
-                   if(i === that.$refs.l_item.length - 2){
-                     that.left.scrollToElement(that.$refs.l_item[1], 100, 0, 0)
-                   }
-                   if(i===2){
-                     that.left.scrollToElement(that.$refs.l_item[0], 100, 0, 0)
-                   }
                  }
                }
              })
@@ -116,7 +110,7 @@
           this.rgt.scrollToElement(this.$refs.product[index], 100, 0, 0)
           setTimeout(()=>{
             this.flag = true
-          },100)
+          },200)
         },
         addCar(item,index,$event){
             this.$store.commit('add',item)
@@ -143,9 +137,10 @@
     background: red;
     margin-left: 0.1rem;
   }
-  .wrap{
+  .wrap1{
     width: 200% !important;
     padding-top: 0.2rem;
+    overflow: hidden;
   }
   .box{
     width: 100%;
@@ -232,5 +227,6 @@
     border-radius: 50%;
     position: fixed;
     transition: left 1s linear, top 1s ease-in;
+    z-index: -3;
   }
 </style>

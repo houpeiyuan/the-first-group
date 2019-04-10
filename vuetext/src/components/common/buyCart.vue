@@ -1,11 +1,13 @@
 <template>
-<div class="wrap">
-  <div class="list" v-if="bul">
-    <div class="listS" v-if="$store.state.zhang.num.length" v-for=" item in $store.state.zhang.num">
-      <div class="jia" @click="add(item)"><span>{{item.count}}</span> +</div>
-      <div class="jian" @click="del(item)">-</div>
-    </div>
-  </div>
+  <div class="wrap2">
+    <transition name="upCar">
+      <div class="list"  v-if="bul">
+        <div class="listS" v-if="$store.state.zhang.num.length" v-for=" item in $store.state.zhang.num">
+          <div class="jia" @click="add(item)"><span>{{item.count}}</span> +</div>
+          <div class="jian" @click="del(item)">-</div>
+        </div>
+      </div>
+    </transition>
   <div class="box">
     <div class="left">
       <div class="car" @click="showCar"><i class="iconfont">&#xe6e6;</i></div>
@@ -13,11 +15,9 @@
       <input type="text" v-else v-model="st" disabled>
       <p>配送费￥5</p>
     </div>
-    <router-link :to="{name:'confirmOrder'}">
-    <div class="right">去结算</div>
-    </router-link>
+    <div class="right"><router-link :to="{name:'confirmOrder'}">去结算</router-link></div>
   </div>
-</div>
+  </div>
 </template>
 <script>
   export default {
@@ -58,15 +58,31 @@
 </script>
 
 <style scoped>
-.wrap{
+.wrap2{
   width: 100%!important;
-  position: relative;
+  position: fixed;
+  height:0.5rem ;
+  bottom: 0;
+}
+*{
+  line-height: 0;
+}
+.upCar-enter,.upCar-leave-to{
+  transform: translateY(2rem);
+}
+.upCar-enter-active,.upCar-leave-active{
+  transition: all 2s ease;
+}
+.upCar-leave,.upCar-enter-to{
+  transform: translateY(0rem);
 }
 .list{
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: 0.3rem;
+  bottom:0.5rem;
+  max-height: 2rem;
+  overflow: auto;
 }
 .listS{
   width: 100%;
@@ -83,32 +99,38 @@
 .jia{
   background-color: darksalmon;
 }
+.jian{
+  background-color: yellow;
+}
   .box{
     width: 100%;
     display: flex;
     font-size: 0.2rem;
+    color: white;
   }
   .left{
     width: 60%;
     height: 0.5rem;
-    line-height: 0.5rem;
     position: relative;
+    background-color: black;
   }
   .right{
     width: 40%;
     height: 0.5rem;
     line-height: 0.5rem;
+    background-color: green;
   }
   .left>input{
     width:100% ;
     height: 0.25rem;
-    background-color: #90B4FC;
+    background-color: black;
     padding-left: 0.6rem;
   }
   .left>p{
-    width:100% ;
-    font-size: 0.2rem;
-    line-height: 0;
+    width:100%;
+    height: 0.25rem;
+    font-size: 0.16rem;
+    line-height: 0.2rem;
   }
 .iconfont{
   font-family:"iconfont" !important;

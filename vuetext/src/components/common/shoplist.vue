@@ -33,6 +33,10 @@
   </div>
 </template>
 <script>
+  /*
+  https://www.jianshu.com/p/a3d1829c3ca1
+  https://www.cnblogs.com/dupd/p/5887907.html
+   */
   import BScroll from 'better-scroll'
   import Vue from 'vue'
   import { Indicator } from 'mint-ui';
@@ -53,9 +57,6 @@
             product:''
           }
         },
-      created(){
-
-      },
      computed:{
           msg(){
             //返回排序的计算属性
@@ -131,22 +132,11 @@
                 }else {
                   this.root.refresh();
                 }
-                this.root.on('scroll',(res)=>{
-                  // console.log('上拉')
-                  this.scrollY=Math.abs(res.y)
-                })
-                this.root.on('touchEnd',(pos)=>{
-                  if(this.root.maxScrollY >= pos.y-10){
-                    console.log(this.offset)
-                    this.offset+=20
-                    // console.log('刷新')
-                    this.root.refresh();
-                  }
-                })
               })
             })
           },
-          immediate: true
+          immediate: true,
+          deep:true
         },
        offset:{
          handler(){
@@ -161,21 +151,25 @@
                  this.root.refresh();
                }
                this.root.on('scroll',(res)=>{
-                 // console.log('上拉')
-                 this.scrollY=Math.abs(res.y)
-               })
-               this.root.on('touchEnd',(pos)=>{
-                 if(this.root.maxScrollY >= pos.y+5){
-                   console.log(this.offset)
-                   this.offset+=20
-                   // console.log('刷新')
-                   this.root.refresh();
+                 console.log('上拉2')
+                 if(this.root.maxScrollY>=res.y-5){
+                   this.offset+=20;
+                   this.root.refresh()
                  }
                })
+               // this.root.on('touchEnd',(pos)=>{
+               //   if(this.root.maxScrollY >= pos.y-5){
+               //     // console.log(this.offset)
+               //     this.offset+=20
+               //     console.log('刷新2')
+               //     this.root.refresh();
+               //   }
+               // })
              })
            })
          },
-         immediate: true
+         immediate: true,
+         deep: true
        }
     }
   }
@@ -195,6 +189,7 @@
     overflow: hidden;
     right: 0;
     top: 0;
+    height: 4.5rem;
   }
   .shopL{
     width: 15%;
