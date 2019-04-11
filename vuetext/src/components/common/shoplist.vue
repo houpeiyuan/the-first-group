@@ -291,7 +291,7 @@
     display: inline-block;
   }
   .el-rate__icon, .el-icon-star-on{
-    font-size: 0.05rem;
+    font-size: 0.05rem !important;
   }
   .el-rate__item{
     width: 0.12rem;

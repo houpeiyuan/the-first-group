@@ -2,7 +2,7 @@
 <!--推荐有奖-->
   <section>
     <div>
-      <img src="../../../../src/image/activity.png" alt="" class="img1">
+      <img :src="'.'+image" alt="图片" class="img1">
     </div>
     <div class="after">
       <div @click="hits">
@@ -41,12 +41,14 @@
   </section>
 </template>
 <script>
+  const activity=require('../../../../src/image/activity.png')
     export default {
         name: "hbDsecription",
       data(){
           return{
             isT:false,
-            isM:true
+            isM:true,
+            image:activity
           }
       },
       methods:{
@@ -59,12 +61,9 @@
       }
     }
 </script>
-
 <style scoped>
 .img1{
-  margin-top: 0.1rem;
   width: 100%;
-  height: 1.8rem;
 }
 .after{
   width: 100%;
@@ -72,7 +71,6 @@
   background-color: whitesmoke;
   display: flex;
   justify-content: space-around;
-  margin-top: 0.2rem;
 }
 .after img {
   margin-top: 0.2rem;

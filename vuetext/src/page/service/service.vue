@@ -4,13 +4,13 @@
     <div class="frist">
       <div class="befor">
       <a href="###">
-        <img src="../../../src/image/1.png" alt="" class="img1">
+        <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4101395094,4199371826&fm=26&gp=0.jpg" alt="" class="img1">
         <p>在线服务</p>
       </a>
       </div>
       <div class="pull-right after">
         <a href="tel:10105757">
-            <img src="../../../src/image/2.jpg" alt="" class="img2">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554956458215&di=a2207d4737d7695154af95548c8d557f&imgtype=0&src=http%3A%2F%2Fpic198.nipic.com%2Ffile%2F20181218%2F24206642_170543603036_2.jpg" alt="" class="img2">
             <p>在线客服</p>
         </a>
       </div>
@@ -185,7 +185,7 @@
     font-size: 0.2rem;
   }
   .img1{
-    width: 0.3rem;
+    width: 0.43rem;
     margin-left: -0.1rem;
   }
   .img2{
@@ -197,6 +197,6 @@
   }
   .after{
     margin-right: 0.7rem;
-    margin-top: -0.65rem;
+    margin-top: -0.66rem;
   }
 </style>

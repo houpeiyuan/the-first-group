@@ -3,7 +3,7 @@
   <section>
     <div class="box">
       <router-link :to="{path:'/chooseAddress'}">
-      <img src="../../../src/image/3.jpg" alt="" class="img1">
+      <img src='https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1554944248&di=5c4af628624bca8b02de1a95f17e55f0&src=http://img.tuguaishou.com/ips_asset_588ku/element_origin_pic/17/02/27/433586bb6bdc470b140f1827d51dcd67.png!w300_w?auth_key=2184508800-0-0-f30ab837a66c1b968f5b3a75d4b91409' alt="图片" class="pull-left img1">
       <div class="p1">配送的地址
         <br>
         <div>
@@ -93,10 +93,13 @@
   }
 .img1{
   width: 0.2rem;
-  margin-top: 0.1rem;
+  height: 0.2rem;
+  margin-top: 0.2rem;
+  margin-left:-.1rem;
 }
   .p1{
     margin-left: 0.3rem;
+    padding-top: 0.14rem;
   }
   .p2{
     margin-top: -0.3rem;

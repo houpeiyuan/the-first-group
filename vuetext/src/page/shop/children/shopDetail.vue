@@ -284,13 +284,13 @@
     display: inline-block;
   }
   .el-rate__icon, .el-icon-star-on{
-    font-size: 0.10rem;
+    font-size: 0.05rem !important;
   }
   .el-rate__item{
     width: 0.10rem;
   }
   .el-rate__text{
-    font-size: 0.10rem;
+    font-size: 0.05rem;
     margin-left: 0.1rem;
   }
 </style>
